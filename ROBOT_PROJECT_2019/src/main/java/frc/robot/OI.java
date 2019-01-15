@@ -99,7 +99,7 @@ public class OI {
         //joystickButton9.whileHeld(new randomLights());
             
         joystickButton1L = new JoystickButton(logitechLeft, 1);
-        //joystickButton1L.whileHeld(new arcadeDrive());
+        joystickButton1L.whileHeld(new arcadeDrive());
 
     	  joystickButton1R = new JoystickButton(logitechRight, 1);
         //joystickButton1R.whileHeld(new elevatorDriveVar());
