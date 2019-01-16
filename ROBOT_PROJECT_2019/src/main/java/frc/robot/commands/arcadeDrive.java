@@ -6,10 +6,9 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
-import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc5902.ROBOT_PROJECT_2019.Robot;
 
+import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 /**
  *
  */
@@ -22,6 +21,7 @@ public class arcadeDrive extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        
     	
     }
 
@@ -29,7 +29,7 @@ public class arcadeDrive extends Command {
     @Override
     protected void execute() {
     	//System.out.println(Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0));
-   
+
     	// The code below checks the throttle on the joystick and then adjusts the speed and direction of the drivers joystick
     	if (Robot.oi.getlogitechJoy().getThrottle() < 0) {
 
@@ -42,7 +42,6 @@ public class arcadeDrive extends Command {
     		Robot.speed = -Robot.oi.getlogitechJoy().getThrottle();	    	
 
     	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*-.75, Robot.speed);
-
     	}
     }
 

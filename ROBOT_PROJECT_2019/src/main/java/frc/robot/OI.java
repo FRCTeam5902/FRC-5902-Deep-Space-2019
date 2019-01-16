@@ -7,14 +7,9 @@
 
 package frc.robot;
 
-import org.usfirst.frc5902.Driver2.commands.*;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.*;
-import org.usfirst.frc5902.Driver2.subsystems.*;
-
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.arcadeDrive;
 
 /**
  * This class is the glue that binds the controls on the physical operator
