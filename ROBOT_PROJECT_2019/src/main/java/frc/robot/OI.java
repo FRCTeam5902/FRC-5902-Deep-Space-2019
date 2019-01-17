@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.arcadeDrive;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -108,6 +109,7 @@ public class OI {
 //        SmartDashboard.putData("Position 2: Right", new autoPos2R());
 //        SmartDashboard.putData("Position 3: Left", new autoPos3L());
 //        SmartDashboard.putData("Position 3: Right", new autoPos3R());
+      
 
     }
 

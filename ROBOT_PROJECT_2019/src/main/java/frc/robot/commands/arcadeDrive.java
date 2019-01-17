@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 /**
  *
@@ -36,13 +37,12 @@ public class arcadeDrive extends Command {
     		Robot.speed = .5*Robot.oi.getlogitechJoy().getThrottle();	    	
 
     		Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*.5, Robot.speed);}
-
     	else {
 
     		Robot.speed = -.5*Robot.oi.getlogitechJoy().getThrottle();	    	
 
     	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*-.5, Robot.speed);
-    	}
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
