@@ -33,15 +33,15 @@ public class arcadeDrive extends Command {
     	// The code below checks the throttle on the joystick and then adjusts the speed and direction of the drivers joystick
     	if (Robot.oi.getlogitechJoy().getThrottle() < 0) {
 
-    		Robot.speed = Robot.oi.getlogitechJoy().getThrottle();	    	
+    		Robot.speed = .5*Robot.oi.getlogitechJoy().getThrottle();	    	
 
-    		Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*.2, Robot.speed);}
+    		Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*.5, Robot.speed);}
 
     	else {
 
-    		Robot.speed = -Robot.oi.getlogitechJoy().getThrottle();	    	
+    		Robot.speed = -.5*Robot.oi.getlogitechJoy().getThrottle();	    	
 
-    	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*-.2, Robot.speed);
+    	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*-.5, Robot.speed);
     	}
     }
 

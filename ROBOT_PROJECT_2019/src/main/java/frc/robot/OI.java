@@ -108,6 +108,7 @@ public class OI {
 //        SmartDashboard.putData("Position 2: Right", new autoPos2R());
 //        SmartDashboard.putData("Position 3: Left", new autoPos3L());
 //        SmartDashboard.putData("Position 3: Right", new autoPos3R());
+
     }
 
     public Joystick getlogitechJoy() {
