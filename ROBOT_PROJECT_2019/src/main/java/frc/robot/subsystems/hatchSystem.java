@@ -10,30 +10,16 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.solenoidDoNothing;
+import edu.wpi.first.wpilibj.Servo;
+import frc.robot.commands.hatchServo;
 
-/**
- * An example subsystem.  You can replace me with your own Subsystem.
- */
-public class  pneumaticSystem extends Subsystem {
-  //Declartations
-  private final Compressor compressor = RobotMap.pneumaticSysteCompressor;
-  public final DoubleSolenoid doubleSolenoidPusher = RobotMap.pneumaticSystemDoubleSolenoidPusher;
-
-
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-
-  public void offActuator(){
-    doubleSolenoidPusher.set(DoubleSolenoid.Value.kOff);
-  }
+public class hatchSystem extends Subsystem {
+  //servo that picks up the hathches
   
-
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-
-
 }

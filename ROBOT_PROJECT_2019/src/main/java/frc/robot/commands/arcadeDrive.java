@@ -1,18 +1,9 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
-/**
- *
- */
+
 public class arcadeDrive extends Command {
 
     public arcadeDrive() {
@@ -35,7 +26,6 @@ public class arcadeDrive extends Command {
     	// The code below checks the throttle on the joystick and then adjusts the speed and direction of the drivers joystick
     	if (Robot.oi.getlogitechJoy().getThrottle() < 0) {
             
-
     		Robot.speed = (driveSensitivity)*Robot.oi.getlogitechJoy().getThrottle();	    	
 
     		Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*(turnSensitivity/driveSensitivity), Robot.speed);}

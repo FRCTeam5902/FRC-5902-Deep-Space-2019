@@ -18,6 +18,7 @@ import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.pneumaticSystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Servo;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -43,6 +44,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     RobotMap.init();
     driveTrain = new driveTrain();
+    //servo that grabs the hatches
+    Servo hatchGrabber = new Servo(1);
     pneumaticSystem = new pneumaticSystem();
     oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
