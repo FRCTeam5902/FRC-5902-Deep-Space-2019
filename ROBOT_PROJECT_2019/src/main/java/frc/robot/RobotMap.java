@@ -10,6 +10,7 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.AnalogAccelerometer;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.GyroBase;
@@ -35,6 +36,8 @@ public class RobotMap {
     public static WPI_TalonSRX driveTrainrightDriveLead;
     public static WPI_TalonSRX driveTrainleftDriveFollow;
     public static WPI_TalonSRX driveTrainrightDriveFollow;
+    public static Compressor pneumaticSysteCompressor;
+    public static DoubleSolenoid pneumaticSystemDoubleSolenoidPusher;
     public static SpeedController elevatorUpDown;
     public static SpeedController wheelA;
     public static SpeedController wheelB;
@@ -61,6 +64,14 @@ public class RobotMap {
         driveTrainrobotDrive.setSafetyEnabled(true);
         driveTrainrobotDrive.setExpiration(0.1);
       driveTrainrobotDrive.setMaxOutput(1.0);
+
+
+
+
+      //Create pneumaticSystem
+      pneumaticSysteCompressor = new Compressor(0);
+
+      pneumaticSystemDoubleSolenoidPusher = new DoubleSolenoid(0, 0, 1);
     }
   }
 

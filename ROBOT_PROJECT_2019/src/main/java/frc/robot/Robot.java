@@ -15,6 +15,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.driveTrain;
+import frc.robot.subsystems.pneumaticSystem;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,10 +28,10 @@ import frc.robot.subsystems.driveTrain;
  */
 public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-
   public static OI oi;
   public static double speed;
   public static driveTrain driveTrain;
+  public static pneumaticSystem pneumaticSystem;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -40,6 +43,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     RobotMap.init();
     driveTrain = new driveTrain();
+    pneumaticSystem = new pneumaticSystem();
     oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
