@@ -15,9 +15,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.driveTrain;
+<<<<<<< HEAD
 import frc.robot.subsystems.pneumaticSystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
+=======
+import edu.wpi.first.wpilibj.CameraServer;
+>>>>>>> ff443c5a7686102bbffc49ebe63e6de17d83fa28
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -48,6 +52,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
