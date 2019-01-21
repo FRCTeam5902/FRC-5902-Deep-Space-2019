@@ -53,12 +53,12 @@ public class RobotMap {
         sensorBaseAAccelerometer.setZero(2.5);
         
         //Create Left Motors
-        driveTrainleftDriveLead = new WPI_TalonSRX(1);
-        driveTrainleftDriveFollow = new WPI_TalonSRX(2);
+        driveTrainleftDriveLead = new WPI_TalonSRX(3);
+        driveTrainleftDriveFollow = new WPI_TalonSRX(4);
         
         //Create Right Motors
-        driveTrainrightDriveLead = new WPI_TalonSRX(3);
-        driveTrainrightDriveFollow = new WPI_TalonSRX(4);
+        driveTrainrightDriveLead = new WPI_TalonSRX(1);
+        driveTrainrightDriveFollow = new WPI_TalonSRX(2);
         
         // Create Drive Train
         driveTrainrobotDrive = new DifferentialDrive(driveTrainleftDriveLead, driveTrainrightDriveLead);
