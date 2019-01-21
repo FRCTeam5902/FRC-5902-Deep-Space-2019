@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.solenoidDoNothing;
 import edu.wpi.first.wpilibj.Servo;
 import frc.robot.commands.hatchServoUp;
 import frc.robot.commands.hatchServoDown;

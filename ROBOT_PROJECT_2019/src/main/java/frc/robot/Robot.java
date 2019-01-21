@@ -16,7 +16,6 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.hatchSystem;
-import frc.robot.subsystems.pneumaticSystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Servo;
@@ -33,7 +32,6 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static double speed;
   public static driveTrain driveTrain;
-  public static pneumaticSystem pneumaticSystem;
   public static hatchSystem hatchSystem;
   public static Servo hatchGrabber;
 
@@ -49,7 +47,6 @@ public class Robot extends TimedRobot {
     driveTrain = new driveTrain();
     //servo that grabs the hatches
     hatchSystem = new hatchSystem();
-    pneumaticSystem = new pneumaticSystem();
     oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
