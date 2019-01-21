@@ -17,7 +17,6 @@ import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.SendableBase;
 import edu.wpi.first.wpilibj.Servo;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -37,8 +36,6 @@ public class RobotMap {
     public static WPI_TalonSRX driveTrainleftDriveFollow;
     public static WPI_TalonSRX driveTrainrightDriveFollow;
     public static Servo hatchGrabber;
-    public static Compressor pneumaticSysteCompressor;
-    public static DoubleSolenoid pneumaticSystemDoubleSolenoidPusher;
     public static SpeedController elevatorUpDown;
     public static SpeedController wheelA;
     public static SpeedController wheelB;
@@ -65,14 +62,6 @@ public class RobotMap {
         driveTrainrobotDrive.setSafetyEnabled(true);
         driveTrainrobotDrive.setExpiration(0.1);
       driveTrainrobotDrive.setMaxOutput(1.0);
-
-
-
-
-      //Create pneumaticSystem
-      pneumaticSysteCompressor = new Compressor(0);
-
-      pneumaticSystemDoubleSolenoidPusher = new DoubleSolenoid(0, 0, 1);
 
       //Create hatchSystem
       hatchGrabber = new Servo(0);

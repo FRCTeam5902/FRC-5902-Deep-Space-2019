@@ -12,8 +12,7 @@ public class arcadeDrive extends Command {
 
     // Called just before this Command runs the first time
     @Override
-    protected void initialize() {
-        
+    protected void initialize() {  
     	
     }
 
@@ -22,7 +21,7 @@ public class arcadeDrive extends Command {
     protected void execute() {
     	//System.out.println(Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0));
         double driveSensitivity = .5;
-        double turnSensitivity = .25;
+        double turnSensitivity = .5;
     	// The code below checks the throttle on the joystick and then adjusts the speed and direction of the drivers joystick
     	if (Robot.oi.getlogitechJoy().getThrottle() < 0) {
             
