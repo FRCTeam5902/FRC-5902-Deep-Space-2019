@@ -36,6 +36,7 @@ public class RobotMap {
     public static WPI_TalonSRX driveTrainrightDriveLead;
     public static WPI_TalonSRX driveTrainleftDriveFollow;
     public static WPI_TalonSRX driveTrainrightDriveFollow;
+    public static Servo hatchGrabber;
     public static Compressor pneumaticSysteCompressor;
     public static DoubleSolenoid pneumaticSystemDoubleSolenoidPusher;
     public static SpeedController elevatorUpDown;
@@ -72,6 +73,9 @@ public class RobotMap {
       pneumaticSysteCompressor = new Compressor(0);
 
       pneumaticSystemDoubleSolenoidPusher = new DoubleSolenoid(0, 0, 1);
+
+      //Create hatchSystem
+      hatchGrabber = new Servo(0);
     }
   }
 

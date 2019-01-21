@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.driveTrain;
+import frc.robot.subsystems.hatchSystem;
 import frc.robot.subsystems.pneumaticSystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -33,6 +34,8 @@ public class Robot extends TimedRobot {
   public static double speed;
   public static driveTrain driveTrain;
   public static pneumaticSystem pneumaticSystem;
+  public static hatchSystem hatchSystem;
+  public static Servo hatchGrabber;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -45,7 +48,7 @@ public class Robot extends TimedRobot {
     RobotMap.init();
     driveTrain = new driveTrain();
     //servo that grabs the hatches
-    Servo hatchGrabber = new Servo(1);
+    hatchSystem = new hatchSystem();
     pneumaticSystem = new pneumaticSystem();
     oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());

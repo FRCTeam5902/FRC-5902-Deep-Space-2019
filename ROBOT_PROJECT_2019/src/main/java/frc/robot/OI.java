@@ -10,7 +10,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.arcadeDrive;
-import edu.wpi.first.wpilibj.smartdashboard.*;
+import frc.robot.commands.hatchServoDown;
+import frc.robot.commands.hatchServoUp;
+import frc.robot.commands.hatchServoCenter;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -95,7 +97,13 @@ public class OI {
         //joystickButton9.whileHeld(new randomLights());
             
         joystickButton1L = new JoystickButton(logitechLeft, 1);
+        joystickButton3 = new JoystickButton(logitechLeft, 3);
+        joystickButton4 = new JoystickButton(logitechLeft, 4);
+        joystickButton6 = new JoystickButton(logitechLeft, 6);
         joystickButton1L.whileHeld(new arcadeDrive());
+        joystickButton3.whenPressed(new hatchServoUp());
+        joystickButton4.whenPressed(new hatchServoCenter());
+        joystickButton6.whenPressed(new hatchServoDown());
 
     	  joystickButton1R = new JoystickButton(logitechRight, 1);
         //joystickButton1R.whileHeld(new elevatorDriveVar());

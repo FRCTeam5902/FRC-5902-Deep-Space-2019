@@ -1,17 +1,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.*;
+import frc.robot.Robot;
+import edu.wpi.first.wpilibj.Servo;
+import frc.robot.subsystems.*;
+import frc.robot.subsystems.hatchSystem;
 
-/**
- * An example command.  You can replace me with your own command.
- */
-public class solenoidDoNothing extends Command{
-
-  public solenoidDoNothing() {
-    requires(Robot.pneumaticSystem);
- 
+public class hatchServoCenter extends Command {
+  public hatchServoCenter() {
+    requires(Robot.hatchSystem);
   }
 
   // Called just before this Command runs the first time
@@ -22,9 +20,8 @@ public class solenoidDoNothing extends Command{
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.pneumaticSystem.offActuator();
+    Robot.hatchSystem.turn(.5);
   }
-
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -41,6 +38,5 @@ public class solenoidDoNothing extends Command{
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }
