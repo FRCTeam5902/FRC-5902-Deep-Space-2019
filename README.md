@@ -15,8 +15,23 @@ Talon SRX Motor Controllers connected
 
 ## (Not setup yet) - cargoIntake - Method to Intake and Eject the cargo Balls
 - (Not setup yet) IntakeMotor - powers the intake system to intake the ball. 
+- Talon Victor Motor Controller on PWM Port 1
+
 ## (Not setup yet) - sensorBase
 - Any sensors the robot has on it
+
+## (Not setup yet) - hatchSystem
+Rev Smart Robotics Servo
+- Rev Smart Robotics Servo (PWM 0)
+
+## (Not setup yet) - climbSystem
+Talon SRX Motor Controllers connected 
+- leftForwardClimb (5)
+- leftBackClimb (7)
+
+Talon Victor Motor Controllers connected 
+- rightForwardClimb (6)
+- rightBackClimb (8)
 
 
 # Sandstorm Mode
