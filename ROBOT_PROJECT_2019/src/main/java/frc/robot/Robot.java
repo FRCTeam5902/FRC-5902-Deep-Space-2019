@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.cargoSystem;
 import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.hatchSystem;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -33,6 +34,7 @@ public class Robot extends TimedRobot {
   public static driveTrain driveTrain;
   public static hatchSystem hatchSystem;
   public static Servo hatchGrabber;
+  public static cargoSystem cargoSystem;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -46,6 +48,8 @@ public class Robot extends TimedRobot {
     driveTrain = new driveTrain();
     //servo that grabs the hatches
     hatchSystem = new hatchSystem();
+    // cargo intake
+    cargoSystem = new cargoSystem();
     oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
@@ -133,6 +137,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("Throttle", Robot.oi.getlogitechJoy().getThrottle());  
+    SmartDashboard.putNumber("Robot Speed", Robot.speed);
   }
 
   /**

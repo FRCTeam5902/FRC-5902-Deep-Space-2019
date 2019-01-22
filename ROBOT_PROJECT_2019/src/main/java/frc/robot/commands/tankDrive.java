@@ -3,10 +3,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
+import frc.robot.commands.tankDrive;
 
-public class arcadeDrive extends Command {
+public class tankDrive extends Command {
 
-    public arcadeDrive() {
+    public tankDrive() {
     	requires(Robot.driveTrain);
     }
 
@@ -27,13 +28,12 @@ public class arcadeDrive extends Command {
             
     		Robot.speed = (driveSensitivity)*Robot.oi.getlogitechJoy().getThrottle();	    	
 
-    		Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*(turnSensitivity/driveSensitivity), Robot.speed);}
+    		Robot.driveTrain.autoDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy2().getY());}
     	else {
 
     		Robot.speed = -(driveSensitivity)*Robot.oi.getlogitechJoy().getThrottle();	    	
-    	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), 0, Robot.speed);
 
-    	   // Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*-(turnSensitivity/driveSensitivity), Robot.speed);
+    	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*-(turnSensitivity/driveSensitivity), Robot.speed);
         }
     }
 

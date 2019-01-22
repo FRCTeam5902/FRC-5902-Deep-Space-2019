@@ -8,6 +8,7 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.AnalogAccelerometer;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Compressor;
@@ -36,10 +37,7 @@ public class RobotMap {
     public static WPI_TalonSRX driveTrainleftDriveFollow;
     public static WPI_TalonSRX driveTrainrightDriveFollow;
     public static Servo hatchGrabber;
-    public static SpeedController elevatorUpDown;
-    public static SpeedController wheelA;
-    public static SpeedController wheelB;
-    public static SpeedController pole;
+    public static WPI_VictorSPX cargoIntake;
     public static SpeedController lights;
     public static DifferentialDrive driveTrainrobotDrive;
     public static Servo cameraControlpanServo;
@@ -65,6 +63,9 @@ public class RobotMap {
 
       //Create hatchSystem
       hatchGrabber = new Servo(0);
+
+      //Create cargoIntake
+      cargoIntake = new WPI_VictorSPX(1);
     }
   }
 
