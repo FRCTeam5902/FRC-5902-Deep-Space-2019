@@ -17,16 +17,19 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.cargoSystem;
 import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.hatchSystem;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Servo;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.gradle file in the
- * project.
- */
+//Camera Imports
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
+
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.UsbCamera;
+
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.IterativeRobot;
+
 public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI oi;
@@ -38,10 +41,7 @@ public class Robot extends TimedRobot {
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
-  /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
-   */
+
   @Override
   public void robotInit() {
     RobotMap.init();
@@ -50,12 +50,34 @@ public class Robot extends TimedRobot {
     hatchSystem = new hatchSystem();
     // cargo intake
     cargoSystem = new cargoSystem();
+    //Operator Interface
     oi = new OI();
+    
+    // Autonomous Chooser Code
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
-    CameraServer.getInstance().startAutomaticCapture();
-  }
+    //SmartDashboard.putData("Auto mode", m_chooser);
+
+    //newcamera Code 2019
+    new Thread(() -> {
+      UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+      camera.setResolution(640, 480);
+      
+      CvSink cvSink = CameraServer.getInstance().getVideo();
+      CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 640, 480);
+      
+      Mat source = new Mat();
+      Mat output = new Mat();
+      
+      while(!Thread.interrupted()) {
+          cvSink.grabFrame(source);
+          Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
+          outputStream.putFrame(output);
+      }
+  }).start();
+
+  //END 2019 Camera Code
+}
 
   /**
    * This function is called every robot packet, no matter the mode. Use
@@ -81,19 +103,11 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("Logitech1 Y", Robot.oi.getlogitechJoy().getY());
+    SmartDashboard.putNumber("Logitech1 Z", Robot.oi.getlogitechJoy().getZ());
+    SmartDashboard.putNumber("Logitech1 X", Robot.oi.getlogitechJoy().getX());
   }
 
-  /**
-   * This autonomous (along with the chooser code above) shows how to select
-   * between different autonomous modes using the dashboard. The sendable
-   * chooser code works with the Java SmartDashboard. If you prefer the
-   * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-   * getString code to get the auto name from the text box below the Gyro
-   *
-   * <p>You can add additional auto modes by adding additional commands to the
-   * chooser code above (like the commented example) or additional comparisons
-   * to the switch structure below with additional strings & commands.
-   */
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
@@ -136,8 +150,19 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+
+    //Smartdashboard Driver Stuff
     SmartDashboard.putNumber("Throttle", Robot.oi.getlogitechJoy().getThrottle());  
     SmartDashboard.putNumber("Robot Speed", Robot.speed);
+
+
+    //Smartdashboard Debug Code
+    SmartDashboard.putNumber("Logitech1 Y", Robot.oi.getlogitechJoy().getY());
+    SmartDashboard.putNumber("leftDriveLead Volt", Robot.driveTrain.leftDriveLead.getMotorOutputVoltage());
+    SmartDashboard.putNumber("leftDriveFollow Volt", Robot.driveTrain.leftDriveFollow.getMotorOutputVoltage());
+    SmartDashboard.putNumber("rightDriveLead Volt", Robot.driveTrain.rightDriveLead.getMotorOutputVoltage());
+    SmartDashboard.putNumber("rightDriveFollow Volt", Robot.driveTrain.rightDriveFollow.getMotorOutputVoltage());  
+
   }
 
   /**

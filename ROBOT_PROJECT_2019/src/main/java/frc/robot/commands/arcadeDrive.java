@@ -22,19 +22,22 @@ public class arcadeDrive extends Command {
     	//System.out.println(Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0));
         double driveSensitivity = .5;
         double turnSensitivity = .5;
+        double gety = Robot.oi.getlogitechJoy().getY();
+        
     	// The code below checks the throttle on the joystick and then adjusts the speed and direction of the drivers joystick
     	if (Robot.oi.getlogitechJoy().getThrottle() < 0) {
             
-    		Robot.speed = (driveSensitivity)*Robot.oi.getlogitechJoy().getThrottle();	    	
-
-    		Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*(turnSensitivity/driveSensitivity), Robot.speed);}
+            Robot.speed = (driveSensitivity)*(Robot.oi.getlogitechJoy().getThrottle());
+            Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), 0*Robot.oi.getlogitechJoy().getZ()*(turnSensitivity/driveSensitivity), Robot.speed);
+        }
     	else {
 
     		Robot.speed = -(driveSensitivity)*Robot.oi.getlogitechJoy().getThrottle();	    	
-    	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), 0, Robot.speed);
+    	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), 0*Robot.oi.getlogitechJoy().getZ()*(turnSensitivity/driveSensitivity), Robot.speed);
 
     	   // Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*-(turnSensitivity/driveSensitivity), Robot.speed);
         }
+        SmartDashboard.putNumber("Robot.speed", Robot.speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
