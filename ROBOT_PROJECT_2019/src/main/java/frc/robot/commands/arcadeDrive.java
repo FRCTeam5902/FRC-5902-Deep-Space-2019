@@ -28,7 +28,17 @@ public class arcadeDrive extends Command {
   
         SmartDashboard.putNumber("Robot.speed", Robot.speed);
         Robot.speed = (driveSpeed);
-        Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+        //don't use getz if it is too smol
+        if (getz < .2 && getz > -.2)
+        {
+            Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, 0, Robot.speed);
+        }
+        else
+        {
+            Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+        }
+
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
