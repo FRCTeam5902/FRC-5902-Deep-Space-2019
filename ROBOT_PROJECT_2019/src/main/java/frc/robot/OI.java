@@ -83,9 +83,8 @@ public class OI {
         
         joystickButtonAC2 = new JoystickButton(AC, 2);
         joystickButtonAC2.whileHeld(new cargoIntakeIntake());
-        
         joystickButtonAC4 = new JoystickButton(AC, 4);
-        // joystickButton4.whileHeld(new IntakeWheel(.25));
+        joystickButtonAC4.whileHeld(new cargoIntakeEject());
         joystickButtonAC5 = new JoystickButton(AC, 5);
         // joystickButton5.whileHeld(new EjectWheel(.75));
         joystickButtonAC7 = new JoystickButton(AC, 6);
@@ -103,6 +102,8 @@ public class OI {
         joystickButtonL3.whenPressed(new hatchServoUp());
         joystickButtonL4.whenPressed(new hatchServoCenter());
         joystickButtonL6.whenPressed(new hatchServoDown());
+
+        
 
         SmartDashboard.putData("Drive Straight", new driveStraight());
         
