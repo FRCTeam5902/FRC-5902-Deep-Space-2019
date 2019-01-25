@@ -20,7 +20,7 @@ public class arcadeDrive extends Command {
     @Override
     protected void execute() {
         //System.out.println(Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0));
-        double driveSpeed = .5;
+        double driveSpeed = 1;
         double driveSensitivity = .5;
         double turnSensitivity = .5;
         double gety = Robot.oi.getlogitechJoy().getY();
@@ -31,11 +31,23 @@ public class arcadeDrive extends Command {
         //don't use getz if it is too smol
         if (getz < .2 && getz > -.2)
         {
-            Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, 0, Robot.speed);
+            if(gety<-.1)
+            {
+                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, 0, Robot.speed);
+            } else
+            {
+                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, 0, Robot.speed);
+            }
         }
         else
         {
-            Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+            if(gety<-.1)
+            {
+                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+            } else
+            {
+                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+            }
         }
 
         
