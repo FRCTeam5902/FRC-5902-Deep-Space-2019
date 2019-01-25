@@ -7,11 +7,11 @@ Deep Space 2019 Code for team 5902
 
 ## DriveTrain - Robot Driving
 Talon SRX Motor Controllers connected 
-- Left Motor Lead (1)
-- Left Motor Follow (2)
+- Left Motor Lead (3)
+- Left Motor Follow (4)
 
-- Right Motor Lead (3)
-- Right Motor Follow (4)
+- Right Motor Lead (1)
+- Right Motor Follow (2)
 
 ## (Not setup yet) - cargoIntake - Method to Intake and Eject the cargo Balls
 - (Not setup yet) IntakeMotor - powers the intake system to intake the ball. 
@@ -43,7 +43,7 @@ Code to be used during the sandstorm portion of the game
 
 # Teleop Mode
 
-During teleop mode our robot can run commands as well as having the driver drive around. On the drive station computer we have a SmartDashboard runnng shuffleboard that will display information from the robot to the drivers.
+During teleop mode the robot can run commands as well as having the driver drive around. On the drive station computer, there is a SmartDashboard runnng shuffleboard that will display information from the robot to the drivers.
 
 ## Driver Station SmartDashboard
 
@@ -60,7 +60,6 @@ On the smart dashboard we have the following
 | Button  | Button # | Command |
 | ------------- | ------------- | ------------- |
 | Joystick  | NA | Regular ArcadeDrive  |
-| Throttle | Throttle | Speed adjustment for tobot|
 | Button 3  | 3 | Hatch Servo - Down |
 | Button 4  | 4 | Hatch Servo - Middle |
 | Button 6  | 6 | Hatch Servo - Up  |
