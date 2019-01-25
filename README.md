@@ -7,11 +7,11 @@ Deep Space 2019 Code for team 5902
 
 ## DriveTrain - Robot Driving
 Talon SRX Motor Controllers connected 
-- Left Motor Lead (1)
-- Left Motor Follow (2)
+- Left Motor Lead (3)
+- Left Motor Follow (4)
 
-- Right Motor Lead (3)
-- Right Motor Follow (4)
+- Right Motor Lead (1)
+- Right Motor Follow (2)
 
 ## (Not setup yet) - cargoIntake - Method to Intake and Eject the cargo Balls
 - (Not setup yet) IntakeMotor - powers the intake system to intake the ball. 
