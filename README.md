@@ -43,7 +43,7 @@ Code to be used during the sandstorm portion of the game
 
 # Teleop Mode
 
-During teleop mode our robot can run commands as well as having the driver drive around. On the drive station computer we have a SmartDashboard runnng shuffleboard that will display information from the robot to the drivers.
+During teleop mode the robot can run commands as well as having the driver drive around. On the drive station computer, there is a SmartDashboard runnng shuffleboard that will display information from the robot to the drivers.
 
 ## Driver Station SmartDashboard
 
@@ -60,7 +60,6 @@ On the smart dashboard we have the following
 | Button  | Button # | Command |
 | ------------- | ------------- | ------------- |
 | Joystick  | NA | Regular ArcadeDrive  |
-| Throttle | Throttle | Speed adjustment for tobot|
 | Button 3  | 3 | Hatch Servo - Down |
 | Button 4  | 4 | Hatch Servo - Middle |
 | Button 6  | 6 | Hatch Servo - Up  |
