@@ -16,6 +16,9 @@ import frc.robot.subsystems.cargoSystem;
 import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.hatchSystem;
 import edu.wpi.first.wpilibj.Servo;
+import frc.robot.subsystems.gyroSystem;
+import frc.robot.RobotMap;
+
 
 //Camera Imports
 import org.opencv.core.Mat;
@@ -35,9 +38,12 @@ public class Robot extends TimedRobot {
   public static hatchSystem hatchSystem;
   public static Servo hatchGrabber;
   public static cargoSystem cargoSystem;
+  public static gyroSystem myGyro;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+
+  
 
   @Override
   public void robotInit() {
@@ -49,7 +55,8 @@ public class Robot extends TimedRobot {
     cargoSystem = new cargoSystem();
     //Operator Interface
     oi = new OI();
-    
+    //Gyro creation
+    myGyro = new gyroSystem();
     // Autonomous Chooser Code
     //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
@@ -128,6 +135,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+   
   }
 
   @Override
@@ -152,6 +160,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Throttle", Robot.oi.getlogitechJoy().getThrottle());  
     SmartDashboard.putNumber("Robot Speed", Robot.speed);
 
+    SmartDashboard.putNumber("Gyro Reading", myGyro.getAngle());
 
     //Smartdashboard Debug Code
     SmartDashboard.putNumber("Logitech1 Y", Robot.oi.getlogitechJoy().getY());

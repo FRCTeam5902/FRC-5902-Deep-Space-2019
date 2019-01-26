@@ -9,6 +9,8 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogAccelerometer;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.DigitalOutput;
@@ -21,6 +23,8 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -40,6 +44,7 @@ public class RobotMap {
     public static DifferentialDrive driveTrainrobotDrive;
     public static Servo cameraControlpanServo;
     public static DigitalOutput limSwitch;
+    public static ADXRS450_Gyro myGyro;
     public static void init() {
         sensorBaseAAccelerometer = new AnalogAccelerometer(0);
         sensorBaseAAccelerometer.setSensitivity(0.0);
@@ -64,6 +69,12 @@ public class RobotMap {
 
       //Create cargoIntake
       cargoIntake = new WPI_VictorSPX(1);
+
+      myGyro = new ADXRS450_Gyro();
+
+
+     
+      
+      
     }
   }
-

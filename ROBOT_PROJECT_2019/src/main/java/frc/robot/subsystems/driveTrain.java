@@ -14,7 +14,6 @@ public class driveTrain extends Subsystem {
     public final WPI_TalonSRX rightDriveLead = RobotMap.driveTrainrightDriveLead;
     public final WPI_TalonSRX leftDriveFollow = RobotMap.driveTrainleftDriveFollow;
     public final WPI_TalonSRX rightDriveFollow = RobotMap.driveTrainrightDriveFollow;
-    public ADXRS450_Gyro gyro;
 	private double angle;
 
     public final DifferentialDrive robotDrive = RobotMap.driveTrainrobotDrive;
