@@ -75,6 +75,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Logitech1 Y", Robot.oi.getlogitechJoy().getY());
     SmartDashboard.putNumber("Logitech1 Z", Robot.oi.getlogitechJoy().getZ());
     SmartDashboard.putNumber("Logitech1 X", Robot.oi.getlogitechJoy().getX());
+    SmartDashboard.putNumber("Gyro angle", driveTrain.gyro.getAngle());
+
   }
 
   @Override
