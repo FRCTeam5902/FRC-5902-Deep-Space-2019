@@ -15,30 +15,42 @@ public class arcadeDrive extends Command {
     protected void initialize() {  
     	
     }
-
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        //System.out.println(Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0));
-        double driveSpeed = .5;
+        double driveSpeed = 1;
+        //forward and backward sensitivity, y value of joystick
         double driveSensitivity = .5;
+        //turning sensitivity, z value of joystick
         double turnSensitivity = .5;
         double gety = Robot.oi.getlogitechJoy().getY();
         double getz = Robot.oi.getlogitechJoy().getZ();
   
         SmartDashboard.putNumber("Robot.speed", Robot.speed);
         Robot.speed = (driveSpeed);
-        //don't use getz if it is too smol
+        //added minimum getz and gety so that small adjustments don't power the motors
         if (getz < .2 && getz > -.2)
         {
-            Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, 0, Robot.speed);
+            if(gety<-.1)
+            {
+                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, 0, Robot.speed);
+            }
+            else
+            {
+                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, 0, Robot.speed);
+            }
         }
         else
         {
-            Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+            if(gety<-.1)
+            {
+                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+            }
+            else
+            {
+                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+            }
         }
-
-        
     }
 
     // Make this return true when this Command no longer needs to run execute()
