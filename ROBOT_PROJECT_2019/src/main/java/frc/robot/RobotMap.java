@@ -37,7 +37,7 @@ public class RobotMap {
     public static DifferentialDrive driveTrainrobotDrive;
     public static Servo cameraControlpanServo;
     public static DigitalOutput limSwitch;
-    public static ADXRS450_Gyro myGyro;
+    public static ADXRS450_Gyro gyroSystem;
     public static void init() {
         sensorBaseAAccelerometer = new AnalogAccelerometer(0);
         sensorBaseAAccelerometer.setSensitivity(0.0);
@@ -63,7 +63,7 @@ public class RobotMap {
       //Create cargoIntake
       cargoIntake = new WPI_VictorSPX(1);
 
-      myGyro = new ADXRS450_Gyro();
+      gyroSystem = new ADXRS450_Gyro();
 
 
      

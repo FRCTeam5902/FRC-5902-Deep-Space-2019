@@ -14,6 +14,7 @@ public class driveTrain extends Subsystem {
     public final WPI_TalonSRX rightDriveLead = RobotMap.driveTrainrightDriveLead;
     public final WPI_TalonSRX leftDriveFollow = RobotMap.driveTrainleftDriveFollow;
     public final WPI_TalonSRX rightDriveFollow = RobotMap.driveTrainrightDriveFollow;
+    public ADXRS450_Gyro gyro;
 	private double angle;
 
     public final DifferentialDrive robotDrive = RobotMap.driveTrainrobotDrive;
@@ -22,9 +23,9 @@ public class driveTrain extends Subsystem {
     	
     	leftDriveFollow.follow(leftDriveLead);
     	rightDriveFollow.follow(rightDriveLead);
-    	// gyro = new ADXRS450_Gyro(); 
-		//gyro.reset();
-		//gyro.calibrate();
+    	gyro = new ADXRS450_Gyro(); 
+		    gyro.reset();
+		    gyro.calibrate();
         // set this so it will be back to arcade drive 
         // setDefaultCommand(new arcadeDrive());
 
