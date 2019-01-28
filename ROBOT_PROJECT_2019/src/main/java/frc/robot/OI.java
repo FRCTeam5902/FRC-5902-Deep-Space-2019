@@ -72,9 +72,7 @@ public class OI {
         logitechLeft = new Joystick(0);
         AC = new Joystick(1);
         // logitechRight = new Joystick(2);
-
-        //
-
+        
         joystickButtonAC1 = new JoystickButton(AC, 1);
         // joystickButton1.whileHeld(new IntakeAdjust(.5));
         
