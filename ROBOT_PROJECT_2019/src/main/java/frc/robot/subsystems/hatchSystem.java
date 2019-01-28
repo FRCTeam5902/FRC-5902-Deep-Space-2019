@@ -8,15 +8,24 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Servo;
-import frc.robot.commands.hatchServoUp;
-import frc.robot.commands.hatchServoDown;
-import frc.robot.commands.hatchServoCenter;
+import frc.robot.commands.hatchArmServoUp;
+import frc.robot.commands.hatchArmServoDown;
+import frc.robot.commands.hatchArmServoCenter;
+import frc.robot.commands.hatchTriangleServoUp;
+import frc.robot.commands.hatchTriangleServoDown;
+import frc.robot.commands.hatchTriangleServoCenter;
 public class hatchSystem extends Subsystem {
-  public final Servo hatchGrabber = RobotMap.hatchGrabber;
+  public final Servo hatchArm = RobotMap.hatchArm;
+  public final Servo hatchTriangle = RobotMap.hatchTriangle;
   //servo that picks up the hathches
   
-  public void turn(double angle) {
-    hatchGrabber.set(angle);
+  public void turn(double angle, String servo) {
+    if (servo == "arm") {
+      hatchArm.set(angle);
+    }
+    else if (servo == "triangle") {
+      hatchTriangle.set(angle);
+    }
   }
   @Override
   public void initDefaultCommand() {

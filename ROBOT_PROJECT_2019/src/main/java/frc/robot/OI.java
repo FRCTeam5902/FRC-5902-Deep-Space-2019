@@ -3,9 +3,12 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.arcadeDrive;
-import frc.robot.commands.hatchServoDown;
-import frc.robot.commands.hatchServoUp;
-import frc.robot.commands.hatchServoCenter;
+import frc.robot.commands.hatchArmServoDown;
+import frc.robot.commands.hatchArmServoUp;
+import frc.robot.commands.hatchArmServoCenter;
+import frc.robot.commands.hatchTriangleServoDown;
+import frc.robot.commands.hatchTriangleServoUp;
+import frc.robot.commands.hatchTriangleServoCenter;
 import frc.robot.commands.cargoIntakeIntake;
 import frc.robot.commands.cargoIntakeEject;
 import frc.robot.commands.cargoIntakeDoNothing;
@@ -46,6 +49,9 @@ public class OI {
     private JoystickButton joystickButtonL3;
     private JoystickButton joystickButtonL4;
     private JoystickButton joystickButtonL6;
+    private JoystickButton joystickButtonL7;
+    private JoystickButton joystickButtonL8;
+    private JoystickButton joystickButtonL9;
 
     public Joystick AC;
     public JoystickButton joystickButtonAC1;
@@ -72,12 +78,6 @@ public class OI {
         joystickButtonAC1 = new JoystickButton(AC, 1);
         // joystickButton1.whileHeld(new IntakeAdjust(.5));
         
-        // Cargo intake at .5 speed
-        
-        joystickButtonAC2 = new JoystickButton(AC, 2);
-        joystickButtonAC2.whileHeld(new cargoIntakeIntake());
-        joystickButtonAC4 = new JoystickButton(AC, 4);
-        joystickButtonAC4.whileHeld(new cargoIntakeEject());
         joystickButtonAC5 = new JoystickButton(AC, 5);
         // joystickButton5.whileHeld(new EjectWheel(.75));
         joystickButtonAC7 = new JoystickButton(AC, 6);
@@ -91,12 +91,24 @@ public class OI {
         joystickButtonL3 = new JoystickButton(logitechLeft, 3);
         joystickButtonL4 = new JoystickButton(logitechLeft, 4);
         joystickButtonL6 = new JoystickButton(logitechLeft, 6);
+        joystickButtonL7 = new JoystickButton(logitechLeft, 7);
+        joystickButtonL8 = new JoystickButton(logitechLeft, 8);
+        joystickButtonL9 = new JoystickButton(logitechLeft, 9);
         joystickButtonL1.whileHeld(new arcadeDrive());
-        joystickButtonL3.whenPressed(new hatchServoUp());
-        joystickButtonL4.whenPressed(new hatchServoCenter());
-        joystickButtonL6.whenPressed(new hatchServoDown());
 
-        
+        joystickButtonL3.whenPressed(new hatchArmServoUp());
+        joystickButtonL4.whenPressed(new hatchArmServoCenter());
+        joystickButtonL6.whenPressed(new hatchArmServoDown());
+
+        joystickButtonL7.whenPressed(new hatchTriangleServoUp());
+        joystickButtonL8.whenPressed(new hatchTriangleServoCenter());
+        joystickButtonL9.whenPressed(new hatchTriangleServoDown());
+
+        // Cargo intake at .5 speed
+        joystickButtonAC2 = new JoystickButton(AC, 2);
+        joystickButtonAC2.whileHeld(new cargoIntakeIntake());
+        joystickButtonAC4 = new JoystickButton(AC, 4);
+        joystickButtonAC4.whileHeld(new cargoIntakeEject());
 
         SmartDashboard.putData("Drive Straight", new driveStraight());
         

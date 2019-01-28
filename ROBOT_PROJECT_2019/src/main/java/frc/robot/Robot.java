@@ -24,11 +24,10 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 public class Robot extends TimedRobot {
   public static OI oi;
   public static double speed;
+  public static Servo hatchGrabber;
   public static driveTrain driveTrain;
   public static hatchSystem hatchSystem;
-  public static Servo hatchGrabber;
   public static cargoSystem cargoSystem;
-
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -137,7 +136,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("leftDriveFollow Amperage", Robot.driveTrain.leftDriveFollow.getOutputCurrent());
     SmartDashboard.putNumber("rightDriveLead Amperage", Robot.driveTrain.rightDriveLead.getOutputCurrent());
     SmartDashboard.putNumber("rightDriveFollow Amperage", Robot.driveTrain.rightDriveFollow.getOutputCurrent()); 
-
+    System.out.println(driveTrain.gyro.getAngle());
   }
 
   /**

@@ -31,43 +31,37 @@ public class RobotMap {
     public static WPI_TalonSRX driveTrainrightDriveLead;
     public static WPI_TalonSRX driveTrainleftDriveFollow;
     public static WPI_TalonSRX driveTrainrightDriveFollow;
-    public static Servo hatchGrabber;
+    public static Servo hatchArm;
+    public static Servo hatchTriangle;
     public static WPI_VictorSPX cargoIntake;
     public static SpeedController lights;
     public static DifferentialDrive driveTrainrobotDrive;
     public static Servo cameraControlpanServo;
     public static DigitalOutput limSwitch;
-    public static ADXRS450_Gyro gyroSystem;
     public static void init() {
-        sensorBaseAAccelerometer = new AnalogAccelerometer(0);
-        sensorBaseAAccelerometer.setSensitivity(0.0);
-        sensorBaseAAccelerometer.setZero(2.5);
+      //sensorBaseAAccelerometer = new AnalogAccelerometer(0);
+      //sensorBaseAAccelerometer.setSensitivity(0.0);
+      // sensorBaseAAccelerometer.setZero(2.5);
         
-        //Create Left Motors
-        driveTrainleftDriveLead = new WPI_TalonSRX(3);
-        driveTrainleftDriveFollow = new WPI_TalonSRX(4);
+      //Create Left Motors
+      driveTrainleftDriveLead = new WPI_TalonSRX(3);
+      driveTrainleftDriveFollow = new WPI_TalonSRX(4);
         
-        //Create Right Motors
-        driveTrainrightDriveLead = new WPI_TalonSRX(1);
-        driveTrainrightDriveFollow = new WPI_TalonSRX(2);
+      //Create Right Motors
+      driveTrainrightDriveLead = new WPI_TalonSRX(1);
+      driveTrainrightDriveFollow = new WPI_TalonSRX(2);
         
-        // Create Drive Train
-        driveTrainrobotDrive = new DifferentialDrive(driveTrainleftDriveLead, driveTrainrightDriveLead);
-        driveTrainrobotDrive.setSafetyEnabled(true);
-        driveTrainrobotDrive.setExpiration(0.1);
+      // Create Drive Train
+      driveTrainrobotDrive = new DifferentialDrive(driveTrainleftDriveLead, driveTrainrightDriveLead);
+      driveTrainrobotDrive.setSafetyEnabled(true);
+      driveTrainrobotDrive.setExpiration(0.1);
       driveTrainrobotDrive.setMaxOutput(1.0);
 
       //Create hatchSystem
-      hatchGrabber = new Servo(0);
+      hatchArm = new Servo(0);
+      hatchTriangle = new Servo(1); 
 
       //Create cargoIntake
       cargoIntake = new WPI_VictorSPX(1);
-
-      gyroSystem = new ADXRS450_Gyro();
-
-
-     
-      
-      
     }
   }

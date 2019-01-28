@@ -3,9 +3,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
+import frc.robot.subsystems.hatchSystem;
 
-public class hatchServoCenter extends Command {
-  public hatchServoCenter() {
+public class hatchTriangleServoUp extends Command {
+  public hatchTriangleServoUp() {
     requires(Robot.hatchSystem);
   }
 
@@ -17,7 +18,7 @@ public class hatchServoCenter extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hatchSystem.turn(.5);
+    Robot.hatchSystem.turn(1,"triangle");
   }
 
   // Make this return true when this Command no longer needs to run execute()

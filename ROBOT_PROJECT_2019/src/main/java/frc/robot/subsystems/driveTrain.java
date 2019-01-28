@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.arcadeDrive;
 import frc.robot.commands.tankDrive;
@@ -21,12 +22,14 @@ public class driveTrain extends Subsystem {
     public final DifferentialDrive robotDrive = RobotMap.driveTrainrobotDrive;
     @Override
     public void initDefaultCommand() {
-    	
+    	SmartDashboard.putNumber("Calibrated", 0);
     	leftDriveFollow.follow(leftDriveLead);
     	rightDriveFollow.follow(rightDriveLead);
     	gyro = new ADXRS450_Gyro(); 
 		    gyro.reset();
-		    gyro.calibrate();
+            gyro.calibrate();
+            SmartDashboard.putNumber("Calibrated", 1);
+            SmartDashboard.putNumber("Gyro", gyro.getAngle());
         // set this so it will be back to arcade drive 
         // setDefaultCommand(new arcadeDrive());
 

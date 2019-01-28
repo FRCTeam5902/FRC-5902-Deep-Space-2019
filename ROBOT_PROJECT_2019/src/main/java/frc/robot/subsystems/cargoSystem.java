@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Subsystem;
 public class cargoSystem extends Subsystem {
+
   public final WPI_VictorSPX cargoIntake = RobotMap.cargoIntake;
- 
 
   @Override
   public void initDefaultCommand() {
