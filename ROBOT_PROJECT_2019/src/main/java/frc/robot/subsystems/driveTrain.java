@@ -29,7 +29,6 @@ public class driveTrain extends Subsystem {
 		    gyro.reset();
             gyro.calibrate();
             SmartDashboard.putNumber("Calibrated", 1);
-            SmartDashboard.putNumber("Gyro", gyro.getAngle());
         // set this so it will be back to arcade drive 
         // setDefaultCommand(new arcadeDrive());
 
@@ -65,8 +64,7 @@ public class driveTrain extends Subsystem {
     
     @Override
     public void periodic() {	
-        // Put code here to be run every loop
-
+        SmartDashboard.putNumber("Gyro", gyro.getAngle());
     }
 
     // Put methods for controlling this subsystem
