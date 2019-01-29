@@ -12,7 +12,6 @@ import frc.robot.commands.hatchArmServoUp;
 import frc.robot.commands.hatchArmServoDown;
 import frc.robot.commands.hatchArmServoCenter;
 import frc.robot.commands.hatchTriangleServoUp;
-import frc.robot.commands.hatchTriangleServoDown;
 import frc.robot.commands.hatchTriangleServoCenter;
 public class hatchSystem extends Subsystem {
   public final Servo hatchArm = RobotMap.hatchArm;
@@ -21,10 +20,10 @@ public class hatchSystem extends Subsystem {
   
   public void turn(double angle, String servo) {
     if (servo == "arm") {
-      hatchArm.set(angle);
+      hatchArm.setAngle(angle);
     }
     else if (servo == "triangle") {
-      hatchTriangle.set(angle);
+      hatchTriangle.setAngle(angle);
     }
   }
   @Override

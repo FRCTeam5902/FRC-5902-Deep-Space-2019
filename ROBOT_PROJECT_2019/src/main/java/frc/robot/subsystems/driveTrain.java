@@ -25,13 +25,10 @@ public class driveTrain extends Subsystem {
     	SmartDashboard.putNumber("Calibrated", 0);
     	leftDriveFollow.follow(leftDriveLead);
     	rightDriveFollow.follow(rightDriveLead);
-    	gyro = new ADXRS450_Gyro(); 
+    	gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0); 
 		    gyro.reset();
             gyro.calibrate();
-            SmartDashboard.putNumber("Calibrated", 1);
         // set this so it will be back to arcade drive 
-        // setDefaultCommand(new arcadeDrive());
-
         setDefaultCommand(new arcadeDrive());
 
         // setDefaultCommand(new MySpecialCommand());
@@ -64,7 +61,7 @@ public class driveTrain extends Subsystem {
     
     @Override
     public void periodic() {	
-        SmartDashboard.putNumber("Gyro", gyro.getAngle());
+        
     }
 
     // Put methods for controlling this subsystem

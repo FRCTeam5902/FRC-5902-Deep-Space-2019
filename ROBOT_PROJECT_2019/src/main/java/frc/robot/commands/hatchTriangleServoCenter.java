@@ -19,7 +19,7 @@ public class hatchTriangleServoCenter extends Command {
   protected void execute() {
     // if statement to check which servo is being used
     
-    Robot.hatchSystem.turn(.5,"triangle");
+    Robot.hatchSystem.turn(0,"triangle");
   }
 
   // Make this return true when this Command no longer needs to run execute()

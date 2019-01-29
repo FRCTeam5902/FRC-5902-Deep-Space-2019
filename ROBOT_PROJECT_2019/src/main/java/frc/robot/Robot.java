@@ -74,7 +74,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Logitech1 Y", Robot.oi.getlogitechJoy().getY());
     SmartDashboard.putNumber("Logitech1 Z", Robot.oi.getlogitechJoy().getZ());
     SmartDashboard.putNumber("Logitech1 X", Robot.oi.getlogitechJoy().getX());
-    SmartDashboard.putNumber("Gyro angle", driveTrain.gyro.getAngle());
+    SmartDashboard.putNumber("Gyro Angle", Robot.driveTrain.gyro.getAngle());
 
   }
 
@@ -88,9 +88,6 @@ public class Robot extends TimedRobot {
     }
   }
 
-  /**
-   * This function is called periodically during autonomous.
-   */
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
@@ -105,6 +102,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    Robot.hatchSystem.turn(0,"triangle");
   }
 
   /**
@@ -119,22 +117,18 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Robot Speed", Robot.speed);
 
     SmartDashboard.putNumber("Gyro angle", driveTrain.gyro.getAngle());
-
-    //Smartdashboard Debug Code
-    SmartDashboard.putNumber("leftDriveLead Volt", Robot.driveTrain.leftDriveLead.getMotorOutputVoltage());
-    SmartDashboard.putNumber("leftDriveFollow Volt", Robot.driveTrain.leftDriveFollow.getMotorOutputVoltage());
-    SmartDashboard.putNumber("rightDriveLead Volt", Robot.driveTrain.rightDriveLead.getMotorOutputVoltage());
-    SmartDashboard.putNumber("rightDriveFollow Volt", Robot.driveTrain.rightDriveFollow.getMotorOutputVoltage());  
-    SmartDashboard.putNumber("leftDriveLead Amperage", Robot.driveTrain.leftDriveLead.getOutputCurrent());
-    SmartDashboard.putNumber("leftDriveFollow Amperage", Robot.driveTrain.leftDriveFollow.getOutputCurrent());
-    SmartDashboard.putNumber("rightDriveLead Amperage", Robot.driveTrain.rightDriveLead.getOutputCurrent());
-    SmartDashboard.putNumber("rightDriveFollow Amperage", Robot.driveTrain.rightDriveFollow.getOutputCurrent()); 
     System.out.println(driveTrain.gyro.getAngle());
+    //Smartdashboard Debug Code
+    //SmartDashboard.putNumber("leftDriveLead Volt", Robot.driveTrain.leftDriveLead.getMotorOutputVoltage());
+    //SmartDashboard.putNumber("leftDriveFollow Volt", Robot.driveTrain.leftDriveFollow.getMotorOutputVoltage());
+    //SmartDashboard.putNumber("rightDriveLead Volt", Robot.driveTrain.rightDriveLead.getMotorOutputVoltage());
+    //SmartDashboard.putNumber("rightDriveFollow Volt", Robot.driveTrain.rightDriveFollow.getMotorOutputVoltage());  
+    //SmartDashboard.putNumber("leftDriveLead Amperage", Robot.driveTrain.leftDriveLead.getOutputCurrent());
+    //SmartDashboard.putNumber("leftDriveFollow Amperage", Robot.driveTrain.leftDriveFollow.getOutputCurrent());
+    //SmartDashboard.putNumber("rightDriveLead Amperage", Robot.driveTrain.rightDriveLead.getOutputCurrent());
+    //SmartDashboard.putNumber("rightDriveFollow Amperage", Robot.driveTrain.rightDriveFollow.getOutputCurrent()); 
   }
 
-  /**
-   * This function is called periodically during test mode.
-   */
   @Override
   public void testPeriodic() {
   }

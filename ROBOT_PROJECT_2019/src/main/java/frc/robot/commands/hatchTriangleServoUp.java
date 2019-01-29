@@ -18,7 +18,7 @@ public class hatchTriangleServoUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hatchSystem.turn(1,"triangle");
+    Robot.hatchSystem.turn(90,"triangle");
   }
 
   // Make this return true when this Command no longer needs to run execute()

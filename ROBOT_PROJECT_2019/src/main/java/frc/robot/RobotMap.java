@@ -3,9 +3,7 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogAccelerometer;
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Sendable;
@@ -14,9 +12,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 
 
 /**
@@ -58,10 +54,10 @@ public class RobotMap {
       driveTrainrobotDrive.setMaxOutput(1.0);
 
       //Create hatchSystem
-      hatchArm = new Servo(0);
-      hatchTriangle = new Servo(1); 
+      hatchArm = new Servo(1);
+      hatchTriangle = new Servo(2); 
 
       //Create cargoIntake
-      cargoIntake = new WPI_VictorSPX(1);
+      cargoIntake = new WPI_VictorSPX(0);
     }
   }
