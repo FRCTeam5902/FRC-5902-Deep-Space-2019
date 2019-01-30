@@ -1,34 +1,45 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Subsystem;
-public class pneumaticSystem extends Subsystem {
+import frc.robot.commands.solenoidDoNothing;
 
-  public final WPI_VictorSPX cargoIntake = RobotMap.cargoIntake;
+/**
+ * An example subsystem.  You can replace me with your own Subsystem.
+ */
+public class  pneumaticSystem extends Subsystem {
+  //Declartations
+  private final Compressor compressor = RobotMap.pneumaticSysteCompressor;
+  public final DoubleSolenoid doubleSolenoid = RobotMap.pneumaticSystemDoubleSolenoid;
+
+
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
+
+  public void forwardActuator() {
+    doubleSolenoid.set(DoubleSolenoid.Value.kForward);
+    }
+  public void reverseActuator() {
+    doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+  }
+  public void offActuator(){
+    doubleSolenoid.set(DoubleSolenoid.Value.kOff);
+  }
+
+
 
   @Override
   public void initDefaultCommand() {
+    // Set the default command for a subsystem here.
+    // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void Intake (double speed){
-    cargoIntake.set(speed);
-  }
 
-  public void Eject (double speed){
-    cargoIntake.set(-speed);
-  }
-
-  public void Stop(){
-    cargoIntake.set(0);
-  }
-  
-
-}
+} 

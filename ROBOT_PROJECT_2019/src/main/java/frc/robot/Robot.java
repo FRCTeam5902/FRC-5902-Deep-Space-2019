@@ -27,8 +27,8 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 //Pneumtic Imports
-import frc.robot.Subsystems.pneumatic;
-import edu.wpi.firstwpilibj.doublesolenoid;
+import frc.robot.subsystems.pneumaticSystem;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class Robot extends TimedRobot {
   public static OI oi;

@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.Compressor;
 
 
 /**
@@ -36,7 +37,11 @@ public class RobotMap {
     public static DifferentialDrive driveTrainrobotDrive;
     public static Servo cameraControlpanServo;
     public static DigitalOutput limSwitch;
+
     public static DoubleSolenoid solenoid;
+    public static Compressor pneumaticSysteCompressor;
+    public static DoubleSolenoid pneumaticSystemDoubleSolenoid;
+    
     public static void init() {
       sensorBaseAAccelerometer = new AnalogAccelerometer(0);
       sensorBaseAAccelerometer.setSensitivity(0.0);
@@ -62,5 +67,10 @@ public class RobotMap {
 
       //Create cargoIntake
       cargoIntake = new WPI_VictorSPX(0);
+
+      //Create pneumaticSystem
+      pneumaticSysteCompressor = new Compressor(0);
+
+      pneumaticSystemDoubleSolenoid = new DoubleSolenoid(0, 0, 1);
     }
   }
