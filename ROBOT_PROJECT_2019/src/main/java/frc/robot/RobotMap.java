@@ -35,9 +35,9 @@ public class RobotMap {
     public static Servo cameraControlpanServo;
     public static DigitalOutput limSwitch;
     public static void init() {
-      //sensorBaseAAccelerometer = new AnalogAccelerometer(0);
-      //sensorBaseAAccelerometer.setSensitivity(0.0);
-      // sensorBaseAAccelerometer.setZero(2.5);
+      sensorBaseAAccelerometer = new AnalogAccelerometer(0);
+      sensorBaseAAccelerometer.setSensitivity(0.0);
+      sensorBaseAAccelerometer.setZero(2.5);
         
       //Create Left Motors
       driveTrainleftDriveLead = new WPI_TalonSRX(3);

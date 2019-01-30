@@ -10,6 +10,10 @@ import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.hatchSystem;
 import edu.wpi.first.wpilibj.Servo;
 
+//gryo imports
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.SPI;
+
 //Camera Imports
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
@@ -28,11 +32,18 @@ public class Robot extends TimedRobot {
   public static driveTrain driveTrain;
   public static hatchSystem hatchSystem;
   public static cargoSystem cargoSystem;
+  public ADXRS450_Gyro gyro;
+
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   @Override
   public void robotInit() {
+
+    gyro = new ADXRS450_Gyro(); 
+    gyro.reset();
+    gyro.calibrate();
+
     RobotMap.init();
     driveTrain = new driveTrain();
     //servo that grabs the hatches
@@ -74,7 +85,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Logitech1 Y", Robot.oi.getlogitechJoy().getY());
     SmartDashboard.putNumber("Logitech1 Z", Robot.oi.getlogitechJoy().getZ());
     SmartDashboard.putNumber("Logitech1 X", Robot.oi.getlogitechJoy().getX());
-    SmartDashboard.putNumber("Gyro Angle", Robot.driveTrain.gyro.getAngle());
 
   }
 
@@ -116,8 +126,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Throttle", Robot.oi.getlogitechJoy().getThrottle());  
     SmartDashboard.putNumber("Robot Speed", Robot.speed);
 
-    SmartDashboard.putNumber("Gyro angle", driveTrain.gyro.getAngle());
-    System.out.println(driveTrain.gyro.getAngle());
     //Smartdashboard Debug Code
     //SmartDashboard.putNumber("leftDriveLead Volt", Robot.driveTrain.leftDriveLead.getMotorOutputVoltage());
     //SmartDashboard.putNumber("leftDriveFollow Volt", Robot.driveTrain.leftDriveFollow.getMotorOutputVoltage());
@@ -126,7 +134,10 @@ public class Robot extends TimedRobot {
     //SmartDashboard.putNumber("leftDriveLead Amperage", Robot.driveTrain.leftDriveLead.getOutputCurrent());
     //SmartDashboard.putNumber("leftDriveFollow Amperage", Robot.driveTrain.leftDriveFollow.getOutputCurrent());
     //SmartDashboard.putNumber("rightDriveLead Amperage", Robot.driveTrain.rightDriveLead.getOutputCurrent());
-    //SmartDashboard.putNumber("rightDriveFollow Amperage", Robot.driveTrain.rightDriveFollow.getOutputCurrent()); 
+    //SmartDashboard.putNumber("rightDriveFollow Amperage", Robot.driveTrain.rightDriveFollow.getOutputCurrent());
+      SmartDashboard.putBoolean("Gyro Connected", gyro.isConnected());
+      SmartDashboard.putNumber("Robot Gyro Value", gyro.getAngle());
+  
   }
 
   @Override
