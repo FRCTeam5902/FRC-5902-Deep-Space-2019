@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.cargoSystem;
 import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.hatchSystem;
+import frc.robot.subsystems.pneumaticSystem;
 import edu.wpi.first.wpilibj.Servo;
 
 //gryo imports
@@ -25,6 +26,10 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
+//Pneumtic Imports
+import frc.robot.Subsystems.pneumatic;
+import edu.wpi.firstwpilibj.doublesolenoid;
+
 public class Robot extends TimedRobot {
   public static OI oi;
   public static double speed;
@@ -32,6 +37,7 @@ public class Robot extends TimedRobot {
   public static driveTrain driveTrain;
   public static hatchSystem hatchSystem;
   public static cargoSystem cargoSystem;
+  public static pneumaticSystem pneumaticSystem;
   public ADXRS450_Gyro gyro;
 
   Command m_autonomousCommand;
@@ -39,6 +45,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+
+    pneumaticSystem = new pneumaticSystem();
 
     gyro = new ADXRS450_Gyro(); 
     gyro.reset();
