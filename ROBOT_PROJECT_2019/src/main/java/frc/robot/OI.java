@@ -6,8 +6,7 @@ import frc.robot.commands.arcadeDrive;
 import frc.robot.commands.hatchArmServoDown;
 import frc.robot.commands.hatchArmServoUp;
 import frc.robot.commands.hatchArmServoCenter;
-import frc.robot.commands.hatchTriangleServoUp;
-import frc.robot.commands.hatchTriangleServoCenter;
+import frc.robot.commands.hatchTriangleServoToggle;
 import frc.robot.commands.cargoIntakeIntake;
 import frc.robot.commands.cargoIntakeEject;
 import frc.robot.commands.cargoIntakeDoNothing;
@@ -54,6 +53,7 @@ public class OI {
         logitechLeft = new Joystick(0);
         logitechRight = new Joystick(2);
         AC = new Joystick(1);
+        String trianglePosition;
         //Arcade buttons
         joystickButtonAC1 = new JoystickButton(AC, 1);
         joystickButtonAC2 = new JoystickButton(AC, 2);
@@ -86,18 +86,14 @@ public class OI {
         //arcade drive
         joystickButtonL1.whileHeld(new arcadeDrive());
         //hatch
-        joystickButtonAC1.whenPressed(new hatchTriangleServoCenter());
-        joystickButtonAC3.whenPressed(new hatchTriangleServoUp());
-        //joystickButtonAC4.whenPressed(new hatchTriangleServoUp());
-        //joystickButtonAC5.whenPressed(new hatchTriangleServoCenter());
-        //joystickButtonAC6.whenPressed(new hatchTriangleServoDown());
+        joystickButtonAC1.whenPressed(new hatchTriangleServoToggle());
+        
         // Cargo intake at .5 speed
         joystickButtonAC7.whileHeld(new cargoIntakeIntake());
         joystickButtonAC8.whileHeld(new cargoIntakeEject());
 
         SmartDashboard.putData("Drive Straight", new driveStraight());
-        SmartDashboard.putData("Servo Up", new hatchTriangleServoUp());
-        SmartDashboard.putData("Servo Center", new hatchTriangleServoCenter());
+        SmartDashboard.putData("Servo Toggle", new hatchTriangleServoToggle());
     }
 
     public Joystick getlogitechJoy() {

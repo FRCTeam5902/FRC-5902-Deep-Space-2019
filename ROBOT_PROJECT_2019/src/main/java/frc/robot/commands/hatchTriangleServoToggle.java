@@ -4,8 +4,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 
-public class hatchTriangleServoCenter extends Command {
-  public hatchTriangleServoCenter() {
+public class hatchTriangleServoToggle extends Command {
+  public String trianglePosition = "Center";
+  public hatchTriangleServoToggle() {
     requires(Robot.hatchSystem);
   }
 
@@ -18,13 +19,21 @@ public class hatchTriangleServoCenter extends Command {
   @Override
   protected void execute() {
     // if statement to check which servo is being used
-    
-    Robot.hatchSystem.turn(0,"triangle");
+    if (trianglePosition == "Up"){
+      Robot.hatchSystem.turn(0,"triangle");
+    } else if (trianglePosition == "Center"){
+      Robot.hatchSystem.turn(90,"triangle");
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    if (trianglePosition == "Up"){
+      trianglePosition = "Center";
+    } else if (trianglePosition == "Center"){
+      trianglePosition = "Up";
+    }
     return false;
   }
 
