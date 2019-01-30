@@ -5,10 +5,12 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.AnalogAccelerometer;
 import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.SendableBase;
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -34,6 +36,7 @@ public class RobotMap {
     public static DifferentialDrive driveTrainrobotDrive;
     public static Servo cameraControlpanServo;
     public static DigitalOutput limSwitch;
+    public static DoubleSolenoid solenoid;
     public static void init() {
       sensorBaseAAccelerometer = new AnalogAccelerometer(0);
       sensorBaseAAccelerometer.setSensitivity(0.0);
