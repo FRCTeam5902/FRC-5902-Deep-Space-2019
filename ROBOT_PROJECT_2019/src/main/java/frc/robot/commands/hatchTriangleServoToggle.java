@@ -20,7 +20,7 @@ public class hatchTriangleServoToggle extends Command {
   protected void execute() {
     // if statement to check which servo is being used
     if (trianglePosition == "Up"){
-      Robot.hatchSystem.turn(0,"triangle");
+      Robot.hatchSystem.turn(35,"triangle");
     } else if (trianglePosition == "Center"){
       Robot.hatchSystem.turn(90,"triangle");
     }
@@ -31,8 +31,10 @@ public class hatchTriangleServoToggle extends Command {
   protected boolean isFinished() {
     if (trianglePosition == "Up"){
       trianglePosition = "Center";
+      SmartDashboard.putString("Triangle Postition","center");
     } else if (trianglePosition == "Center"){
       trianglePosition = "Up";
+      SmartDashboard.putString("Triangle Postition","up");
     }
     return false;
   }

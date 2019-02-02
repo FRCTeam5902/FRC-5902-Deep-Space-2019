@@ -3,7 +3,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
-import frc.robot.subsystems.hatchSystem;
 
 public class hatchArmServoDown extends Command {
   public hatchArmServoDown() {
@@ -18,8 +17,10 @@ public class hatchArmServoDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hatchSystem.turn(0,"arm");
+    // if statement to check which servo is being used
+    Robot.hatchSystem.turn(90, "arm");
   }
+
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {

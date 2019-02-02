@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.arcadeDrive;
 import frc.robot.commands.hatchArmServoDown;
 import frc.robot.commands.hatchArmServoUp;
-import frc.robot.commands.hatchArmServoCenter;
 import frc.robot.commands.hatchTriangleServoToggle;
 import frc.robot.commands.cargoIntakeIntake;
 import frc.robot.commands.cargoIntakeEject;
@@ -94,6 +93,8 @@ public class OI {
 
         SmartDashboard.putData("Drive Straight", new driveStraight());
         SmartDashboard.putData("Servo Toggle", new hatchTriangleServoToggle());
+        SmartDashboard.putData("Servo Up", new hatchArmServoUp());
+        SmartDashboard.putData("Servo DOwn", new hatchArmServoDown());
     }
 
     public Joystick getlogitechJoy() {

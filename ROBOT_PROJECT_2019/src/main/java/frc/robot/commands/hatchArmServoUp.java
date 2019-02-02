@@ -18,7 +18,7 @@ public class hatchArmServoUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hatchSystem.turn(1,"arm");
+    Robot.hatchSystem.turn(-15,"arm");
   }
 
   // Make this return true when this Command no longer needs to run execute()

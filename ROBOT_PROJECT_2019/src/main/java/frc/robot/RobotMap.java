@@ -69,8 +69,8 @@ public class RobotMap {
       cargoIntake = new WPI_VictorSPX(0);
 
       //Create pneumaticSystem
-      pneumaticSysteCompressor = new Compressor(0);
+      //pneumaticSysteCompressor = new Compressor(0);
 
-      pneumaticSystemDoubleSolenoid = new DoubleSolenoid(0, 0, 1);
+      //pneumaticSystemDoubleSolenoid = new DoubleSolenoid(0, 0, 1);
     }
   }
