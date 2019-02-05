@@ -39,7 +39,7 @@ public class hatchTriangleServoToggle extends Command {
       trianglePosition = "Up";
       SmartDashboard.putString("Triangle Postition","up");
     }
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true
