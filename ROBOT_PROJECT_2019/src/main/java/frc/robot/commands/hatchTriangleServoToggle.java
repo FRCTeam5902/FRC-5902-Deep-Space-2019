@@ -29,14 +29,17 @@ public class hatchTriangleServoToggle extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (trianglePosition == "Up"){
+    if (trianglePosition == "Up")
+    {
       trianglePosition = "Center";
       SmartDashboard.putString("Triangle Postition","center");
-    } else if (trianglePosition == "Center"){
+    }
+    else if (trianglePosition == "Center")
+    {
       trianglePosition = "Up";
       SmartDashboard.putString("Triangle Postition","up");
     }
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
