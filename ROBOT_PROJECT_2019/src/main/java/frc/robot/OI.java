@@ -5,13 +5,20 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.arcadeDrive;
 import frc.robot.commands.hatchArmServoDown;
 import frc.robot.commands.hatchArmServoUp;
+<<<<<<< HEAD
 import frc.robot.commands.hatchArmServoCenter;
 import frc.robot.commands.hatchTriangleServoUp;
 import frc.robot.commands.hatchTriangleServoCenter;
+=======
+import frc.robot.commands.hatchTriangleServoToggle;
+>>>>>>> 85973766d325d027d608c3d88356dcc84b8aa97d
 import frc.robot.commands.cargoIntakeIntake;
 import frc.robot.commands.cargoIntakeEject;
 import frc.robot.commands.cargoIntakeDoNothing;
 import frc.robot.commands.driveStraight;
+import frc.robot.commands.frontPistonToggle;
+import frc.robot.commands.backPistonToggle;
+import frc.robot.commands.allPistonsOff;;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI {
@@ -63,6 +70,7 @@ public class OI {
         joystickButtonAC6 = new JoystickButton(AC, 6);
         joystickButtonAC7 = new JoystickButton(AC, 7);
         joystickButtonAC8 = new JoystickButton(AC, 8);
+        joystickButtonAC9 = new JoystickButton(AC, 9);
         //left joystick buttons
         joystickButtonL1 = new JoystickButton(logitechLeft, 1);
         joystickButtonL2 = new JoystickButton(logitechLeft, 2);
@@ -86,18 +94,35 @@ public class OI {
         //arcade drive
         joystickButtonL1.whileHeld(new arcadeDrive());
         //hatch
+<<<<<<< HEAD
         joystickButtonAC1.whenPressed(new hatchTriangleServoCenter());
         joystickButtonAC3.whenPressed(new hatchTriangleServoUp());
         //joystickButtonAC4.whenPressed(new hatchTriangleServoUp());
         //joystickButtonAC5.whenPressed(new hatchTriangleServoCenter());
         //joystickButtonAC6.whenPressed(new hatchTriangleServoDown());
+=======
+        joystickButtonAC1.whenPressed(new hatchTriangleServoToggle());
+        //pneumaticSystem
+        joystickButtonAC4.whenPressed(new frontPistonToggle());
+        joystickButtonAC5.whenPressed(new backPistonToggle());
+        joystickButtonAC6.whenPressed(new allPistonsOff());
+
+
+
+>>>>>>> 85973766d325d027d608c3d88356dcc84b8aa97d
         // Cargo intake at .5 speed
         joystickButtonAC7.whileHeld(new cargoIntakeIntake());
         joystickButtonAC8.whileHeld(new cargoIntakeEject());
 
         SmartDashboard.putData("Drive Straight", new driveStraight());
+<<<<<<< HEAD
         SmartDashboard.putData("Servo Up", new hatchTriangleServoUp());
         SmartDashboard.putData("Servo Center", new hatchTriangleServoCenter());
+=======
+        SmartDashboard.putData("Servo Toggle", new hatchTriangleServoToggle());
+        SmartDashboard.putData("Servo Up", new hatchArmServoUp());
+        SmartDashboard.putData("Servo DOwn", new hatchArmServoDown());
+>>>>>>> 85973766d325d027d608c3d88356dcc84b8aa97d
     }
 
     public Joystick getlogitechJoy() {

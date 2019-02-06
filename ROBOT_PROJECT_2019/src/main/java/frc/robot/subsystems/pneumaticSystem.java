@@ -14,8 +14,22 @@ public class pneumaticSystem extends Subsystem {
 
   public final WPI_VictorSPX cargoIntake = RobotMap.cargoIntake;
 
+<<<<<<< HEAD
   @Override
   public void initDefaultCommand() {
+=======
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
+
+  //public void forwardActuator() {
+  //  doubleSolenoid.set(DoubleSolenoid.Value.kForward);
+  //  }
+  //public void reverseActuator() {
+  //  doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+  //}
+  public void offActuator(){
+    doubleSolenoid.set(DoubleSolenoid.Value.kOff);
+>>>>>>> 85973766d325d027d608c3d88356dcc84b8aa97d
   }
 
   public void Intake (double speed){

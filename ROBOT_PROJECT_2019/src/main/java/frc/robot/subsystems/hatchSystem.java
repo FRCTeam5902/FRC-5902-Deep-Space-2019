@@ -10,9 +10,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Servo;
 import frc.robot.commands.hatchArmServoUp;
 import frc.robot.commands.hatchArmServoDown;
+<<<<<<< HEAD
 import frc.robot.commands.hatchArmServoCenter;
 import frc.robot.commands.hatchTriangleServoUp;
 import frc.robot.commands.hatchTriangleServoCenter;
+=======
+import frc.robot.commands.hatchTriangleServoToggle;;
+>>>>>>> 85973766d325d027d608c3d88356dcc84b8aa97d
 public class hatchSystem extends Subsystem {
   public final Servo hatchArm = RobotMap.hatchArm;
   public final Servo hatchTriangle = RobotMap.hatchTriangle;
