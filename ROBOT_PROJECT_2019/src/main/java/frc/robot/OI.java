@@ -12,7 +12,7 @@ import frc.robot.commands.cargoIntakeDoNothing;
 import frc.robot.commands.driveStraight;
 import frc.robot.commands.frontPistonToggle;
 import frc.robot.commands.backPistonToggle;
-import frc.robot.commands.allPistonsOff;;
+import frc.robot.commands.allPistonsOff;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI {
