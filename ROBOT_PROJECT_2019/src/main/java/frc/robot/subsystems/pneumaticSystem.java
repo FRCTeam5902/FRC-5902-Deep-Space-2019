@@ -29,9 +29,9 @@ public class  pneumaticSystem extends Subsystem {
   //public void reverseActuator() {
   //  doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
   //}
-  //public void offActuator(){
-  //  doubleSolenoid.set(DoubleSolenoid.Value.kOff);
-  //}
+  public void offActuator(){
+    doubleSolenoid.set(DoubleSolenoid.Value.kOff);
+  }
 
 
 

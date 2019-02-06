@@ -10,6 +10,9 @@ import frc.robot.commands.cargoIntakeIntake;
 import frc.robot.commands.cargoIntakeEject;
 import frc.robot.commands.cargoIntakeDoNothing;
 import frc.robot.commands.driveStraight;
+import frc.robot.commands.frontPistonToggle;
+import frc.robot.commands.backPistonToggle;
+import frc.robot.commands.allPistonsOff;;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI {
@@ -62,6 +65,7 @@ public class OI {
         joystickButtonAC6 = new JoystickButton(AC, 6);
         joystickButtonAC7 = new JoystickButton(AC, 7);
         joystickButtonAC8 = new JoystickButton(AC, 8);
+        joystickButtonAC9 = new JoystickButton(AC, 9);
         //left joystick buttons
         joystickButtonL1 = new JoystickButton(logitechLeft, 1);
         joystickButtonL2 = new JoystickButton(logitechLeft, 2);
@@ -86,7 +90,13 @@ public class OI {
         joystickButtonL1.whileHeld(new arcadeDrive());
         //hatch
         joystickButtonAC1.whenPressed(new hatchTriangleServoToggle());
-        
+        //pneumaticSystem
+        joystickButtonAC4.whenPressed(new frontPistonToggle());
+        joystickButtonAC5.whenPressed(new backPistonToggle());
+        joystickButtonAC6.whenPressed(new allPistonsOff());
+
+
+
         // Cargo intake at .5 speed
         joystickButtonAC7.whileHeld(new cargoIntakeIntake());
         joystickButtonAC8.whileHeld(new cargoIntakeEject());
