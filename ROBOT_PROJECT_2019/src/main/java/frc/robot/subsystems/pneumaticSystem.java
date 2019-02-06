@@ -17,20 +17,32 @@ import frc.robot.commands.solenoidDoNothing;
 public class  pneumaticSystem extends Subsystem {
   //Declartations
   private final Compressor compressor = RobotMap.pneumaticSysteCompressor;
-  public final DoubleSolenoid doubleSolenoid = RobotMap.pneumaticSystemDoubleSolenoid;
+  public final DoubleSolenoid frontSolenoid = RobotMap.pneumaticSystemDoubleSolenoid;
+  public final DoubleSolenoid backSolenoid = RobotMap.pneumaticSystemDoubleSolenoid;
 
 
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  //public void forwardActuator() {
-  //  doubleSolenoid.set(DoubleSolenoid.Value.kForward);
-  //  }
-  //public void reverseActuator() {
-  //  doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
-  //}
-  public void offActuator(){
-    doubleSolenoid.set(DoubleSolenoid.Value.kOff);
+  public void reverseAllActuators() {
+    frontSolenoid.set(DoubleSolenoid.Value.kReverse);
+    backSolenoid.set(DoubleSolenoid.Value.kReverse);
+    }
+  public void forwardFrontActuator() {
+    frontSolenoid.set(DoubleSolenoid.Value.kForward);
+  }
+  public void forwardBackActuator() {
+    backSolenoid.set(DoubleSolenoid.Value.kForward);
+  }
+  public void offAllActuators(){
+    frontSolenoid.set(DoubleSolenoid.Value.kOff);
+    backSolenoid.set(DoubleSolenoid.Value.kOff);
+  }
+  public void offFrontActuator(){
+    frontSolenoid.set(DoubleSolenoid.Value.kOff);
+  }
+  public void offBackActuator(){
+    backSolenoid.set(DoubleSolenoid.Value.kOff);
   }
 
 
