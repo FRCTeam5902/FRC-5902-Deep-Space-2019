@@ -3,8 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.arcadeDrive;
-import frc.robot.commands.hatchArmServoDown;
-import frc.robot.commands.hatchArmServoUp;
+import frc.robot.commands.hatchArmServoToggle;
 import frc.robot.commands.hatchTriangleServoToggle;
 import frc.robot.commands.cargoIntakeIntake;
 import frc.robot.commands.cargoIntakeEject;
@@ -90,21 +89,18 @@ public class OI {
         joystickButtonL1.whileHeld(new arcadeDrive());
         //hatch
         joystickButtonAC1.whenPressed(new hatchTriangleServoToggle());
+        joystickButtonAC2.whenPressed(new hatchArmServoToggle());
         //pneumaticSystem
         joystickButtonAC4.whenPressed(new frontPistonToggle());
         joystickButtonAC5.whenPressed(new backPistonToggle());
         joystickButtonAC6.whenPressed(new allPistonsOff());
-
-
-
         // Cargo intake at .5 speed
         joystickButtonAC7.whileHeld(new cargoIntakeIntake());
         joystickButtonAC8.whileHeld(new cargoIntakeEject());
 
         SmartDashboard.putData("Drive Straight", new driveStraight());
-        SmartDashboard.putData("Servo Toggle", new hatchTriangleServoToggle());
-        SmartDashboard.putData("Servo Up", new hatchArmServoUp());
-        SmartDashboard.putData("Servo DOwn", new hatchArmServoDown());
+        SmartDashboard.putData("Servo Triangle Toggle", new hatchTriangleServoToggle());
+        SmartDashboard.putData("Servo Arm Toggle", new hatchArmServoToggle());
     }
 
     public Joystick getlogitechJoy() {

@@ -4,19 +4,21 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 
-public class hatchTriangleServoToggle extends Command {
-  public String trianglePosition = "Center";
-  //sets center and up servo angles
+public class hatchArmServoToggle extends Command {
+  public String armPosition = "Center";
+  //servo angles for up and center positions
   double center = 35;
   double up = 90;
-  public hatchTriangleServoToggle() {
+  public hatchArmServoToggle() {
     requires(Robot.hatchSystem);
   }
 
+
   // Called just before this Command runs the first time
+  //initialize servo in the center position
   @Override
   protected void initialize() {
-    if (trianglePosition == "Up"){
+    if (armPosition == "Up"){
       Robot.hatchSystem.turn(center,"triangle");
     }
   }
@@ -25,9 +27,9 @@ public class hatchTriangleServoToggle extends Command {
   @Override
   protected void execute() {
     // if statement to check which servo is being used
-    if (trianglePosition == "Up"){
+    if (armPosition == "Up"){
       Robot.hatchSystem.turn(center,"triangle");
-    } else if (trianglePosition == "Center"){
+    } else if (armPosition == "Center"){
       Robot.hatchSystem.turn(up,"triangle");
     }
   }
@@ -35,15 +37,15 @@ public class hatchTriangleServoToggle extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (trianglePosition == "Up")
+    if (armPosition == "Up")
     {
-      trianglePosition = "Center";
-      SmartDashboard.putString("Triangle Postition","center");
+      armPosition = "Center";
+      SmartDashboard.putString("Arm Postition","center");
     }
-    else if (trianglePosition == "Center")
+    else if (armPosition == "Center")
     {
-      trianglePosition = "Up";
-      SmartDashboard.putString("Triangle Postition","up");
+      armPosition = "Up";
+      SmartDashboard.putString("Arm Postition","up");
     }
     return false;
   }
