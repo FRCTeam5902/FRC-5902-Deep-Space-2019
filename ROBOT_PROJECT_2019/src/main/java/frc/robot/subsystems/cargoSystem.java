@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class cargoSystem extends Subsystem {
 
   public final WPI_VictorSPX cargoIntake = RobotMap.cargoIntake;
-
+  Robot.speed = ;
   @Override
   public void initDefaultCommand() {
   }
@@ -29,6 +29,9 @@ public class cargoSystem extends Subsystem {
   public void Stop(){
     cargoIntake.set(0);
   }
-  
+  public void driverControlledCargo (double speed){
+  Robot.cargoSystem.arcadeDrive(Robot.oi.logitechRight.getY(), 0, Robot.speed);
+}
+
 
 }
