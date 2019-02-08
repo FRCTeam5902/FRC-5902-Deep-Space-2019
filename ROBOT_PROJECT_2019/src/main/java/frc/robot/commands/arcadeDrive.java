@@ -6,8 +6,10 @@ import frc.robot.Robot;
 
 public class arcadeDrive extends Command {
 
-    public arcadeDrive() {
-    	requires(Robot.driveTrain);
+    private static String system;
+
+    public arcadeDrive(String system) {
+        requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -28,28 +30,27 @@ public class arcadeDrive extends Command {
   
         SmartDashboard.putNumber("Robot.speed", Robot.speed);
         Robot.speed = (driveSpeed);
-        //added minimum getz and gety so that small adjustments don't power the motors
-        if (getz < .2 && getz > -.2)
-        {
-            if(gety<-.1)
-            {
-                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, 0, Robot.speed);
-            }
-            else
-            {
+        if (arcadeDrive.system == "Drive") {
+            //added minimum getz and gety so that small adjustments don't power the motors
+            if (getz < .2 && getz > -.2) {
+                if (gety<-.1) {
+                    Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, 0, Robot.speed);
+                }
+            else {
                 Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, 0, Robot.speed);
+                }
+            }
+        else {
+            if(gety<-.1) {
+                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+                }
+            else{
+                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+                }
             }
         }
-        else
-        {
-            if(gety<-.1)
-            {
-                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
-            }
-            else
-            {
-                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
-            }
+        else if (arcadeDrive.system == "Cargo") {
+            //Robot.cargoSystem.arcadeDrive(y,0,speed);
         }
     }
 

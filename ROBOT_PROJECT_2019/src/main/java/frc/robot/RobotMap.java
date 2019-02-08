@@ -32,7 +32,7 @@ public class RobotMap {
     public static WPI_TalonSRX driveTrainrightDriveFollow;
     public static Servo hatchArm;
     public static Servo hatchTriangle;
-    public static WPI_VictorSPX cargoIntake;
+    public static WPI_TalonSRX cargoIntake;
     public static SpeedController lights;
     public static DifferentialDrive driveTrainrobotDrive;
     public static Servo cameraControlpanServo;
@@ -66,7 +66,7 @@ public class RobotMap {
       hatchTriangle = new Servo(2); 
 
       //Create cargoIntake
-      cargoIntake = new WPI_VictorSPX(0);
+      cargoIntake = new WPI_TalonSRX(5);
 
       //Create pneumaticSystem
       //pneumaticSysteCompressor = new Compressor(0);

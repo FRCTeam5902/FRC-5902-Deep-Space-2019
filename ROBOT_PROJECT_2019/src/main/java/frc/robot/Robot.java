@@ -46,7 +46,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
-    pneumaticSystem = new pneumaticSystem();
+    //pneumaticSystem = new pneumaticSystem();
 
     gyro = new ADXRS450_Gyro(); 
     gyro.reset();
