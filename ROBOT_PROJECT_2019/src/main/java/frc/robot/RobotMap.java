@@ -68,7 +68,7 @@ public class RobotMap {
 
       //Create cargoIntake
       cargoIntakeLead = new WPI_TalonSRX(5);
-      cargoIntakeFollow = new WPI_TalonSRX(6);
+      //cargoIntakeFollow = new WPI_TalonSRX(6);
 
       //Create pneumaticSystem
       //pneumaticSysteCompressor = new Compressor(0);
