@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -24,9 +23,8 @@ public class driveTrain extends Subsystem {
     	
     	leftDriveFollow.follow(leftDriveLead);
     	rightDriveFollow.follow(rightDriveLead);
-        
             // set this so it will be back to arcade drive 
-        setDefaultCommand(new arcadeDrive());
+        setDefaultCommand(new arcadeDrive("Drive"));
 
         // setDefaultCommand(new MySpecialCommand());
 

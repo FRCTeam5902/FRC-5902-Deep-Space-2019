@@ -22,7 +22,7 @@ public class frontPistonToggle extends Command{
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(frontPistonOut=false){
+    if(frontPistonOut==false){
       Robot.pneumaticSystem.forwardFrontActuator();
     }
     else{

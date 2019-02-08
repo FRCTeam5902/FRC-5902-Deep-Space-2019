@@ -86,14 +86,16 @@ public class OI {
         joystickButtonR8 = new JoystickButton(logitechRight, 8);
         joystickButtonR9 = new JoystickButton(logitechRight, 9);
         //arcade drive
-        joystickButtonL1.whileHeld(new arcadeDrive());
+        joystickButtonL1.whileHeld(new arcadeDrive("Drive"));
+        //cargo system
+        joystickButtonR1.whileHeld(new arcadeDrive("Cargo"));
         //hatch
         joystickButtonAC1.whenPressed(new hatchTriangleServoToggle());
         joystickButtonAC2.whenPressed(new hatchArmServoToggle());
         //pneumaticSystem
-        joystickButtonAC4.whenPressed(new frontPistonToggle());
-        joystickButtonAC5.whenPressed(new backPistonToggle());
-        joystickButtonAC6.whenPressed(new allPistonsOff());
+        //joystickButtonAC4.whenPressed(new frontPistonToggle());
+        //joystickButtonAC5.whenPressed(new backPistonToggle());
+        //joystickButtonAC6.whenPressed(new allPistonsOff());
         // Cargo intake at .5 speed
         joystickButtonAC7.whileHeld(new cargoIntakeIntake());
         joystickButtonAC8.whileHeld(new cargoIntakeEject());
