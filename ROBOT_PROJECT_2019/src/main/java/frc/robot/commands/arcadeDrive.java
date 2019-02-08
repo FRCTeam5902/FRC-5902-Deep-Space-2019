@@ -25,32 +25,35 @@ public class arcadeDrive extends Command {
         double driveSensitivity = .5;
         //turning sensitivity, z value of joystick
         double turnSensitivity = .5;
-        double gety = Robot.oi.getlogitechJoy().getY();
-        double getz = Robot.oi.getlogitechJoy().getZ();
+        double cargoSensitivity = .5;
+        double getly = Robot.oi.getlogitechJoy().getY();
+        double getlz = Robot.oi.getlogitechJoy().getZ();
+        double getry = Robot.oi.getlogitechJoy2().getY();
+        double getrz = Robot.oi.getlogitechJoy2().getZ();
   
-        SmartDashboard.putNumber("Robot.speed", Robot.speed);
+        SmartDashboard.putNumber("Robot.speed", driveSpeed);
         Robot.speed = (driveSpeed);
         if (arcadeDrive.system == "Drive") {
             //added minimum getz and gety so that small adjustments don't power the motors
-            if (getz < .2 && getz > -.2) {
-                if (gety<-.1) {
-                    Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, 0, Robot.speed);
+            if (getlz < .2 && getlz > -.2) {
+                if (getly<-.1) {
+                    Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*getly, 0, Robot.speed);
                 }
             else {
-                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, 0, Robot.speed);
+                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*getly, 0, Robot.speed);
                 }
             }
         else {
-            if(gety<-.1) {
-                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+            if(getly<-.1) {
+                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*getly, getlz*(turnSensitivity/driveSensitivity), Robot.speed);
                 }
-            else{
-                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+            else {
+                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*getly, getlz*(turnSensitivity/driveSensitivity), Robot.speed);
                 }
             }
         }
         else if (arcadeDrive.system == "Cargo") {
-            //Robot.cargoSystem.arcadeDrive(y,0,speed);
+            Robot.cargoSystem.arcadeDrive((cargoSensitivity)*getry, 0, Robot.speed);
         }
     }
 
