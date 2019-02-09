@@ -4,9 +4,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 
-public class arcadeDrive extends Command {
+public class arcadeDriveRampUp extends Command {
 
-    public arcadeDrive() {
+    public arcadeDriveRampUp() {
     	requires(Robot.driveTrain);
     }
 
@@ -30,6 +30,14 @@ public class arcadeDrive extends Command {
         double turnSensitivity = .5;
         double gety = Robot.oi.getlogitechJoy().getY();
         double getz = Robot.oi.getlogitechJoy().getZ();
+        for (double IY = 100; IY > 0; IY--) {
+            RSpeedY = (gety / IY);
+            System.out.println(RSpeedY);
+        }
+        for (double IZ = 100; IZ > 0; IZ--) {
+            RSpeedZ = (getz / IZ);
+            System.out.println(RSpeedZ);
+        }
 
         Robot.speed = (driveSpeed);
         SmartDashboard.putNumber("Robot.speed", Robot.speed);
@@ -38,22 +46,22 @@ public class arcadeDrive extends Command {
         {
             if(gety<-.1)
             {
-                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, 0, Robot.speed);
+                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*RSpeedY, 0, Robot.speed);
             }
             else
             {
-                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, 0, Robot.speed);
+                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*RSpeedY, 0, Robot.speed);
             }
         }
         else
         {
             if (gety < -.1)
             {
-                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*RSpeedY, RSpeedZ*(turnSensitivity/driveSensitivity), Robot.speed);
             }
             else
             {
-                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*RSpeedY, RSpeedZ*(turnSensitivity/driveSensitivity), Robot.speed);
             }
         }
     }

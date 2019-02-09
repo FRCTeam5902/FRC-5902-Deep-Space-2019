@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.frontPistonToggle;
 import frc.robot.subsystems.cargoSystem;
 import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.hatchSystem;
@@ -34,7 +35,7 @@ import frc.robot.subsystems.pneumaticSystem;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
-//Pathfinder Imports
+/* //Pathfinder Imports
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.Spark;
@@ -43,7 +44,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.PathfinderFRC;
 import jaci.pathfinder.Trajectory;
-import jaci.pathfinder.followers.EncoderFollower;
+import jaci.pathfinder.followers.EncoderFollower; */
 
 public class Robot extends TimedRobot {
   public static OI oi;
@@ -54,7 +55,7 @@ public class Robot extends TimedRobot {
   public static cargoSystem cargoSystem;
   public static pneumaticSystem pneumaticSystem;
   public ADXRS450_Gyro gyro;
-  //Pathfinder Stuff
+/*   //Pathfinder Stuff
   private static final int k_ticks_per_rev = 1024;
   private static final double k_wheel_diameter = 6.0 / 12.0;
   private static final double k_max_velocity = 10;
@@ -73,7 +74,7 @@ public class Robot extends TimedRobot {
   private EncoderFollower m_left_follower;
   private EncoderFollower m_right_follower;
   private Notifier m_follower_notifier;
-
+ */
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -98,13 +99,13 @@ public class Robot extends TimedRobot {
     Robot.hatchSystem.turn(15,"arm"); // 15 is UP position
     //Operator Interface
     oi = new OI();
-    //PathFinder Objects
+   /*  //PathFinder Objects
     m_left_motor = new TalonSRX(k_left_channel);
     m_right_motor = new TalonSRX(k_right_channel);
     m_left_encoder = new Encoder(k_left_encoder_port_a, k_left_encoder_port_b);
     m_right_encoder = new Encoder(k_right_encoder_port_a, k_right_encoder_port_b);
     m_gyro = new ADXRS450_Gyro();
-
+ */
     // Autonomous Chooser Code
     //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
@@ -152,7 +153,7 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.start();
     }
     
-//Pathfinder Trajectory and PID
+/* //Pathfinder Trajectory and PID
 Trajectory left_trajectory = PathfinderFRC.getTrajectory(k_path_name + ".right");
 Trajectory right_trajectory = PathfinderFRC.getTrajectory(k_path_name + ".left");
 m_left_follower = new EncoderFollower(left_trajectory);
@@ -178,7 +179,7 @@ m_follower_notifier.startPeriodic(left_trajectory.get(0).dt);
       double turn =  0.8 * (-1.0/80.0) * heading_difference;
       m_left_motor.set(ControlMode.PercentOutput, left_speed + turn);
       m_right_motor.set(ControlMode.PercentOutput, right_speed - turn);
-      }
+      } */
     }
 
   @Override
@@ -197,10 +198,10 @@ m_follower_notifier.startPeriodic(left_trajectory.get(0).dt);
     }
     Robot.hatchSystem.turn(0,"triangle");
     Robot.hatchSystem.turn(90,"arm"); // 90 is DOWN position
-    //Stop Pathfinder
+    /* //Stop Pathfinder
     m_follower_notifier.stop();
     m_left_motor.set(ControlMode.PercentOutput, 0);
-    m_right_motor.set(ControlMode.PercentOutput, 0);
+    m_right_motor.set(ControlMode.PercentOutput, 0); */
   }
 
   /**
@@ -225,7 +226,10 @@ m_follower_notifier.startPeriodic(left_trajectory.get(0).dt);
     //SmartDashboard.putNumber("rightDriveFollow Amperage", Robot.driveTrain.rightDriveFollow.getOutputCurrent());
       SmartDashboard.putBoolean("Gyro Connected", gyro.isConnected());
       SmartDashboard.putNumber("Robot Gyro Value", gyro.getAngle());
-  
+
+      // SmartDashboard.putBoolean("Front Pistons Out", pneumaticSystem.frontSolenoid.get());
+      // SmartDashboard.putBoolean("Back Pistons Out", pneumaticSystem.backSolenoid.get());
+
   }
 
   @Override

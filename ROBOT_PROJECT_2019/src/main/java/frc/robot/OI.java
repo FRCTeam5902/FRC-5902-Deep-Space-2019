@@ -3,8 +3,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.arcadeDrive;
-import frc.robot.commands.cargoIntakeIntake;
-import frc.robot.commands.cargoIntakeEject;
+import frc.robot.commands.cargoIntake;
+import frc.robot.commands.cargoEject;
 import frc.robot.commands.cargoIntakeDoNothing;
 import frc.robot.commands.hatchArmServo;
 import frc.robot.commands.hatchTriangleServo;
@@ -87,25 +87,28 @@ public class OI {
         joystickButtonR7 = new JoystickButton(logitechRight, 7);
         joystickButtonR8 = new JoystickButton(logitechRight, 8);
         joystickButtonR9 = new JoystickButton(logitechRight, 9);
+        
         //arcade drive
-        joystickButtonL1.whileHeld(new arcadeDrive("Drive"));
+        //joystickButtonL1.whileHeld(new arcadeDrive("Drive"));
+        
         //cargo system
-        joystickButtonR1.whileHeld(new arcadeDrive("Cargo"));
+        //joystickButtonR1.whileHeld(new arcadeDrive("Cargo"));
        
         //joystickButtonAC5.whenPressed(new]\[] backPistonToggle());
         //joystickButtonAC6.whenPressed(new allPistonsOff());
     
     // Top Row of Buttons on Arcade Controller
 
-      
+    joystickButtonAC1.toggleWhenPressed(new frontPistonToggle());
+    joystickButtonAC2.toggleWhenPressed(new backPistonToggle());
+    joystickButtonAC3.whenPressed(new allPistonsOff());
+    
     // Middle Row of Buttons on Arcade Controller
-        //joystickButtonAC4.whenPressed(new frontPistonToggle());
-        joystickButtonAC5.whileHeld(new cargoIntakeIntake(.85));   
-        joystickButtonAC6.toggleWhenPressed(new hatchTriangleServo());
-
-    // Bottom Row of Buttons on Arcade Controller
-        joystickButtonAC7.whileHeld(new cargoIntakeIntake(.5));
-        joystickButtonAC8.whileHeld(new cargoIntakeEject(.5));
+    joystickButtonAC4.whileHeld(new cargoIntake(.5));   
+    joystickButtonAC5.whileHeld(new cargoIntake(.65));  
+    joystickButtonAC6.whileHeld(new cargoEject(.5)); 
+        
+    // Bottom Row of Buttons on Arcade Controller       
         joystickButtonAC9.toggleWhenPressed(new hatchArmServo());
 
         SmartDashboard.putData("Drive Straight", new driveStraight());

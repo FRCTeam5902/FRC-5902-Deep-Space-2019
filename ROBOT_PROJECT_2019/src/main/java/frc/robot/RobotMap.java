@@ -1,11 +1,9 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.AnalogAccelerometer;
 import edu.wpi.first.wpilibj.DigitalOutput;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.SendableBase;
@@ -36,12 +34,11 @@ public class RobotMap {
     public static Servo hatchTriangle;
     public static SpeedController lights;
     public static DifferentialDrive driveTrainrobotDrive;
-    public static Servo cameraControlpanServo;
-    public static DigitalOutput limSwitch;
-
-    public static DoubleSolenoid solenoid;
+    
     public static Compressor pneumaticSysteCompressor;
-    public static DoubleSolenoid pneumaticSystemDoubleSolenoid;
+    public static Solenoid pneumaticSystemFrontSolenoid;
+    public static Solenoid pneumaticSystemBackSolenoid;
+
     
     public static void init() {
       sensorBaseAAccelerometer = new AnalogAccelerometer(0);
@@ -71,8 +68,10 @@ public class RobotMap {
       cargoIntakeFollow = new WPI_TalonSRX(6);
 
       //Create pneumaticSystem
-      //pneumaticSysteCompressor = new Compressor(0);
-      //pneumaticSystemDoubleSolenoid = new DoubleSolenoid(0, 0, 1);
+      pneumaticSysteCompressor = new Compressor(0);
+      pneumaticSystemFrontSolenoid = new Solenoid(0);
+      pneumaticSystemBackSolenoid = new Solenoid(1);
+
       
     }
   }

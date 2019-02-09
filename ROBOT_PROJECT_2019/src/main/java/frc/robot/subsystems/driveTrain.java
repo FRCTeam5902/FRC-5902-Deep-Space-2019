@@ -24,7 +24,7 @@ public class driveTrain extends Subsystem {
     	leftDriveFollow.follow(leftDriveLead);
     	rightDriveFollow.follow(rightDriveLead);
             // set this so it will be back to arcade drive 
-        setDefaultCommand(new arcadeDrive("Drive"));
+        setDefaultCommand(new arcadeDrive());
 
         // setDefaultCommand(new MySpecialCommand());
 

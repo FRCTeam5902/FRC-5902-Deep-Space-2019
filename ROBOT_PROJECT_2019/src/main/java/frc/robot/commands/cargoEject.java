@@ -3,10 +3,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class cargoIntakeEject extends Command {
+public class cargoEject extends Command {
 
   public double speed;
-  public cargoIntakeEject(double speed) {
+  public cargoEject(double speed) {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.cargoSystem);
     this.speed = speed;

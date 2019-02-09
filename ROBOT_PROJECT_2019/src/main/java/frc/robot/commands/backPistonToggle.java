@@ -10,25 +10,21 @@ public class backPistonToggle extends Command{
   boolean backPistonOut = false;
   public backPistonToggle() {
     requires(Robot.pneumaticSystem);
-
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-   
+    Robot.pneumaticSystem.offBackPistons();
+    boolean backPistonOut = false;
+  
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(backPistonOut==false){
-      Robot.pneumaticSystem.forwardBackActuator();
-    }
-    else{
-      Robot.pneumaticSystem.offBackActuator();
-    }
-    backPistonOut = !backPistonOut;
+    Robot.pneumaticSystem.onBackPistons();
+    boolean backPistonOut = true;
   }
 
 

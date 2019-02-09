@@ -7,28 +7,20 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 //Toggles on and off a variable which either makes the front pistons go out or in
 // starts as not out (obviously)
 public class frontPistonToggle extends Command{
-  boolean frontPistonOut = false;
   public frontPistonToggle() {
     requires(Robot.pneumaticSystem);
-
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-   
+    Robot.pneumaticSystem.offFrontPistons();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(frontPistonOut==false){
-      Robot.pneumaticSystem.forwardFrontActuator();
-    }
-    else{
-      Robot.pneumaticSystem.offFrontActuator();
-    }
-    frontPistonOut = !frontPistonOut;
+    Robot.pneumaticSystem.onFrontPistons();
   }
 
 
