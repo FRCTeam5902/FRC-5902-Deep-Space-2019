@@ -4,9 +4,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class cargoIntakeEject extends Command {
-  public cargoIntakeEject() {
+
+  public double speed;
+  public cargoIntakeEject(double speed) {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.cargoSystem);
+    this.speed = speed;
   }
 
   // Called just before this Command runs the first time
@@ -17,7 +20,7 @@ public class cargoIntakeEject extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.cargoSystem.Eject(.95);
+    Robot.cargoSystem.Eject(this.speed);
   }
 
   // Make this return true when this Command no longer needs to run execute()

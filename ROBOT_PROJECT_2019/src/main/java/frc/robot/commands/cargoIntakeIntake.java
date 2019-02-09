@@ -4,8 +4,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class cargoIntakeIntake extends Command {
-  public cargoIntakeIntake() {
+
+  public double speed;
+
+  public cargoIntakeIntake(double speed) {
     // Use requires() here to declare subsystem dependencies
+    this.speed = speed;
     requires(Robot.cargoSystem);
   }
 
@@ -17,7 +21,7 @@ public class cargoIntakeIntake extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.cargoSystem.Intake(.95);
+    Robot.cargoSystem.Intake(-this.speed);
   }
 
   // Make this return true when this Command no longer needs to run execute()

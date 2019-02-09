@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class cargoSystem extends Subsystem {
 
   public final WPI_TalonSRX cargoIntakeLead = RobotMap.cargoIntakeLead;
-  //public final WPI_TalonSRX cargoIntakeFollow = RobotMap.cargoIntakeFollow;
+  public final WPI_TalonSRX cargoIntakeFollow = RobotMap.cargoIntakeFollow;
   @Override
   public void initDefaultCommand() {
     //cargoIntakeFollow.follow(cargoIntakeLead);

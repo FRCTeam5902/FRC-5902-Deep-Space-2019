@@ -3,11 +3,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.arcadeDrive;
-import frc.robot.commands.hatchArmServoToggle;
-import frc.robot.commands.hatchTriangleServoToggle;
 import frc.robot.commands.cargoIntakeIntake;
 import frc.robot.commands.cargoIntakeEject;
 import frc.robot.commands.cargoIntakeDoNothing;
+import frc.robot.commands.hatchArmServo;
+import frc.robot.commands.hatchTriangleServo;
 import frc.robot.commands.driveStraight;
 import frc.robot.commands.frontPistonToggle;
 import frc.robot.commands.backPistonToggle;
@@ -51,11 +51,13 @@ public class OI {
     // public String gameData = Robot.ds.getGameSpecificMessage().substring(0, 1);
 
     public OI() {
+        // Make those Joysticks!
         logitechLeft = new Joystick(0);
         logitechRight = new Joystick(2);
         AC = new Joystick(1);
         String trianglePosition;
-        //Arcade buttons
+        
+        //Arcade Controller buttons
         joystickButtonAC1 = new JoystickButton(AC, 1);
         joystickButtonAC2 = new JoystickButton(AC, 2);
         joystickButtonAC3 = new JoystickButton(AC, 3);
@@ -75,7 +77,7 @@ public class OI {
         joystickButtonL7 = new JoystickButton(logitechLeft, 7);
         joystickButtonL8 = new JoystickButton(logitechLeft, 8);
         joystickButtonL9 = new JoystickButton(logitechLeft, 9);
-        //right buttons
+        //right joystick buttons
         joystickButtonR1 = new JoystickButton(logitechRight, 1);
         joystickButtonR2 = new JoystickButton(logitechRight, 2);
         joystickButtonR3 = new JoystickButton(logitechRight, 3);
@@ -89,20 +91,24 @@ public class OI {
         joystickButtonL1.whileHeld(new arcadeDrive("Drive"));
         //cargo system
         joystickButtonR1.whileHeld(new arcadeDrive("Cargo"));
-        //hatch
-        joystickButtonAC1.whenPressed(new hatchTriangleServoToggle());
-        joystickButtonAC2.whenPressed(new hatchArmServoToggle());
-        //pneumaticSystem
-        //joystickButtonAC4.whenPressed(new frontPistonToggle());
-        //joystickButtonAC5.whenPressed(new backPistonToggle());
+       
+        //joystickButtonAC5.whenPressed(new]\[] backPistonToggle());
         //joystickButtonAC6.whenPressed(new allPistonsOff());
-        // Cargo intake at .5 speed
-        joystickButtonAC7.whileHeld(new cargoIntakeIntake());
-        joystickButtonAC8.whileHeld(new cargoIntakeEject());
+    
+    // Top Row of Buttons on Arcade Controller
+
+      
+    // Middle Row of Buttons on Arcade Controller
+        //joystickButtonAC4.whenPressed(new frontPistonToggle());
+        joystickButtonAC5.whileHeld(new cargoIntakeIntake(.85));   
+        joystickButtonAC6.toggleWhenPressed(new hatchTriangleServo());
+
+    // Bottom Row of Buttons on Arcade Controller
+        joystickButtonAC7.whileHeld(new cargoIntakeIntake(.5));
+        joystickButtonAC8.whileHeld(new cargoIntakeEject(.5));
+        joystickButtonAC9.toggleWhenPressed(new hatchArmServo());
 
         SmartDashboard.putData("Drive Straight", new driveStraight());
-        SmartDashboard.putData("Servo Triangle Toggle", new hatchTriangleServoToggle());
-        SmartDashboard.putData("Servo Arm Toggle", new hatchArmServoToggle());
     }
 
     public Joystick getlogitechJoy() {

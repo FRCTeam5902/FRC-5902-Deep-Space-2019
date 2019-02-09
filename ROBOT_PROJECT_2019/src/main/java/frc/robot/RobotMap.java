@@ -56,7 +56,7 @@ public class RobotMap {
       driveTrainrightDriveLead = new WPI_TalonSRX(1);
       driveTrainrightDriveFollow = new WPI_TalonSRX(2);
         
-      // Create Drive Train
+      // Create driveTrain
       driveTrainrobotDrive = new DifferentialDrive(driveTrainleftDriveLead, driveTrainrightDriveLead);
       driveTrainrobotDrive.setSafetyEnabled(true);
       driveTrainrobotDrive.setExpiration(0.1);
@@ -68,11 +68,11 @@ public class RobotMap {
 
       //Create cargoIntake
       cargoIntakeLead = new WPI_TalonSRX(5);
-      //cargoIntakeFollow = new WPI_TalonSRX(6);
+      cargoIntakeFollow = new WPI_TalonSRX(6);
 
       //Create pneumaticSystem
       //pneumaticSysteCompressor = new Compressor(0);
-
       //pneumaticSystemDoubleSolenoid = new DoubleSolenoid(0, 0, 1);
+      
     }
   }

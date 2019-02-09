@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 
 //Pneumtic Imports
 import frc.robot.subsystems.pneumaticSystem;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class Robot extends TimedRobot {
@@ -46,7 +47,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
-    //pneumaticSystem = new pneumaticSystem();
+    pneumaticSystem = new pneumaticSystem();
+    Compressor compressor = new Compressor(0);
+ 
 
     gyro = new ADXRS450_Gyro(); 
     gyro.reset();
@@ -54,10 +57,12 @@ public class Robot extends TimedRobot {
 
     RobotMap.init();
     driveTrain = new driveTrain();
-    //servo that grabs the hatches
+    //servos that moves hatch arm and hatch triangle 
     hatchSystem = new hatchSystem();
     // cargo intake
     cargoSystem = new cargoSystem();
+    System.out.println("Servo Arm Should go Up in Robot Init");
+    Robot.hatchSystem.turn(15,"arm"); // 15 is UP position
     //Operator Interface
     oi = new OI();
     // Autonomous Chooser Code
@@ -93,6 +98,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Logitech1 Y", Robot.oi.getlogitechJoy().getY());
     SmartDashboard.putNumber("Logitech1 Z", Robot.oi.getlogitechJoy().getZ());
     SmartDashboard.putNumber("Logitech1 X", Robot.oi.getlogitechJoy().getX());
+    SmartDashboard.putNumber("Triangle", Robot.hatchSystem.hatchTriangle.getAngle());
+    SmartDashboard.putNumber("Arm", Robot.hatchSystem.hatchArm.getAngle());
 
   }
 
@@ -121,6 +128,7 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
     Robot.hatchSystem.turn(0,"triangle");
+    Robot.hatchSystem.turn(90,"arm"); // 90 is DOWN position
   }
 
   /**
