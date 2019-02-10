@@ -13,27 +13,23 @@ Talon SRX Motor Controllers connected
 - Right Motor Lead (1)
 - Right Motor Follow (2)
 
-## (Not setup yet) - cargoIntake - Method to Intake and Eject the cargo Balls
-- (Not setup yet) IntakeMotor - powers the intake system to intake the ball. 
-- Talon Victor Motor Controller (PWM 0)
+## cargoSystem - Method to Intake and Eject the cargo Ball
+Talon SRX Motor Controllers connected 
+- Right Motor Lead (5)
+- Right Motor Follow (6)
 
 ## (Not setup yet) - sensorBase
 - Any sensors the robot has on it
 
-## (Not setup yet) - hatchSystem
+## hatchSystem
 Rev Smart Robotics Servos
 - Rev Smart Robotics Servo (PWM 1) - Arm
 - Rev Smart Robotics Servo (PWM 2) - Triangle
 
-## (Not setup yet) - climbSystem
-Talon SRX Motor Controllers connected 
-- leftForwardClimb (5)
-- leftBackClimb (7)
-
-Talon Victor Motor Controllers connected 
-- rightForwardClimb (6)
-- rightBackClimb (8)
-
+## pneumaticSystem
+Single solenoids connected 
+- frontPistons (0)
+- backPistons (1)
 
 # Sandstorm Mode
 
@@ -49,7 +45,7 @@ During teleop mode the robot can run commands as well as having the driver drive
 
 On the smart dashboard we have the following
 - USB Camera Feed
-- (not programmed yet) Axes of the Driver Joystick
+- axes of the Driver Joystick
 
 
 ## 2019 Driver Controls
