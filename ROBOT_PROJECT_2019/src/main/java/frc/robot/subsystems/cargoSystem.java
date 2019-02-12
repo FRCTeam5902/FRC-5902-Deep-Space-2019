@@ -3,6 +3,8 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.commands.cargoDrive;
 import frc.robot.RobotMap;
 
 public class cargoSystem extends Subsystem {
@@ -14,24 +16,21 @@ public class cargoSystem extends Subsystem {
   public void initDefaultCommand() {
     cargoIntakeFollow.setInverted(true);
     cargoIntakeFollow.follow(cargoIntakeLead);
+    setDefaultCommand(new cargoDrive());
   }
 
-  public void arcadeDrive(double move, double rotate, double speed) {
-    cargoIntakeLead.set(speed);
-
-}
-  public void Intake (double speed){
+  public void intake (double speed){
     cargoIntakeLead.set(speed);
   }
-
-  public void Eject (double speed){
-    cargoIntakeLead.set(-speed);
+  public void eject (double speed) {
+    cargoIntakeLead.set(speed);
   }
 
-  public void Stop(){
+  public void stop(){
     cargoIntakeLead.set(0);
     cargoIntakeFollow.set(0);
   }
+
   public void driverControlledCargo (double speed){
   //Robot.cargoSystem.arcadeDrive(Robot.oi.logitechRight.getY(), 0, Robot.speed);
 }

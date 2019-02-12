@@ -4,10 +4,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 
-public class arcadeDrive extends Command {
+public class cargoDrive extends Command {
 
-    public arcadeDrive() {
-        requires(Robot.driveTrain);
+    public cargoDrive() {
+        requires(Robot.cargoSystem);
     }
 
     // Called just before this Command runs the first time
@@ -15,7 +15,6 @@ public class arcadeDrive extends Command {
     protected void initialize() { 
     //Ramp up Speed
     }
-        public double RSpeedZ;
         public double RSpeedY;
     
     // Called repeatedly when this Command is scheduled to run
@@ -27,38 +26,21 @@ public class arcadeDrive extends Command {
         
         //turning sensitivity, z value of joystick
         double turnSensitivity = .5;
-        double gety = Robot.oi.getlogitechJoy().getY();
-        double getz = Robot.oi.getlogitechJoy().getZ();
-
+        double gety = Robot.oi.getlogitechJoy2().getY();
+        //double getz = Robot.oi.getlogitechJoy2().getZ();
         Robot.speed = (driveSpeed);
         SmartDashboard.putNumber("Robot.speed", Robot.speed);
-        // added minimum getz and gety so that small adjustments don't power the motors
-        if (getz < .2 && getz > -.2)
-        {
-            if(gety<-.1)
-            {
-                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, 0, Robot.speed);
-            }
-            else
-            {
-                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, 0, Robot.speed);
-            }
+        // added minimum gety so that small adjustments don't power the motors
+        if (gety < -.1) {
+          Robot.cargoSystem.eject(driveSensitivity*gety);
         }
-        else
-        {
-            if (gety < -.1)
-            {
-                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
-            }
-            else
-            {
-                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
-            }
+        else if (gety > .1) {
+          Robot.cargoSystem.intake(driveSensitivity*gety);
         }
-    }
-
-    
-    
+        else {
+          Robot.cargoSystem.stop();
+        }
+      }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
@@ -69,7 +51,7 @@ public class arcadeDrive extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-    	Robot.driveTrain.driveStraight(0);
+    	//Robot.cargoSystem.driveStraight(0);
     }
 
     // Called when another command which requires one or more of the same

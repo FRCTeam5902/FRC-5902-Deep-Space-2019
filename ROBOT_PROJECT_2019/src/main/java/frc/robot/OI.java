@@ -4,8 +4,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.arcadeDrive;
 import frc.robot.commands.cargoIntake;
-import frc.robot.commands.cargoEject;
-import frc.robot.commands.cargoIntakeDoNothing;
 import frc.robot.commands.hatchArmServo;
 import frc.robot.commands.hatchTriangleServo;
 import frc.robot.commands.driveStraight;
@@ -89,10 +87,10 @@ public class OI {
         joystickButtonR9 = new JoystickButton(logitechRight, 9);
         
         //arcade drive
-        //joystickButtonL1.whileHeld(new arcadeDrive("Drive"));
+        //joystickButtonL1.whileHeld(new arcadeDrive());
         
         //cargo system
-        //joystickButtonR1.whileHeld(new arcadeDrive("Cargo"));
+        joystickButtonR1.whileHeld(new cargoIntake(.5));
        
         //joystickButtonAC5.whenPressed(new]\[] backPistonToggle());
         //joystickButtonAC6.whenPressed(new allPistonsOff());
@@ -106,7 +104,7 @@ public class OI {
     // Middle Row of Buttons on Arcade Controller
     joystickButtonAC4.whileHeld(new cargoIntake(.5));   
     joystickButtonAC5.whileHeld(new cargoIntake(.75));  
-    joystickButtonAC6.whileHeld(new cargoEject(.6)); 
+    joystickButtonAC6.whileHeld(new cargoIntake(-.6)); 
         
     // Bottom Row of Buttons on Arcade Controller       
     joystickButtonAC7.whenPressed(new cargoIntake(0));
