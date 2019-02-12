@@ -32,9 +32,12 @@ public class RobotMap {
     public static WPI_TalonSRX cargoIntakeFollow;
     public static Servo hatchArm;
     public static Servo hatchTriangle;
-    public static SpeedController lights;
     public static DifferentialDrive driveTrainrobotDrive;
+
+    //Lights
+    public static SpeedController lights;
     
+    //Pneumatics
     public static Compressor pneumaticSystemCompressor;
     public static Solenoid pneumaticSystemFrontSolenoid;
     public static Solenoid pneumaticSystemBackSolenoid;
@@ -73,6 +76,9 @@ public class RobotMap {
       pneumaticSystemBackSolenoid = new Solenoid(2);
       pneumaticSystemFrontSolenoid.set(false);
       pneumaticSystemBackSolenoid.set(false);
+
+      // Create Lights
+      lights = new Spark(0);
 
     }
   }
