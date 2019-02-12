@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 
+//This code makes the cargo intake motors able to be controlled by one of the joysticks.
 public class cargoDrive extends Command {
 
     public cargoDrive() {
@@ -51,7 +52,7 @@ public class cargoDrive extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-    	//Robot.cargoSystem.driveStraight(0);
+    	Robot.cargoSystem.stop;
     }
 
     // Called when another command which requires one or more of the same

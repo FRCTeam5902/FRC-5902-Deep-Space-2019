@@ -4,10 +4,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
-//Toggles on and off a variable which either makes the front pistons go out or in
-// starts as not out (obviously)
+//This code toggles on and off the two back pistons with a toggleWhenPressed button in OI
+
 public class backPistonToggle extends Command{
-  boolean backPistonOut = false;
+  
   public backPistonToggle() {
     requires(Robot.pneumaticSystem);
   }
@@ -15,18 +15,16 @@ public class backPistonToggle extends Command{
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.pneumaticSystem.offBackPistons();
-    boolean backPistonOut = false;
-  
+      Robot.pneumaticSystem.offBackPistons();
+      System.out.println("Back Pistons Off");
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.pneumaticSystem.onBackPistons();
-    boolean backPistonOut = true;
+      Robot.pneumaticSystem.onBackPistons();
+      System.out.println("Back Pistons ON");
   }
-
 
   // Make this return true when this Command no longer needs to run execute()
   @Override

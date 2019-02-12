@@ -4,13 +4,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
-//Toggles on and off a variable which either makes the front pistons go out or in
-// starts as not out (obviously)
+//This code turns front and back pistons off 
+
 public class allPistonsOff extends Command{
 
   public allPistonsOff() {
     requires(Robot.pneumaticSystem);
-
   }
 
   // Called just before this Command runs the first time

@@ -30,11 +30,6 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
-// Pneumtic Imports
-// import frc.robot.subsystems.pneumaticSystem;
-// import edu.wpi.first.wpilibj.Compressor;
-// import edu.wpi.first.wpilibj.Solenoid;
-
 /* //Pathfinder Imports
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Notifier;
@@ -84,18 +79,17 @@ public class Robot extends TimedRobot {
     gyro = new ADXRS450_Gyro(); 
     gyro.reset();
     gyro.calibrate();
-//Camera Code
-    //CameraServer.getInstance().startAutomaticCapture();
     RobotMap.init();
     driveTrain = new driveTrain();
-    //servos that moves hatch arm and hatch triangle 
     hatchSystem = new hatchSystem();
-    // cargo intake
     cargoSystem = new cargoSystem();
+
     System.out.println("Servo Arm Should go Up in Robot Init");
     Robot.hatchSystem.turn(15,"arm"); // 15 is UP position
+
     //Operator Interface
     oi = new OI();
+
    /*  //PathFinder Objects
     m_left_motor = new TalonSRX(k_left_channel);
     m_right_motor = new TalonSRX(k_right_channel);
@@ -208,11 +202,8 @@ m_follower_notifier.startPeriodic(left_trajectory.get(0).dt);
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
 
-    //Smartdashboard Driver Stuff
-    SmartDashboard.putNumber("Throttle", Robot.oi.getlogitechJoy().getThrottle());  
-    SmartDashboard.putNumber("Robot Speed", Robot.speed);
 
-    //Smartdashboard Debug Code
+//Smartdashboard Debug Code
     //SmartDashboard.putNumber("leftDriveLead Volt", Robot.driveTrain.leftDriveLead.getMotorOutputVoltage());
     //SmartDashboard.putNumber("leftDriveFollow Volt", Robot.driveTrain.leftDriveFollow.getMotorOutputVoltage());
     //SmartDashboard.putNumber("rightDriveLead Volt", Robot.driveTrain.rightDriveLead.getMotorOutputVoltage());
@@ -221,12 +212,10 @@ m_follower_notifier.startPeriodic(left_trajectory.get(0).dt);
     //SmartDashboard.putNumber("leftDriveFollow Amperage", Robot.driveTrain.leftDriveFollow.getOutputCurrent());
     //SmartDashboard.putNumber("rightDriveLead Amperage", Robot.driveTrain.rightDriveLead.getOutputCurrent());
     //SmartDashboard.putNumber("rightDriveFollow Amperage", Robot.driveTrain.rightDriveFollow.getOutputCurrent());
-      SmartDashboard.putBoolean("Gyro Connected", gyro.isConnected());
-      SmartDashboard.putNumber("Robot Gyro Value", gyro.getAngle());
-
-      // SmartDashboard.putBoolean("Front Pistons Out", pneumaticSystem.frontSolenoid.get());
-      // SmartDashboard.putBoolean("Back Pistons Out", pneumaticSystem.backSolenoid.get());
-
+    SmartDashboard.putBoolean("Gyro Connected", gyro.isConnected());
+    SmartDashboard.putNumber("Robot Gyro Value", gyro.getAngle());
+    SmartDashboard.putBoolean("Front Pistons Out?", pneumaticSystem.frontSolenoid.get());
+    SmartDashboard.putBoolean("Back Pistons Out?", pneumaticSystem.backSolenoid.get());
   }
 
   @Override

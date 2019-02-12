@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 
+// UNTESTED NON WORKING CODE to have the robot ramp up speed while driving. We think we should be using the TALON SRX built in PID controllers to handle motor ramping.
 public class arcadeDriveRampUp extends Command {
 
     public arcadeDriveRampUp() {

@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 import frc.robot.commands.tankDrive;
 
+//Allows for auto driving of the robot. Assigns a speed value to both left and right side of the robots drive train.
 public class tankDrive extends Command {
 
     public tankDrive() {

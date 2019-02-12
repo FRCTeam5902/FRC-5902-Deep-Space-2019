@@ -8,6 +8,8 @@ import frc.robot.RobotMap;
 import frc.robot.commands.arcadeDrive;
 import frc.robot.commands.tankDrive;
 
+//This is the robot's drive train for the kit of parts drive base. Two lead controllers and two follow controllers. 
+// Using this with arcadeDrive allows us to drive the robot.
 public class driveTrain extends Subsystem {
 
     public final WPI_TalonSRX leftDriveLead = RobotMap.driveTrainleftDriveLead;

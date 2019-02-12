@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 
+// Code to make the robot driveable. This code has a drive sensitivity variable that adjusts how sensitive the driving of the robot it. 
+// In the drive code it checks for minimum values so to make the controller more responsive.  
 public class arcadeDrive extends Command {
 
     public arcadeDrive() {

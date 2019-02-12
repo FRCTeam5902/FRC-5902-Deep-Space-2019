@@ -6,7 +6,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.cargoDrive;
 import frc.robot.RobotMap;
-
+//Cargo sytem. This system consists of two large CIM motors on either side of a hex shaft controlled by TALON SRX motor controllers.
+//One TALON SRX is lead and the other is follow. The follow motor is inverted to make them work together to turn a hex shaft.
 public class cargoSystem extends Subsystem {
 
   public final WPI_TalonSRX cargoIntakeLead = RobotMap.cargoIntakeLead;
@@ -30,10 +31,4 @@ public class cargoSystem extends Subsystem {
     cargoIntakeLead.set(0);
     cargoIntakeFollow.set(0);
   }
-
-  public void driverControlledCargo (double speed){
-  //Robot.cargoSystem.arcadeDrive(Robot.oi.logitechRight.getY(), 0, Robot.speed);
-}
-
-
 }
