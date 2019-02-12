@@ -17,7 +17,6 @@ public class cargoDrive extends Command {
     //Ramp up Speed
     }
         public double RSpeedY;
-    
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
@@ -25,10 +24,7 @@ public class cargoDrive extends Command {
         //forward and backward sensitivity, y value of joystick
         double driveSensitivity = .5;
         
-        //turning sensitivity, z value of joystick
-        double turnSensitivity = .5;
         double gety = Robot.oi.getlogitechJoy2().getY();
-        //double getz = Robot.oi.getlogitechJoy2().getZ();
         Robot.speed = (driveSpeed);
         SmartDashboard.putNumber("Robot.speed", Robot.speed);
         // added minimum gety so that small adjustments don't power the motors
