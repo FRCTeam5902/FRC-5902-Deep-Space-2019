@@ -30,10 +30,10 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
-//Pneumtic Imports
-import frc.robot.subsystems.pneumaticSystem;
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+// Pneumtic Imports
+// import frc.robot.subsystems.pneumaticSystem;
+// import edu.wpi.first.wpilibj.Compressor;
+// import edu.wpi.first.wpilibj.Solenoid;
 
 /* //Pathfinder Imports
 import edu.wpi.first.wpilibj.Encoder;
@@ -49,7 +49,6 @@ import jaci.pathfinder.followers.EncoderFollower; */
 public class Robot extends TimedRobot {
   public static OI oi;
   public static double speed;
-  public static Servo hatchGrabber;
   public static driveTrain driveTrain;
   public static hatchSystem hatchSystem;
   public static cargoSystem cargoSystem;
@@ -80,15 +79,13 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-
     pneumaticSystem = new pneumaticSystem();
-    Compressor compressor = new Compressor(0);
  
-
     gyro = new ADXRS450_Gyro(); 
     gyro.reset();
     gyro.calibrate();
-
+//Camera Code
+    //CameraServer.getInstance().startAutomaticCapture();
     RobotMap.init();
     driveTrain = new driveTrain();
     //servos that moves hatch arm and hatch triangle 

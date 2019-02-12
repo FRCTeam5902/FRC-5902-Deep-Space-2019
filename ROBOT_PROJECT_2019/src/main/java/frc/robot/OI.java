@@ -105,13 +105,17 @@ public class OI {
     
     // Middle Row of Buttons on Arcade Controller
     joystickButtonAC4.whileHeld(new cargoIntake(.5));   
-    joystickButtonAC5.whileHeld(new cargoIntake(.65));  
-    joystickButtonAC6.whileHeld(new cargoEject(.5)); 
+    joystickButtonAC5.whileHeld(new cargoIntake(.75));  
+    joystickButtonAC6.whileHeld(new cargoEject(.6)); 
         
     // Bottom Row of Buttons on Arcade Controller       
-        joystickButtonAC9.toggleWhenPressed(new hatchArmServo());
+    joystickButtonAC7.whenPressed(new cargoIntake(0));
+    joystickButtonAC9.toggleWhenPressed(new hatchArmServo());
 
-        SmartDashboard.putData("Drive Straight", new driveStraight());
+    SmartDashboard.putData("Drive Straight", new driveStraight());
+    SmartDashboard.putData("Front Piston Toggle", new frontPistonToggle());
+    SmartDashboard.putBoolean("Front piston status,", RobotMap.pneumaticSystemFrontSolenoid.get());
+
     }
 
     public Joystick getlogitechJoy() {
