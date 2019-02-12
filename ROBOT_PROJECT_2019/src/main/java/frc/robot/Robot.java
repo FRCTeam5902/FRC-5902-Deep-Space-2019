@@ -214,8 +214,8 @@ m_follower_notifier.startPeriodic(left_trajectory.get(0).dt);
     //SmartDashboard.putNumber("rightDriveFollow Amperage", Robot.driveTrain.rightDriveFollow.getOutputCurrent());
     SmartDashboard.putBoolean("Gyro Connected", gyro.isConnected());
     SmartDashboard.putNumber("Robot Gyro Value", gyro.getAngle());
-    SmartDashboard.putBoolean("Front Pistons Out?", pneumaticSystem.frontSolenoid.get());
-    SmartDashboard.putBoolean("Back Pistons Out?", pneumaticSystem.backSolenoid.get());
+    SmartDashboard.putBoolean("Front Pistons Out?", RobotMap.pneumaticSystemFrontSolenoid.get());
+    SmartDashboard.putBoolean("Back Pistons Out?", RobotMap.pneumaticSystemBackSolenoid.get());
   }
 
   @Override
