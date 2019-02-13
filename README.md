@@ -56,11 +56,14 @@ On the smart dashboard we have the following
 | Button  | Button # | Command |
 | ------------- | ------------- | ------------- |
 | Joystick  | NA | Regular ArcadeDrive  |
-| Button 3  | 3 | Hatch Servo - Down |
-| Button 4  | 4 | Hatch Servo - Middle |
-| Button 6  | 6 | Hatch Servo - Up  |
-
-
-
+| Button 1  | 1 | Hatch Servo - ? |
+| Button 2  | 2 | Hatch Servo - ? |
+| Button 3  | 3 | Hatch Servo - ? |
+| Button 4  | 4 | Hatch Servo - ? |
+| Button 5  | 5 | Hatch Servo - ? |
+| Button 6  | 6 | Hatch Servo - ? |
+| Button 7  | 7 | Hatch Servo - ? |
+| Button 8  | 8 | Hatch Servo - ? |
+| Button 9  | 9 | Hatch Servo - ? |
 
 |
