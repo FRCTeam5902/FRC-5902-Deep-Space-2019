@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 public class lightSystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final SpeedController color = RobotMap.lights;
+  public final SpeedController color = RobotMap.lights;
 
   public void party () {
     color.set(-.77);
@@ -91,27 +91,27 @@ public class lightSystem extends Subsystem {
     color.set(0);
   }
   
-  public String getLightcolor() {
-  String Color = "Null";
-  switch ((int)(color.get()*100)) {
-  case   0: Color = "Off"; break;
-  case  49: Color = "Error"; break;
-  case  -7: Color = "Strobe"; break;
-  case  95: Color = "Gray"; break;
-  case -33: Color = "Scanner Gray"; break;
-  case -41: Color = "Calming Ocean"; break;
-  case -85: Color = "Red Bullets"; break;
-  case -35: Color = "Scanner Red"; break;
-  case -21: Color = "Beat White"; break;
-  case -25: Color = "Beat Red"; break;
-  case -23: Color = "Beat Blue"; break;
-  case -77: Color = "Party Time"; break;
-  case  -5: Color = "How I really feel"; break;
-  case  93: Color = "Revenge"; break;
-  case -83: Color = "Blue Shots"; break;
-  case  85: Color = "Blue"; break;
-  case  61: Color = "Red"; break;}
-  return Color;
+  public String getLightColor() {
+    String Color = "Null";
+    switch ((int)(color.get()*100)) {
+    case   0: Color = "Off"; break;
+    case  49: Color = "Error"; break;
+    case  -7: Color = "Strobe"; break;
+    case  95: Color = "Gray"; break;
+    case -33: Color = "Scanner Gray"; break;
+    case -41: Color = "Calming Ocean"; break;
+    case -85: Color = "Red Bullets"; break;
+    case -35: Color = "Scanner Red"; break;
+    case -21: Color = "Beat White"; break;
+    case -25: Color = "Beat Red"; break;
+    case -23: Color = "Beat Blue"; break;
+    case -77: Color = "Party Time"; break;
+    case  -5: Color = "How I really feel"; break;
+    case  93: Color = "Revenge"; break;
+    case -83: Color = "Blue Shots"; break;
+    case  85: Color = "Blue"; break;
+    case  61: Color = "Red"; break;}
+    return Color;
   }
 
   @Override

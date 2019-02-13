@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -9,11 +10,14 @@ import frc.robot.commands.frontPistonToggle;
 import frc.robot.subsystems.cargoSystem;
 import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.hatchSystem;
+import frc.robot.subsystems.lightSystem;
 import frc.robot.subsystems.pneumaticSystem;
 import edu.wpi.first.wpilibj.Servo;
+import frc.robot.commands.*;
 
 //gryo imports
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SPI;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -48,7 +52,10 @@ public class Robot extends TimedRobot {
   public static hatchSystem hatchSystem;
   public static cargoSystem cargoSystem;
   public static pneumaticSystem pneumaticSystem;
+  public static lightSystem lightSystem;
   public ADXRS450_Gyro gyro;
+  public static Alliance al;
+  public static DriverStation ds;
 /*   //Pathfinder Stuff
   private static final int k_ticks_per_rev = 1024;
   private static final double k_wheel_diameter = 6.0 / 12.0;
@@ -71,21 +78,24 @@ public class Robot extends TimedRobot {
  */
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
-
+  public final Servo hatchArm = RobotMap.hatchArm;
+  public final Servo hatchTriangle = RobotMap.hatchTriangle;
   @Override
   public void robotInit() {
     pneumaticSystem = new pneumaticSystem();
- 
+    driveTrain = new driveTrain();
+    hatchSystem = new hatchSystem();
+    cargoSystem = new cargoSystem();
+    lightSystem = new lightSystem();
     gyro = new ADXRS450_Gyro(); 
     gyro.reset();
     gyro.calibrate();
     RobotMap.init();
-    driveTrain = new driveTrain();
-    hatchSystem = new hatchSystem();
-    cargoSystem = new cargoSystem();
-
+    System.out.println("lightz?");
+    lightSystem.color.set(.61);
     System.out.println("Servo Arm Should go Up in Robot Init");
-    Robot.hatchSystem.turn(15,"arm"); // 15 is UP position
+    Robot.hatchSystem.turn(15,"arm");
+    // 15 is UP position
 
     //Operator Interface
     oi = new OI();
@@ -102,15 +112,6 @@ public class Robot extends TimedRobot {
     // chooser.addOption("My Auto", new MyAutoCommand());
     //SmartDashboard.putData("Auto mode", m_chooser);
 }
-
-  /**
-   * This function is called every robot packet, no matter the mode. Use
-   * this for items like diagnostics that you want ran during disabled,
-   * autonomous, teleoperated and test.
-   *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
-   */
   @Override
   public void robotPeriodic() {
   }
@@ -122,16 +123,36 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+    al = ds.getAlliance();
+    System.out.println(al == Alliance.Red);
+    lightSystem.beatBlue();
+    if (al == Alliance.Red) {
+      System.out.println(1);
+    lightSystem.beatRed();
+  } 
+   if (al == Alliance.Blue) {
+    System.out.println(2);
+    lightSystem.beatBlue();
+    
+  } 
+   if (al == Alliance.Invalid){
+    System.out.println(3);
+    lightSystem.scannerGray();
+  }
   }
 
   @Override
   public void disabledPeriodic() {
+
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("Logitech1 Y", Robot.oi.getlogitechJoy().getY());
     SmartDashboard.putNumber("Logitech1 Z", Robot.oi.getlogitechJoy().getZ());
     SmartDashboard.putNumber("Logitech1 X", Robot.oi.getlogitechJoy().getX());
-    SmartDashboard.putNumber("Triangle", Robot.hatchSystem.hatchTriangle.getAngle());
-    SmartDashboard.putNumber("Arm", Robot.hatchSystem.hatchArm.getAngle());
+    //SmartDashboard.putNumber("Triangle", RobotMap.hatchTriangle.getAngle());
+    //SmartDashboard.putNumber("Arm", RobotMap.hatchArm.getAngle());
+    SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.leftDriveLead.getSelectedSensorPosition());
+    SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.rightDriveLead.getSelectedSensorPosition());
+    SmartDashboard.putString("Light Color", Robot.lightSystem.getLightColor());
 
   }
 

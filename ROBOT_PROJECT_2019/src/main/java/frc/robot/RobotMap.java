@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.AnalogAccelerometer;
 import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.SendableBase;
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -47,7 +49,7 @@ public class RobotMap {
       sensorBaseAAccelerometer = new AnalogAccelerometer(0);
       sensorBaseAAccelerometer.setSensitivity(0.0);
       sensorBaseAAccelerometer.setZero(2.5);
-        
+
       //Create Left Motors
       driveTrainleftDriveLead = new WPI_TalonSRX(3);
       driveTrainleftDriveFollow = new WPI_TalonSRX(4);
@@ -79,6 +81,5 @@ public class RobotMap {
 
       // Create Lights
       lights = new Spark(0);
-
     }
   }
