@@ -14,14 +14,12 @@ public class frontPistonToggle extends Command{
   @Override
   protected void initialize() {
     Robot.pneumaticSystem.offFrontPistons();
-    System.out.println("Front Pistons Off");
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     Robot.pneumaticSystem.onFrontPistons();
-    System.out.println("Front Pistons ON");
   }
 
   // Make this return true when this Command no longer needs to run execute()

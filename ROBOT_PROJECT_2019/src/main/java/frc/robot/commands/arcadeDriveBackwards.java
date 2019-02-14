@@ -4,18 +4,18 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 
-// UNTESTED NON WORKING CODE to have the robot ramp up speed while driving. We think we should be using the TALON SRX built in PID controllers to handle motor ramping.
-public class arcadeDriveRampUp extends Command {
+// Code to make the robot driveable. This code has a drive sensitivity variable that adjusts how sensitive the driving of the robot it. 
+// In the drive code it checks for minimum values so to make the controller more responsive.  
+public class arcadeDriveBackwards extends Command {
 
-    public arcadeDriveRampUp() {
-    	requires(Robot.driveTrain);
+    public arcadeDriveBackwards() {
+        requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() { 
     //Ramp up Speed
-
     }
         public double RSpeedZ;
         public double RSpeedY;
@@ -28,41 +28,32 @@ public class arcadeDriveRampUp extends Command {
         double driveSensitivity = .5;
         
         //turning sensitivity, z value of joystick
-        double turnSensitivity = .5;
+        double turnSensitivity = 1;
         double gety = Robot.oi.getLogitechJoy().getY();
         double getz = Robot.oi.getLogitechJoy().getZ();
-        for (double IY = 100; IY > 0; IY--) {
-            RSpeedY = (gety / IY);
-            System.out.println(RSpeedY);
-        }
-        for (double IZ = 100; IZ > 0; IZ--) {
-            RSpeedZ = (getz / IZ);
-            System.out.println(RSpeedZ);
-        }
 
         Robot.speed = (driveSpeed);
-        SmartDashboard.putNumber("Robot.speed", Robot.speed);
         // added minimum getz and gety so that small adjustments don't power the motors
         if (getz < .2 && getz > -.2)
         {
             if(gety<-.1)
             {
-                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*RSpeedY, 0, Robot.speed);
+                Robot.driveTrain.arcadeDrive(1.5*(driveSensitivity)*gety, 0, Robot.speed);
             }
             else
             {
-                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*RSpeedY, 0, Robot.speed);
+                Robot.driveTrain.arcadeDrive((driveSensitivity)*gety, 0, Robot.speed);
             }
         }
         else
         {
             if (gety < -.1)
             {
-                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*RSpeedY, RSpeedZ*(turnSensitivity/driveSensitivity), Robot.speed);
+                Robot.driveTrain.arcadeDrive(1.5*(driveSensitivity)*gety, getz*(turnSensitivity*driveSensitivity), Robot.speed);
             }
             else
             {
-                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*RSpeedY, RSpeedZ*(turnSensitivity/driveSensitivity), Robot.speed);
+                Robot.driveTrain.arcadeDrive((driveSensitivity)*gety, getz*(turnSensitivity*driveSensitivity), Robot.speed);
             }
         }
     }

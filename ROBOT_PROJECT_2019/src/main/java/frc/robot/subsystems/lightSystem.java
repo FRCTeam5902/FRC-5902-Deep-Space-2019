@@ -85,6 +85,16 @@ public class lightSystem extends Subsystem {
     RobotMap.lights.set(.49);
     
   }
+
+  public void rainbowGlitter() {
+    RobotMap.lights.set(-.89);
+    
+  }
+
+  public void confetti() {
+    RobotMap.lights.set(-.87);
+    
+  }
   
   public void off () {
     RobotMap.lights.set(0);

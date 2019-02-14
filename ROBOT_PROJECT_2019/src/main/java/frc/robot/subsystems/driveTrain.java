@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.arcadeDrive;
+import frc.robot.commands.arcadeDriveBackwards;
 import frc.robot.commands.tankDrive;
 
 //This is the robot's drive train for the kit of parts drive base. Two lead controllers and two follow controllers. 
@@ -26,14 +27,17 @@ public class driveTrain extends Subsystem {
         RobotMap.driveTrainleftDriveFollow.follow(RobotMap.driveTrainleftDriveLead);
     	RobotMap.driveTrainrightDriveFollow.follow(RobotMap.driveTrainrightDriveLead);
         setDefaultCommand(new arcadeDrive());
-
         // setDefaultCommand(new MySpecialCommand());
-
     }
 
     public void arcadeDrive(double move, double rotate, double speed) {
 
         RobotMap.driveTrainrobotDrive.arcadeDrive(move*speed, rotate*speed);
+
+    }
+    public void arcadeDriveBackwards(double move, double rotate, double speed) {
+
+        RobotMap.driveTrainrobotDrive.arcadeDrive(move * speed, rotate * speed);
 
     }
     

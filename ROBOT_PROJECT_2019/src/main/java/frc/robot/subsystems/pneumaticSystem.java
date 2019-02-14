@@ -25,11 +25,9 @@ public class pneumaticSystem extends Subsystem {
   
   public void onFrontPistons() {
     RobotMap.frontSolenoid.set(true);
-    System.out.println("onFrontPiston is ALIVE");
   }
   public void onBackPistons() {
     RobotMap.backSolenoid.set(true);
-    System.out.println("onBackPiston is ALIVE");
   }
 
   public void offAllPistons() {
@@ -38,11 +36,9 @@ public class pneumaticSystem extends Subsystem {
     }
   public void offFrontPistons(){
     RobotMap.frontSolenoid.set(false);
-    System.out.println("offFrontPison is DEAD");
   }
   public void offBackPistons(){
     RobotMap.backSolenoid.set(false);
-    System.out.println("offBackPison is DEAD");
   }
 
   @Override

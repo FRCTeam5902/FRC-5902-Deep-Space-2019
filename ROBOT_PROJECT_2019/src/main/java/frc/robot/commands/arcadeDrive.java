@@ -50,11 +50,11 @@ public class arcadeDrive extends Command {
         {
             if (gety < -.1)
             {
-                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+                Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, getz*(turnSensitivity*driveSensitivity), Robot.speed);
             }
             else
             {
-                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity/driveSensitivity), Robot.speed);
+                Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity*driveSensitivity), Robot.speed);
             }
         }
     }

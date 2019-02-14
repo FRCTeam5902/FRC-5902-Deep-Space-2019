@@ -26,16 +26,19 @@ public class cargoDrive extends Command {
         
         double gety = Robot.oi.getLogitechJoy2().getY();
         Robot.speed = (driveSpeed);
-        SmartDashboard.putNumber("Robot.speed", Robot.speed);
         // added minimum gety so that small adjustments don't power the motors
         if (gety < -.1) {
           Robot.cargoSystem.eject(driveSensitivity*gety);
+          Robot.lightSystem.rainbowGlitter();
         }
         else if (gety > .1) {
           Robot.cargoSystem.intake(driveSensitivity*gety);
+          Robot.lightSystem.rainbowGlitter();
         }
         else {
           Robot.cargoSystem.stop();
+          Robot.lightSystem.gray();
+
         }
       }
 

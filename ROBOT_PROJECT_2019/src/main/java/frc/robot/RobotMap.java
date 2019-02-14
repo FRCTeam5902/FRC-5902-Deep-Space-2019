@@ -75,7 +75,7 @@ public class RobotMap {
       //Create pneumaticSystem
       pneumaticSystemCompressor = new Compressor(0);
       frontSolenoid = new Solenoid(1);
-      backSolenoid = new Solenoid(2); // is this on right port on PCM?
+      backSolenoid = new Solenoid(0);
       frontSolenoid.set(false);
       backSolenoid.set(false);
 

@@ -90,10 +90,7 @@ public class Robot extends TimedRobot {
     gyro.reset();
     gyro.calibrate();
     RobotMap.init();
-    System.out.println("Servo Arm Should go Up in Robot Init");
-    //Robot.hatchSystem.turn(15,"arm");
-    // 15 is UP position
-
+    System.out.println("Robot Init");
     //Operator Interface
     oi = new OI();
 
@@ -124,13 +121,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledPeriodic() {
-
     Scheduler.getInstance().run();
-    SmartDashboard.putNumber("Logitech1 Y", Robot.oi.getLogitechJoy().getY());
-    SmartDashboard.putNumber("Logitech1 Z", Robot.oi.getLogitechJoy().getZ());
-    SmartDashboard.putNumber("Logitech1 X", Robot.oi.getLogitechJoy().getX());
-    //SmartDashboard.putNumber("Triangle", RobotMap.hatchTriangle.getAngle());
-    //SmartDashboard.putNumber("Arm", RobotMap.hatchArm.getAngle());
     //SmartDashboard.putString("Light Color", Robot.lightSystem.getLightColor());
 
   }
@@ -187,8 +178,7 @@ m_follower_notifier.startPeriodic(left_trajectory.get(0).dt);
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-   /*  System.out.println("lightz?");
-    al = ds.getAlliance();
+    /* al = ds.getAlliance();
     System.out.println(al == Alliance.Red);
     lightSystem.strobeYellow();
     if (al == Alliance.Red) {

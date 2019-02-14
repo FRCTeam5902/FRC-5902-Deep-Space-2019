@@ -9,13 +9,15 @@ import frc.robot.commands.hatchArmServo;
 import frc.robot.commands.driveStraight;
 import frc.robot.commands.frontPistonToggle;
 import frc.robot.commands.backPistonToggle;
+import frc.robot.commands.cargoIntake;
 import frc.robot.commands.allPistonsOff;
+import frc.robot.commands.arcadeDriveBackwards;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI {
     //left joystick buttons
     public Joystick logitechLeft;
-    // private JoystickButton joystickButtonL1;
+    private JoystickButton joystickButtonL1;
     // private JoystickButton joystickButtonL2;
     // private JoystickButton joystickButtonL3;
     // private JoystickButton joystickButtonL4;
@@ -26,7 +28,7 @@ public class OI {
     // private JoystickButton joystickButtonL9;
     //right joystick buttons
     public Joystick logitechRight;
-    //private JoystickButton joystickButtonR1;
+    private JoystickButton joystickButtonR1;
     // private JoystickButton joystickButtonR2;
     // private JoystickButton joystickButtonR3;
     // private JoystickButton joystickButtonR4;
@@ -66,7 +68,7 @@ public class OI {
         joystickButtonAC9 = new JoystickButton(AC, 9);
        
     //left joystick buttons
-        // joystickButtonL1 = new JoystickButton(logitechLeft, 1);
+        joystickButtonL1 = new JoystickButton(logitechLeft, 1);
         // joystickButtonL2 = new JoystickButton(logitechLeft, 2);
         // joystickButtonL3 = new JoystickButton(logitechLeft, 3);
         // joystickButtonL4 = new JoystickButton(logitechLeft, 4);
@@ -77,7 +79,7 @@ public class OI {
         // joystickButtonL9 = new JoystickButton(logitechLeft, 9);
         
     //right logitech joystick buttons
-        // joystickButtonR1 = new JoystickButton(logitechRight, 1);
+        joystickButtonR1 = new JoystickButton(logitechRight, 1);
         // joystickButtonR2 = new JoystickButton(logitechRight, 2);
         // joystickButtonR3 = new JoystickButton(logitechRight, 3);
         // joystickButtonR4 = new JoystickButton(logitechRight, 4);
@@ -86,30 +88,27 @@ public class OI {
         // joystickButtonR7 = new JoystickButton(logitechRight, 7);
         // joystickButtonR8 = new JoystickButton(logitechRight, 8);
         // joystickButtonR9 = new JoystickButton(logitechRight, 9);
-        
-// Top Row of Buttons on Arcade Controller
-
+    joystickButtonR1.whileHeld(new cargoIntake(-.9));
+    // Top Row of Buttons on Arcade Controller
     joystickButtonAC1.toggleWhenPressed(new frontPistonToggle());
     joystickButtonAC2.toggleWhenPressed(new backPistonToggle());
     joystickButtonAC3.whenPressed(new allPistonsOff());
-    
-// Middle Row of Buttons on Arcade Controller
+    // Middle Row of Buttons on Arcade Controller
     joystickButtonAC4.whenPressed(new hatchArmServo(0)); // 0 Angle for arm is down
-    joystickButtonAC4.whenPressed(new hatchArmServo(45)); // 45 we THINK is Angle for arm is part up
+    joystickButtonAC5.whenPressed(new hatchArmServo(45)); // 45 is Angle for arm is part up
+    joystickButtonAC6.whenPressed(new hatchArmServo(60)); // 90 is Angle for arm is fully up
 
     //Button 6 Unused
     //joystickButtonAC6.whileHeld(new cargoIntake(.6)); 
         
-// Bottom Row of Buttons on Arcade Controller       
-    joystickButtonAC7.whenPressed(new hatchTriangleServo(0)); // 0 Angle Up
+    // Bottom Row of Buttons on Arcade Controller       
+    joystickButtonAC7.whenPressed(new hatchTriangleServo(10)); // 0 Angle Up
     joystickButtonAC8.whenPressed(new hatchTriangleServo(100)); // 100 Angle Down
-
+    joystickButtonL1.toggleWhenPressed(new arcadeDriveBackwards());
     //button 9 unused
     //joystickButtonAC9.whenPressed(new hatchArmServo(0)); // 0 Angle for arm is down
 
-// Shuffleboad Data
-
-    SmartDashboard.putData("Drive Straight", new driveStraight());
+    // Shuffleboad Data
     SmartDashboard.putBoolean("Front piston status,", RobotMap.frontSolenoid.get());
     SmartDashboard.putBoolean("Back piston status,", RobotMap.backSolenoid.get());
 
