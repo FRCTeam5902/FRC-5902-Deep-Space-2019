@@ -12,20 +12,19 @@ import frc.robot.commands.tankDrive;
 // Using this with arcadeDrive allows us to drive the robot.
 public class driveTrain extends Subsystem {
 
-    public final WPI_TalonSRX leftDriveLead = RobotMap.driveTrainleftDriveLead;
-    public final WPI_TalonSRX rightDriveLead = RobotMap.driveTrainrightDriveLead;
-    public final WPI_TalonSRX leftDriveFollow = RobotMap.driveTrainleftDriveFollow;
-    public final WPI_TalonSRX rightDriveFollow = RobotMap.driveTrainrightDriveFollow;
+    //public final WPI_TalonSRX leftDriveLead = RobotMap.driveTrainleftDriveLead;
+    //public final WPI_TalonSRX rightDriveLead = RobotMap.driveTrainrightDriveLead;
+    //public final WPI_TalonSRX leftDriveFollow = RobotMap.driveTrainleftDriveFollow;
+    //public final WPI_TalonSRX rightDriveFollow = RobotMap.driveTrainrightDriveFollow;
     //public ADXRS450_Gyro gyro;
 	//private double angle;
 
-    public final DifferentialDrive robotDrive = RobotMap.driveTrainrobotDrive;
+    //public final DifferentialDrive robotDrive = RobotMap.driveTrainrobotDrive;
     @Override
     public void initDefaultCommand() {
     	
-    	leftDriveFollow.follow(leftDriveLead);
-    	rightDriveFollow.follow(rightDriveLead);
-            // set this so it will be back to arcade drive 
+        RobotMap.driveTrainleftDriveFollow.follow(RobotMap.driveTrainleftDriveLead);
+    	RobotMap.driveTrainrightDriveFollow.follow(RobotMap.driveTrainrightDriveLead);
         setDefaultCommand(new arcadeDrive());
 
         // setDefaultCommand(new MySpecialCommand());
@@ -34,25 +33,25 @@ public class driveTrain extends Subsystem {
 
     public void arcadeDrive(double move, double rotate, double speed) {
 
-    	  robotDrive.arcadeDrive(move*speed, rotate*speed);
+        RobotMap.driveTrainrobotDrive.arcadeDrive(move*speed, rotate*speed);
 
     }
     
     public void autoDrive(double speedL, double speedR) {
 
-    	robotDrive.tankDrive(speedL, speedR);
+    	RobotMap.driveTrainrobotDrive.tankDrive(speedL, speedR);
 
     }
     
     public void driveStraight(double speed) {
 
-    	robotDrive.tankDrive(speed, speed);
+    	RobotMap.driveTrainrobotDrive.tankDrive(speed, speed);
 
     }
 
     public void driveStraightAdjust(double speedL, double speedR) {
 
-        robotDrive.tankDrive(speedL, speedR);
+        RobotMap.driveTrainrobotDrive.tankDrive(speedL, speedR);
         
 	}
     

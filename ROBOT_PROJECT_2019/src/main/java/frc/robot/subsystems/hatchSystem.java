@@ -9,18 +9,17 @@ import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Servo;
 import frc.robot.commands.hatchArmServo;
-import frc.robot.commands.hatchTriangleServo;
 public class hatchSystem extends Subsystem {
-  public final Servo hatchArm = RobotMap.hatchArm;
-  public final Servo hatchTriangle = RobotMap.hatchTriangle;
+ // public final Servo hatchArm = RobotMap.hatchArm;
+  //public final Servo hatchTriangle = RobotMap.hatchTriangle;
   //servo that picks up the hathches
   
   public void turn(double angle, String servo) {
     if (servo == "arm") {
-      hatchArm.setAngle(angle);
+      RobotMap.hatchArm.setAngle(angle);
     }
     else if (servo == "triangle") {
-      hatchTriangle.setAngle(angle);
+      RobotMap.hatchTriangle.setAngle(angle);
     }
   }
   @Override

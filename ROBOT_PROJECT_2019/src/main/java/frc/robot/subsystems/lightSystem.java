@@ -91,7 +91,7 @@ public class lightSystem extends Subsystem {
     color.set(0);
   }
   
-  public String getLightColor() {
+/*   public String getLightColor() {
     String Color = "Null";
     switch ((int)(color.get()*100)) {
     case   0: Color = "Off"; break;
@@ -112,7 +112,7 @@ public class lightSystem extends Subsystem {
     case  85: Color = "Blue"; break;
     case  61: Color = "Red"; break;}
     return Color;
-  }
+  } */
 
   @Override
   public void initDefaultCommand() {

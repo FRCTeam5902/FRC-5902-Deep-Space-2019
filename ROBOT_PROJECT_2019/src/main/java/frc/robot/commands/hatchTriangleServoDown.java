@@ -5,46 +5,43 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-
-public class hatchArmServo extends Command {
-  double down = 0;
-  double up = 45;
-  public hatchArmServo() {
+public class hatchTriangleServoDown extends Command {
+  public String trianglePosition = "Center";
+  //sets center and up servo angles
+  double down = 100;
+  public hatchTriangleServoDown() {
     requires(Robot.hatchSystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    //set to servo up value
-    System.out.println("initialize up arm");
-    //RobotMap.hatchArm.setAngle(up);
-    Robot.hatchSystem.turn(up,"arm");
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    RobotMap.hatchArm.setAngle(down);
+    // set triangle servo to down position
+      //Robot.hatchSystem.turn(up,"triangle");
+      RobotMap.hatchTriangle.setAngle(down);
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    System.out.println("Servo up finished");
     return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    System.out.println("Servo up end");
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    //set servo to up value
+    //set triangle servo to up position
   }
 }

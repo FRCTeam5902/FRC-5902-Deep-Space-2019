@@ -10,25 +10,25 @@ import frc.robot.RobotMap;
 //One TALON SRX is lead and the other is follow. The follow motor is inverted to make them work together to turn a hex shaft.
 public class cargoSystem extends Subsystem {
 
-  public final WPI_TalonSRX cargoIntakeLead = RobotMap.cargoIntakeLead;
-  public final WPI_TalonSRX cargoIntakeFollow = RobotMap.cargoIntakeFollow;
+  //public final WPI_TalonSRX cargoIntakeLead = RobotMap.cargoIntakeLead;
+  //public final WPI_TalonSRX cargoIntakeFollow = RobotMap.cargoIntakeFollow;
 
   @Override
   public void initDefaultCommand() {
-    cargoIntakeFollow.setInverted(true);
-    cargoIntakeFollow.follow(cargoIntakeLead);
+    RobotMap.cargoIntakeFollow.setInverted(true);
+    RobotMap.cargoIntakeFollow.follow(RobotMap.cargoIntakeLead);
     setDefaultCommand(new cargoDrive());
   }
 
   public void intake (double speed){
-    cargoIntakeLead.set(speed);
+    RobotMap.cargoIntakeLead.set(speed);
   }
   public void eject (double speed) {
-    cargoIntakeLead.set(speed);
+    RobotMap.cargoIntakeLead.set(speed);
   }
 
   public void stop(){
-    cargoIntakeLead.set(0);
-    cargoIntakeFollow.set(0);
+    RobotMap.cargoIntakeLead.set(0);
+    RobotMap.cargoIntakeFollow.set(0);
   }
 }

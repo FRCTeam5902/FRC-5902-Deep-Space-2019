@@ -91,10 +91,8 @@ public class Robot extends TimedRobot {
     gyro.reset();
     gyro.calibrate();
     RobotMap.init();
-    System.out.println("lightz?");
-    lightSystem.color.set(.61);
     System.out.println("Servo Arm Should go Up in Robot Init");
-    Robot.hatchSystem.turn(15,"arm");
+    //Robot.hatchSystem.turn(15,"arm");
     // 15 is UP position
 
     //Operator Interface
@@ -123,22 +121,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    al = ds.getAlliance();
-    System.out.println(al == Alliance.Red);
-    lightSystem.beatBlue();
-    if (al == Alliance.Red) {
-      System.out.println(1);
-    lightSystem.beatRed();
-  } 
-   if (al == Alliance.Blue) {
-    System.out.println(2);
-    lightSystem.beatBlue();
-    
-  } 
-   if (al == Alliance.Invalid){
-    System.out.println(3);
-    lightSystem.scannerGray();
-  }
   }
 
   @Override
@@ -150,9 +132,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Logitech1 X", Robot.oi.getlogitechJoy().getX());
     //SmartDashboard.putNumber("Triangle", RobotMap.hatchTriangle.getAngle());
     //SmartDashboard.putNumber("Arm", RobotMap.hatchArm.getAngle());
-    SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.leftDriveLead.getSelectedSensorPosition());
-    SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.rightDriveLead.getSelectedSensorPosition());
-    SmartDashboard.putString("Light Color", Robot.lightSystem.getLightColor());
+    //SmartDashboard.putString("Light Color", Robot.lightSystem.getLightColor());
 
   }
 
@@ -208,8 +188,24 @@ m_follower_notifier.startPeriodic(left_trajectory.get(0).dt);
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    Robot.hatchSystem.turn(0,"triangle");
-    Robot.hatchSystem.turn(90,"arm"); // 90 is DOWN position
+   /*  System.out.println("lightz?");
+    al = ds.getAlliance();
+    System.out.println(al == Alliance.Red);
+    lightSystem.strobeYellow();
+    if (al == Alliance.Red) {
+      System.out.println(1);
+      lightSystem.beatRed();
+    } 
+    if (al == Alliance.Blue) {
+      System.out.println(2);
+      lightSystem.beatBlue();
+    } 
+    if (al == Alliance.Invalid){
+      System.out.println(3);
+      lightSystem.scannerGray();
+  } */
+  RobotMap.hatchTriangle.setAngle(90);
+  RobotMap.hatchArm.setAngle(0);
     /* //Stop Pathfinder
     m_follower_notifier.stop();
     m_left_motor.set(ControlMode.PercentOutput, 0);

@@ -4,8 +4,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.arcadeDrive;
 import frc.robot.commands.cargoIntake;
-import frc.robot.commands.hatchArmServo;
-import frc.robot.commands.hatchTriangleServo;
+
+import frc.robot.commands.hatchTriangleServoUp;
+import frc.robot.commands.hatchTriangleServoDown;
+
 import frc.robot.commands.driveStraight;
 import frc.robot.commands.frontPistonToggle;
 import frc.robot.commands.backPistonToggle;
@@ -102,13 +104,14 @@ public class OI {
     joystickButtonAC3.whenPressed(new allPistonsOff());
     
     // Middle Row of Buttons on Arcade Controller
-    joystickButtonAC4.whileHeld(new cargoIntake(.5));   
-    joystickButtonAC5.whileHeld(new cargoIntake(.75));  
-    joystickButtonAC6.whileHeld(new cargoIntake(-.6)); 
+    joystickButtonAC4.whileHeld(new cargoIntake(-.5));   
+    joystickButtonAC5.whileHeld(new cargoIntake(-.75));  
+    joystickButtonAC6.whileHeld(new cargoIntake(.6)); 
         
     // Bottom Row of Buttons on Arcade Controller       
     joystickButtonAC7.whenPressed(new cargoIntake(0));
-    joystickButtonAC9.toggleWhenPressed(new hatchArmServo());
+    joystickButtonAC8.whenPressed(new hatchTriangleServoUp());
+    joystickButtonAC9.whenPressed(new hatchTriangleServoDown());
 
     SmartDashboard.putData("Drive Straight", new driveStraight());
     SmartDashboard.putData("Front Piston Toggle", new frontPistonToggle());

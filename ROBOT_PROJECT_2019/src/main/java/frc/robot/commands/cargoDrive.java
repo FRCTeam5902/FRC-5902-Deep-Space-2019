@@ -22,7 +22,7 @@ public class cargoDrive extends Command {
     protected void execute() {
         double driveSpeed = 1;
         //forward and backward sensitivity, y value of joystick
-        double driveSensitivity = .5;
+        double driveSensitivity = .85;
         
         double gety = Robot.oi.getlogitechJoy2().getY();
         Robot.speed = (driveSpeed);

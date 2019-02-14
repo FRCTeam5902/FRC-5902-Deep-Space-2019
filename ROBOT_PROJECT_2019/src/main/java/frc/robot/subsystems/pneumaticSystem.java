@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class pneumaticSystem extends Subsystem {
   //Declartations
-  private final Compressor compressor = RobotMap.pneumaticSystemCompressor;
+  //private final Compressor compressor = RobotMap.pneumaticSystemCompressor;
   //public final Solenoid frontSolenoid = RobotMap.pneumaticSystemFrontSolenoid;
   //public final Solenoid backSolenoid = RobotMap.pneumaticSystemBackSolenoid;
 
@@ -41,7 +41,8 @@ public class pneumaticSystem extends Subsystem {
     System.out.println("offFrontPison is DEAD");
   }
   public void offBackPistons(){
-    //backSolenoid.set(false);
+    RobotMap.pneumaticSystemBackSolenoid.set(false);
+    System.out.println("offBackPison is DEAD");
   }
 
   @Override
