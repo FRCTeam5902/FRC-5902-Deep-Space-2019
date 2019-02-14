@@ -8,6 +8,7 @@ import frc.robot.RobotMap;
 import frc.robot.commands.arcadeDrive;
 import frc.robot.commands.arcadeDriveBackwards;
 import frc.robot.commands.tankDrive;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 //This is the robot's drive train for the kit of parts drive base. Two lead controllers and two follow controllers. 
 // Using this with arcadeDrive allows us to drive the robot.
@@ -27,6 +28,8 @@ public class driveTrain extends Subsystem {
         RobotMap.driveTrainleftDriveFollow.follow(RobotMap.driveTrainleftDriveLead);
     	RobotMap.driveTrainrightDriveFollow.follow(RobotMap.driveTrainrightDriveLead);
         setDefaultCommand(new arcadeDrive());
+        //RobotMap.driveTrainrightDriveLead.configOpenloopRamp(5);
+        //RobotMap.driveTrainleftDriveLead.configOpenloopRamp(5);
         // setDefaultCommand(new MySpecialCommand());
     }
 

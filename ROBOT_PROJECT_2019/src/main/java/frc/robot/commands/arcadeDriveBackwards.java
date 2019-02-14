@@ -15,11 +15,8 @@ public class arcadeDriveBackwards extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() { 
-    //Ramp up Speed
+
     }
-        public double RSpeedZ;
-        public double RSpeedY;
-    
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
@@ -28,7 +25,7 @@ public class arcadeDriveBackwards extends Command {
         double driveSensitivity = .5;
         
         //turning sensitivity, z value of joystick
-        double turnSensitivity = 1;
+        double turnSensitivity = .9;
         double gety = Robot.oi.getLogitechJoy().getY();
         double getz = Robot.oi.getLogitechJoy().getZ();
 

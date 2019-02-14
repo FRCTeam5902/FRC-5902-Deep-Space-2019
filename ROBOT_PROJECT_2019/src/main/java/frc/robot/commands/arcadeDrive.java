@@ -14,12 +14,8 @@ public class arcadeDrive extends Command {
 
     // Called just before this Command runs the first time
     @Override
-    protected void initialize() { 
-    //Ramp up Speed
+    protected void initialize() {
     }
-        public double RSpeedZ;
-        public double RSpeedY;
-    
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
@@ -28,32 +24,26 @@ public class arcadeDrive extends Command {
         double driveSensitivity = .5;
         
         //turning sensitivity, z value of joystick
-        double turnSensitivity = .5;
+        double turnSensitivity = .9;
         double gety = Robot.oi.getLogitechJoy().getY();
         double getz = Robot.oi.getLogitechJoy().getZ();
 
         Robot.speed = (driveSpeed);
         SmartDashboard.putNumber("Robot.speed", Robot.speed);
         // added minimum getz and gety so that small adjustments don't power the motors
-        if (getz < .2 && getz > -.2)
-        {
-            if(gety<-.1)
-            {
+        if (getz < .2 && getz > -.2) {
+            if (gety<-.1) {
                 Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, 0, Robot.speed);
             }
-            else
-            {
+            else {
                 Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, 0, Robot.speed);
             }
         }
-        else
-        {
-            if (gety < -.1)
-            {
+        else {
+            if (gety < -.1) {
                 Robot.driveTrain.arcadeDrive(1.5*-(driveSensitivity)*gety, getz*(turnSensitivity*driveSensitivity), Robot.speed);
             }
-            else
-            {
+            else {
                 Robot.driveTrain.arcadeDrive(-(driveSensitivity)*gety, getz*(turnSensitivity*driveSensitivity), Robot.speed);
             }
         }

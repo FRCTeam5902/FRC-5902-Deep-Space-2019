@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import frc.robot.commands.hatchTriangleServo;
+import frc.robot.commands.tankDrive;
 import frc.robot.commands.hatchArmServo;
 
 import frc.robot.commands.driveStraight;
@@ -111,6 +112,7 @@ public class OI {
     // Shuffleboad Data
     SmartDashboard.putBoolean("Front piston status,", RobotMap.frontSolenoid.get());
     SmartDashboard.putBoolean("Back piston status,", RobotMap.backSolenoid.get());
+    //SmartDashboard.put("Drive Strait", new tankDrive(.5,.5));
 
     }
 
@@ -125,5 +127,4 @@ public class OI {
     public Joystick getArcadeControlller() {
         return AC;
     }
-
 }
