@@ -10,8 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.SpeedController;
+
 
 /**
  * Add your docs here.
@@ -19,76 +18,76 @@ import edu.wpi.first.wpilibj.SpeedController;
 public class lightSystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public final SpeedController color = RobotMap.lights;
+  //public final SpeedController color = RobotMap.lights;
 
   public void party () {
-    color.set(-.77);
+    RobotMap.lights.set(-.77);
   }
 
   public void revenge () {
-    color.set(-.05);
+    RobotMap.lights.set(-.05);
   }
   
   public void white () {
-    color.set(.93);
+    RobotMap.lights.set(.93);
   }
   
   public void blueShots () {
-    color.set(-.83);
+    RobotMap.lights.set(-.83);
   }
   
   public void blue () {
-    color.set(.85);
+    RobotMap.lights.set(.85);
   }
   
   public void red () {
-    color.set(.61);
+    RobotMap.lights.set(.61);
   }
   
   public void beatBlue () {
-    color.set(-.23);
+    RobotMap.lights.set(-.23);
   }
   
   public void oceanBlue () {
-    color.set(-.41);
+    RobotMap.lights.set(-.41);
   }
   
   public void redShots () {
-    color.set(-.85);
+    RobotMap.lights.set(-.85);
   }
   
   public void scannerRed () {
-    color.set(-.35);
+    RobotMap.lights.set(-.35);
   }
   
   public void beatRed () {
-    color.set(-.25);
+    RobotMap.lights.set(-.25);
   }
   
   public void beatWhite () {
-    color.set(-.21);
+    RobotMap.lights.set(-.21);
   }
   
   public void scannerGray () {
-    color.set(-.33);
+    RobotMap.lights.set(-.33);
   }
   
   public void gray () {
-    color.set(.95);
+    RobotMap.lights.set(.95);
   } 
   
   public void strobeYellow() {
-    color.set(-.07);
+    RobotMap.lights.set(-.07);
     
   }
   
   public void lavaError() {
-    color.set(.49);
+    RobotMap.lights.set(.49);
     
   }
   
   public void off () {
-    color.set(0);
+    RobotMap.lights.set(0);
   }
   
 /*   public String getLightColor() {

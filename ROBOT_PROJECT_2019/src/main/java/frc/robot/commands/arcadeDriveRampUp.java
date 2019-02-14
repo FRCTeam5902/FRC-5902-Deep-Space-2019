@@ -29,8 +29,8 @@ public class arcadeDriveRampUp extends Command {
         
         //turning sensitivity, z value of joystick
         double turnSensitivity = .5;
-        double gety = Robot.oi.getlogitechJoy().getY();
-        double getz = Robot.oi.getlogitechJoy().getZ();
+        double gety = Robot.oi.getLogitechJoy().getY();
+        double getz = Robot.oi.getLogitechJoy().getZ();
         for (double IY = 100; IY > 0; IY--) {
             RSpeedY = (gety / IY);
             System.out.println(RSpeedY);

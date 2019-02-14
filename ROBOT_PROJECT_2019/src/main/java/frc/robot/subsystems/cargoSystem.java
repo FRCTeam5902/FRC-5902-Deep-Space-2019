@@ -1,9 +1,7 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.cargoDrive;
 import frc.robot.RobotMap;
 //Cargo sytem. This system consists of two large CIM motors on either side of a hex shaft controlled by TALON SRX motor controllers.

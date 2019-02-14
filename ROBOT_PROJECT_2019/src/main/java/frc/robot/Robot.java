@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.frontPistonToggle;
 import frc.robot.subsystems.cargoSystem;
 import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.hatchSystem;
@@ -24,14 +23,14 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 //Camera Imports
-import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
+  /* import org.opencv.core.Mat;
+  import org.opencv.imgproc.Imgproc;
 
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
-import edu.wpi.cscore.UsbCamera;
+  import edu.wpi.cscore.CvSink;
+  import edu.wpi.cscore.CvSource;
+  import edu.wpi.cscore.UsbCamera;
 
-import edu.wpi.first.cameraserver.CameraServer;
+  import edu.wpi.first.cameraserver.CameraServer; */
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 /* //Pathfinder Imports
@@ -127,9 +126,9 @@ public class Robot extends TimedRobot {
   public void disabledPeriodic() {
 
     Scheduler.getInstance().run();
-    SmartDashboard.putNumber("Logitech1 Y", Robot.oi.getlogitechJoy().getY());
-    SmartDashboard.putNumber("Logitech1 Z", Robot.oi.getlogitechJoy().getZ());
-    SmartDashboard.putNumber("Logitech1 X", Robot.oi.getlogitechJoy().getX());
+    SmartDashboard.putNumber("Logitech1 Y", Robot.oi.getLogitechJoy().getY());
+    SmartDashboard.putNumber("Logitech1 Z", Robot.oi.getLogitechJoy().getZ());
+    SmartDashboard.putNumber("Logitech1 X", Robot.oi.getLogitechJoy().getX());
     //SmartDashboard.putNumber("Triangle", RobotMap.hatchTriangle.getAngle());
     //SmartDashboard.putNumber("Arm", RobotMap.hatchArm.getAngle());
     //SmartDashboard.putString("Light Color", Robot.lightSystem.getLightColor());
@@ -204,8 +203,8 @@ m_follower_notifier.startPeriodic(left_trajectory.get(0).dt);
       System.out.println(3);
       lightSystem.scannerGray();
   } */
-  RobotMap.hatchTriangle.setAngle(90);
-  RobotMap.hatchArm.setAngle(0);
+  RobotMap.hatchTriangle.setAngle(100); // 100 is down
+  RobotMap.hatchArm.setAngle(0); // 0 is down
     /* //Stop Pathfinder
     m_follower_notifier.stop();
     m_left_motor.set(ControlMode.PercentOutput, 0);
@@ -231,8 +230,8 @@ m_follower_notifier.startPeriodic(left_trajectory.get(0).dt);
     //SmartDashboard.putNumber("rightDriveFollow Amperage", Robot.driveTrain.rightDriveFollow.getOutputCurrent());
     SmartDashboard.putBoolean("Gyro Connected", gyro.isConnected());
     SmartDashboard.putNumber("Robot Gyro Value", gyro.getAngle());
-    SmartDashboard.putBoolean("Front Pistons Out?", RobotMap.pneumaticSystemFrontSolenoid.get());
-    SmartDashboard.putBoolean("Back Pistons Out?", RobotMap.pneumaticSystemBackSolenoid.get());
+    SmartDashboard.putBoolean("Front Pistons Out?", RobotMap.frontSolenoid.get());
+    SmartDashboard.putBoolean("Back Pistons Out?", RobotMap.backSolenoid.get());
   }
 
   @Override

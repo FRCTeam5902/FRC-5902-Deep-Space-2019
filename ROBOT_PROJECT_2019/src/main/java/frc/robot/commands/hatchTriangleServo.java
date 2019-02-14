@@ -5,12 +5,20 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class hatchTriangleServoUp extends Command {
-  public String trianglePosition = "Center";
+// Values
+// 0 is UP
+// 100 is DOWN
+public class hatchTriangleServo extends Command {
+  
+  double up = 45;
+  double down = 100;
+
+  public double setAngle;
+
   //sets center and up servo angles
-  double up = 0;
-  public hatchTriangleServoUp() {
+  public hatchTriangleServo(double setAngle) {
     requires(Robot.hatchSystem);
+    this.setAngle = setAngle;
   }
 
   // Called just before this Command runs the first time
@@ -25,7 +33,7 @@ public class hatchTriangleServoUp extends Command {
   protected void execute() {
     // set triangle servo to down position
       //Robot.hatchSystem.turn(up,"triangle");
-      RobotMap.hatchTriangle.setAngle(up);
+      RobotMap.hatchTriangle.setAngle(setAngle);
 
   }
 

@@ -15,12 +15,12 @@ public class hatchSystem extends Subsystem {
   //servo that picks up the hathches
   
   public void turn(double angle, String servo) {
-    if (servo == "arm") {
+    /* if (servo == "arm") {
       RobotMap.hatchArm.setAngle(angle);
     }
     else if (servo == "triangle") {
       RobotMap.hatchTriangle.setAngle(angle);
-    }
+    } */
   }
   @Override
   public void initDefaultCommand() {

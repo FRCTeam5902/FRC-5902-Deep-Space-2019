@@ -24,24 +24,24 @@ public class pneumaticSystem extends Subsystem {
   // here. Call these from Commands.
   
   public void onFrontPistons() {
-    RobotMap.pneumaticSystemFrontSolenoid.set(true);
+    RobotMap.frontSolenoid.set(true);
     System.out.println("onFrontPiston is ALIVE");
   }
   public void onBackPistons() {
-    RobotMap.pneumaticSystemBackSolenoid.set(true);
+    RobotMap.backSolenoid.set(true);
     System.out.println("onBackPiston is ALIVE");
   }
 
   public void offAllPistons() {
-    RobotMap.pneumaticSystemFrontSolenoid.set(false);
-  RobotMap.pneumaticSystemBackSolenoid.set(false);
+    RobotMap.frontSolenoid.set(false);
+  RobotMap.backSolenoid.set(false);
     }
   public void offFrontPistons(){
-    RobotMap.pneumaticSystemFrontSolenoid.set(false);
+    RobotMap.frontSolenoid.set(false);
     System.out.println("offFrontPison is DEAD");
   }
   public void offBackPistons(){
-    RobotMap.pneumaticSystemBackSolenoid.set(false);
+    RobotMap.backSolenoid.set(false);
     System.out.println("offBackPison is DEAD");
   }
 

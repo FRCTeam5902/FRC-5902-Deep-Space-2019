@@ -24,7 +24,7 @@ public class cargoDrive extends Command {
         //forward and backward sensitivity, y value of joystick
         double driveSensitivity = .85;
         
-        double gety = Robot.oi.getlogitechJoy2().getY();
+        double gety = Robot.oi.getLogitechJoy2().getY();
         Robot.speed = (driveSpeed);
         SmartDashboard.putNumber("Robot.speed", Robot.speed);
         // added minimum gety so that small adjustments don't power the motors
