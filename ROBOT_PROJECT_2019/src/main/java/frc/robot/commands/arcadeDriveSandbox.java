@@ -6,16 +6,15 @@ import frc.robot.Robot;
 
 // Code to make the robot driveable. This code has a drive sensitivity variable that adjusts how sensitive the driving of the robot it. 
 // In the drive code it checks for minimum values so to make the controller more responsive.  
-public class arcadeDrive extends Command {
+public class arcadeDriveSandbox extends Command {
 
-    public arcadeDrive() {
+    public arcadeDriveSandbox() {
         requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        SmartDashboard.putString("Drive Mode","Hatch Front");
     }
     // Called repeatedly when this Command is scheduled to run
     @Override
@@ -28,20 +27,20 @@ public class arcadeDrive extends Command {
         double turnSensitivity = .5;
         double gety = Robot.oi.getLogitechJoy().getY();
         double getz = Robot.oi.getLogitechJoy().getZ();
-
+        
         double z = getz*turnSensitivity;
         double y = gety*driveSensitivity;
-
         Robot.speed = (driveSpeed);
         SmartDashboard.putNumber("Robot.speed", Robot.speed);
         // added minimum getz and gety so that small adjustments don't power the motors
-        if (getz < .2 && getz > -.2) {
-            Robot.driveTrain.arcadeDrive(y, 0, Robot.speed);
-        }
-        else {
-            Robot.driveTrain.arcadeDrive(y, z, Robot.speed);
-        }
+
+        Robot.driveTrain.arcadeDrive(-y, -z, Robot.speed);
+        //Robot.driveTrain.curvatureDrive(y, z, false);
     }
+
+    
+    
+
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {

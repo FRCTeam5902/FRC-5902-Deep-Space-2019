@@ -63,6 +63,8 @@ public class RobotMap {
       driveTrainrobotDrive.setSafetyEnabled(true);
       driveTrainrobotDrive.setExpiration(0.1);
       driveTrainrobotDrive.setMaxOutput(1.0);
+      driveTrainrobotDrive.setDeadband(.02);
+      
 
       //Create hatchSystem
       hatchArm = new Servo(1);

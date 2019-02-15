@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.arcadeDrive;
 import frc.robot.commands.arcadeDriveBackwards;
+import frc.robot.commands.arcadeDriveSandbox;
 import frc.robot.commands.tankDrive;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -38,9 +39,14 @@ public class driveTrain extends Subsystem {
         RobotMap.driveTrainrobotDrive.arcadeDrive(move*speed, rotate*speed);
 
     }
+    public void curvatureDrive(double forward, double rotate, boolean quickTurn) {
+
+        RobotMap.driveTrainrobotDrive.curvatureDrive(forward,rotate,quickTurn);
+
+    }
     public void arcadeDriveBackwards(double move, double rotate, double speed) {
 
-        RobotMap.driveTrainrobotDrive.arcadeDrive(move * speed, rotate * speed);
+        RobotMap.driveTrainrobotDrive.arcadeDrive(-move*speed, rotate*speed);
 
     }
     

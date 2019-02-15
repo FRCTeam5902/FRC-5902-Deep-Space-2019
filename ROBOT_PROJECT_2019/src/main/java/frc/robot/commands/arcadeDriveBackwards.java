@@ -15,7 +15,7 @@ public class arcadeDriveBackwards extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() { 
-
+        SmartDashboard.putString("Drive Mode","Cargo Front");
     }
     // Called repeatedly when this Command is scheduled to run
     @Override
@@ -25,33 +25,20 @@ public class arcadeDriveBackwards extends Command {
         double driveSensitivity = .5;
         
         //turning sensitivity, z value of joystick
-        double turnSensitivity = .9;
+        double turnSensitivity = .5;
         double gety = Robot.oi.getLogitechJoy().getY();
         double getz = Robot.oi.getLogitechJoy().getZ();
 
+        double z = getz*turnSensitivity;
+        double y = gety*driveSensitivity;
+
         Robot.speed = (driveSpeed);
         // added minimum getz and gety so that small adjustments don't power the motors
-        if (getz < .2 && getz > -.2)
-        {
-            if(gety<-.1)
-            {
-                Robot.driveTrain.arcadeDrive(1.5*(driveSensitivity)*gety, 0, Robot.speed);
-            }
-            else
-            {
-                Robot.driveTrain.arcadeDrive((driveSensitivity)*gety, 0, Robot.speed);
-            }
+        if (getz < .2 && getz > -.2) {
+            Robot.driveTrain.arcadeDriveBackwards(y, 0, Robot.speed);
         }
-        else
-        {
-            if (gety < -.1)
-            {
-                Robot.driveTrain.arcadeDrive(1.5*(driveSensitivity)*gety, getz*(turnSensitivity*driveSensitivity), Robot.speed);
-            }
-            else
-            {
-                Robot.driveTrain.arcadeDrive((driveSensitivity)*gety, getz*(turnSensitivity*driveSensitivity), Robot.speed);
-            }
+        else {
+            Robot.driveTrain.arcadeDriveBackwards(y, z, Robot.speed);
         }
     }
 
