@@ -2,21 +2,16 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
-import frc.robot.commands.hatchTriangleServo;
-import frc.robot.commands.tankDrive;
-import frc.robot.commands.hatchArmServo;
-
-import frc.robot.commands.driveStraight;
-import frc.robot.commands.frontPistonToggle;
-import frc.robot.commands.backPistonToggle;
-import frc.robot.commands.cargoIntake;
 import frc.robot.commands.allPistonsOff;
 import frc.robot.commands.arcadeDriveBackwards;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.backPistonToggle;
+import frc.robot.commands.cargoIntake;
+import frc.robot.commands.frontPistonToggle;
+import frc.robot.commands.hatchArmServo;
+import frc.robot.commands.hatchTriangleServo;
 
 public class OI {
-    //left joystick buttons
+    // left joystick buttons
     public Joystick logitechLeft;
     private JoystickButton joystickButtonL1;
     // private JoystickButton joystickButtonL2;
@@ -27,7 +22,8 @@ public class OI {
     // private JoystickButton joystickButtonL7;
     // private JoystickButton joystickButtonL8;
     // private JoystickButton joystickButtonL9;
-    //right joystick buttons
+    //
+    // right joystick buttons
     public Joystick logitechRight;
     private JoystickButton joystickButtonR1;
     // private JoystickButton joystickButtonR2;
@@ -38,7 +34,8 @@ public class OI {
     // private JoystickButton joystickButtonR7;
     // private JoystickButton joystickButtonR8;
     // private JoystickButton joystickButtonR9;
-    //arcade buttons
+    //
+    // arcade buttons
     public Joystick AC;
     public JoystickButton joystickButtonAC1;
     public JoystickButton joystickButtonAC2;
@@ -49,15 +46,14 @@ public class OI {
     public JoystickButton joystickButtonAC7;
     public JoystickButton joystickButtonAC8;
     public JoystickButton joystickButtonAC9;
-    // public String gameData = Robot.ds.getGameSpecificMessage().substring(0, 1);
 
     public OI() {
-    // Make those Joysticks!
+        // Make those Joysticks!
         logitechLeft = new Joystick(0);
         logitechRight = new Joystick(2);
         AC = new Joystick(1);
 
-    //Arcade Controller buttons
+        // Arcade Controller buttons
         joystickButtonAC1 = new JoystickButton(AC, 1);
         joystickButtonAC2 = new JoystickButton(AC, 2);
         joystickButtonAC3 = new JoystickButton(AC, 3);
@@ -67,8 +63,8 @@ public class OI {
         joystickButtonAC7 = new JoystickButton(AC, 7);
         joystickButtonAC8 = new JoystickButton(AC, 8);
         joystickButtonAC9 = new JoystickButton(AC, 9);
-       
-    //left joystick buttons
+
+        // left joystick buttons
         joystickButtonL1 = new JoystickButton(logitechLeft, 1);
         // joystickButtonL2 = new JoystickButton(logitechLeft, 2);
         // joystickButtonL3 = new JoystickButton(logitechLeft, 3);
@@ -78,8 +74,8 @@ public class OI {
         // joystickButtonL7 = new JoystickButton(logitechLeft, 7);
         // joystickButtonL8 = new JoystickButton(logitechLeft, 8);
         // joystickButtonL9 = new JoystickButton(logitechLeft, 9);
-        
-    //right logitech joystick buttons
+
+        // right logitech joystick buttons
         joystickButtonR1 = new JoystickButton(logitechRight, 1);
         // joystickButtonR2 = new JoystickButton(logitechRight, 2);
         // joystickButtonR3 = new JoystickButton(logitechRight, 3);
@@ -89,31 +85,26 @@ public class OI {
         // joystickButtonR7 = new JoystickButton(logitechRight, 7);
         // joystickButtonR8 = new JoystickButton(logitechRight, 8);
         // joystickButtonR9 = new JoystickButton(logitechRight, 9);
-    joystickButtonR1.whileHeld(new cargoIntake(-.9));
-    // Top Row of Buttons on Arcade Controller
-    joystickButtonAC1.toggleWhenPressed(new frontPistonToggle());
-    joystickButtonAC2.toggleWhenPressed(new backPistonToggle());
-    joystickButtonAC3.whenPressed(new allPistonsOff());
-    // Middle Row of Buttons on Arcade Controller
-    joystickButtonAC4.whenPressed(new hatchArmServo(0)); // 0 Angle for arm is down
-    joystickButtonAC5.whenPressed(new hatchArmServo(45)); // 45 is Angle for arm is part up
-    joystickButtonAC6.whenPressed(new hatchArmServo(60)); // 90 is Angle for arm is fully up
+        joystickButtonR1.whileHeld(new cargoIntake(-.9));
 
-    //Button 6 Unused
-    //joystickButtonAC6.whileHeld(new cargoIntake(.6)); 
-        
-    // Bottom Row of Buttons on Arcade Controller       
-    joystickButtonAC7.whenPressed(new hatchTriangleServo(10)); // 0 Angle Up
-    joystickButtonAC8.whenPressed(new hatchTriangleServo(100)); // 100 Angle Down
-    joystickButtonL1.toggleWhenPressed(new arcadeDriveBackwards());
-    //button 9 unused
-    //joystickButtonAC9.whenPressed(new hatchArmServo(0)); // 0 Angle for arm is down
+        // Top Row of Buttons on Arcade Controller
+        joystickButtonAC1.toggleWhenPressed(new frontPistonToggle());
+        joystickButtonAC2.toggleWhenPressed(new backPistonToggle());
+        joystickButtonAC3.whenPressed(new allPistonsOff());
 
-    // Shuffleboad Data
-    SmartDashboard.putBoolean("Front piston status,", RobotMap.frontSolenoid.get());
-    SmartDashboard.putBoolean("Back piston status,", RobotMap.backSolenoid.get());
-    //SmartDashboard.put("Drive Straight", new tankDrive(.5,.5));
+        // Middle Row of Buttons on Arcade Controller
+        joystickButtonAC4.whenPressed(new hatchArmServo(0)); // 0 Angle for arm is down
+        joystickButtonAC5.whenPressed(new hatchArmServo(45)); // 45 is Angle for arm is part up
+        joystickButtonAC6.whenPressed(new hatchArmServo(60)); // 90 is Angle for arm is fully up
+        // Button 6 Unused
+        // joystickButtonAC6.whileHeld(new cargoIntake(.6));
 
+        // Bottom Row of Buttons on Arcade Controller
+        joystickButtonAC7.whenPressed(new hatchTriangleServo(10)); // 0 Angle Up
+        joystickButtonAC8.whenPressed(new hatchTriangleServo(100)); // 100 Angle Down
+        joystickButtonL1.toggleWhenPressed(new arcadeDriveBackwards());
+        // button 9 unused
+        // joystickButtonAC9.whenPressed(new hatchArmServo(0));
     }
 
     public Joystick getLogitechJoy() {

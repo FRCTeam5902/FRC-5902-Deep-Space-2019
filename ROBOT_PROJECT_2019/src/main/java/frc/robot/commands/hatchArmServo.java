@@ -1,10 +1,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-
 
 public class hatchArmServo extends Command {
   double down = 0;
@@ -25,7 +23,7 @@ public class hatchArmServo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (setAngle >40){
+    if (setAngle > 40) {
       RobotMap.hatchTriangle.setAngle(100);
     }
     RobotMap.hatchArm.setAngle(setAngle);
@@ -46,6 +44,6 @@ public class hatchArmServo extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    //set servo to up value
+    // set servo to up value
   }
 }

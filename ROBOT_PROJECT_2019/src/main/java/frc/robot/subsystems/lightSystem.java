@@ -11,94 +11,94 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 import frc.robot.RobotMap;
 
-
 /**
  * Add your docs here.
  */
 public class lightSystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  //public final SpeedController color = RobotMap.lights;
+  // public final SpeedController color = RobotMap.lights;
 
-  public void party () {
+  public void party() {
     RobotMap.lightsR.set(-.77);
     RobotMap.lightsL.set(-.77);
   }
 
-  public void revenge () {
+  public void revenge() {
     RobotMap.lightsR.set(-.05);
     RobotMap.lightsL.set(-.05);
   }
-  
-  public void white () {
+
+  public void white() {
     RobotMap.lightsR.set(.93);
     RobotMap.lightsL.set(.93);
   }
-  
-  public void blueShots () {
+
+  public void blueShots() {
     RobotMap.lightsR.set(-.83);
     RobotMap.lightsL.set(-.83);
   }
-  
-  public void blue () {
+
+  public void blue() {
     RobotMap.lightsR.set(.85);
     RobotMap.lightsL.set(.85);
   }
-  
-  public void red () {
+
+  public void red() {
     RobotMap.lightsR.set(.61);
     RobotMap.lightsL.set(.61);
   }
-  
-  public void beatBlue () {
+
+  public void beatBlue() {
     RobotMap.lightsR.set(-.23);
     RobotMap.lightsL.set(-.23);
   }
-  
-  public void oceanBlue () {
+
+  public void oceanBlue() {
     RobotMap.lightsR.set(-.41);
     RobotMap.lightsL.set(-.41);
   }
-  
-  public void redShots () {
+
+  public void redShots() {
     RobotMap.lightsR.set(-.85);
     RobotMap.lightsL.set(-.85);
   }
-  
-  public void scannerRed () {
+
+  public void scannerRed() {
     RobotMap.lightsR.set(-.35);
     RobotMap.lightsL.set(-.35);
   }
-  
-  public void beatRed () {
+
+  public void beatRed() {
     RobotMap.lightsR.set(-.25);
     RobotMap.lightsL.set(-.25);
   }
-  
-  public void beatWhite () {
+
+  public void beatWhite() {
     RobotMap.lightsR.set(-.21);
     RobotMap.lightsL.set(-.21);
   }
-  
-  public void scannerGray () {
+
+  public void scannerGray() {
     RobotMap.lightsR.set(-.33);
     RobotMap.lightsL.set(-.33);
   }
-  public void gray () {
+
+  public void gray() {
     RobotMap.lightsR.set(.95);
     RobotMap.lightsL.set(.95);
-  } 
-  
+  }
+
   public void strobeYellow() {
     RobotMap.lightsR.set(-.07);
     RobotMap.lightsL.set(-.07);
-    
+
   }
-  
+
   public void lavaError() {
     RobotMap.lightsR.set(.49);
     RobotMap.lightsL.set(.49);
-    
+
   }
 
   public void rainbowGlitter() {
@@ -108,15 +108,15 @@ public class lightSystem extends Subsystem {
 
   public void confetti() {
     RobotMap.lightsR.set(-.87);
-    RobotMap.lightsL.set(-.87); 
+    RobotMap.lightsL.set(-.87);
   }
-  
-  public void off () {
+
+  public void off() {
     RobotMap.lightsR.set(0);
     RobotMap.lightsL.set(0);
   }
 
-  public void smartdash (double color) {
+  public void smartdash(double color) {
     RobotMap.lightsR.set(color);
     RobotMap.lightsL.set(color);
   }

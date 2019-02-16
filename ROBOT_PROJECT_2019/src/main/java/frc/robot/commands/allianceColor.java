@@ -3,13 +3,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.lightSystem;
 
 public class allianceColor extends Command {
   public allianceColor() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-  requires(Robot.lightSystem);
+    requires(Robot.lightSystem);
   }
 
   // Called just before this Command runs the first time
@@ -25,11 +24,9 @@ public class allianceColor extends Command {
     if (color == DriverStation.Alliance.valueOf("Blue")) {
       Robot.lightSystem.blue();
 
-    }
-    else if (color == DriverStation.Alliance.valueOf("Red")){
+    } else if (color == DriverStation.Alliance.valueOf("Red")) {
       Robot.lightSystem.red();
-    } 
-    else {
+    } else {
       Robot.lightSystem.scannerGray();
     }
   }

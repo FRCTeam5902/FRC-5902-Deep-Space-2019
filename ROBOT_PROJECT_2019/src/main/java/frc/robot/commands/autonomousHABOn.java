@@ -7,12 +7,11 @@ public class autonomousHABOn extends CommandGroup {
    * Add your docs here.
    */
   public autonomousHABOn() {
-    //line up
-    //drive towards lip
-    //lift up
-    //push over lip
-    //park or whatever
-
+    // line up
+    // drive towards lip
+    // lift up
+    // push over lip
+    // park or whatever
 
     // Add Commands here:
     // e.g. addSequential(new Command1());

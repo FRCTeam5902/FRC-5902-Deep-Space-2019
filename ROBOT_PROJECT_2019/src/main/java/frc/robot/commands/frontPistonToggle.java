@@ -2,10 +2,9 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import edu.wpi.first.wpilibj.smartdashboard.*;
 
 //This code toggles on and off the two front pistons with a toggleWhenPressed button in OI
-public class frontPistonToggle extends Command{
+public class frontPistonToggle extends Command {
   public frontPistonToggle() {
     requires(Robot.pneumaticSystem);
   }

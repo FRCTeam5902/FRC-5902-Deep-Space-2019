@@ -18,9 +18,9 @@ public class driveStraight extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //puts power to each motor separately
+    // puts power to each motor separately
     Robot.driveTrain.driveStraightAdjust(.5, .5); // Adjust for our Drift.
-    	setTimeout(1); 
+    setTimeout(1);
 
   }
 

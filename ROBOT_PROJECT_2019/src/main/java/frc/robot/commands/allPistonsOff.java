@@ -2,11 +2,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import edu.wpi.first.wpilibj.smartdashboard.*;
 
 //This code turns front and back pistons off 
 
-public class allPistonsOff extends Command{
+public class allPistonsOff extends Command {
 
   public allPistonsOff() {
     requires(Robot.pneumaticSystem);
@@ -15,15 +14,14 @@ public class allPistonsOff extends Command{
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-   
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.pneumaticSystem.offAllPistons();  
-}
-
+    Robot.pneumaticSystem.offAllPistons();
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
