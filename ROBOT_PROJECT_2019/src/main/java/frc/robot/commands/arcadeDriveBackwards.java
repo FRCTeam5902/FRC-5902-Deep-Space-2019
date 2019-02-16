@@ -22,7 +22,7 @@ public class arcadeDriveBackwards extends Command {
     protected void execute() {
         double driveSpeed = 1;
         //forward and backward sensitivity, y value of joystick
-        double driveSensitivity = .5;
+        double driveSensitivity = .75;
         
         //turning sensitivity, z value of joystick
         double turnSensitivity = .5;

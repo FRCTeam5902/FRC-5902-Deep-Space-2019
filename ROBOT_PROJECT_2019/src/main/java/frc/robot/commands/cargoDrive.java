@@ -1,8 +1,10 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 //This code makes the cargo intake motors able to be controlled by one of the joysticks.
 public class cargoDrive extends Command {
@@ -14,33 +16,48 @@ public class cargoDrive extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() { 
-    //Ramp up Speed
     }
-        public double RSpeedY;
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
         double driveSpeed = 1;
         //forward and backward sensitivity, y value of joystick
-        double driveSensitivity = .85;
+        double driveSensitivity = .65;
         
         double gety = Robot.oi.getLogitechJoy2().getY();
         Robot.speed = (driveSpeed);
+        if (gety*driveSensitivity > .2 || gety*driveSensitivity < -.2) {
         // added minimum gety so that small adjustments don't power the motors
-        if (gety < -.1) {
-          Robot.cargoSystem.eject(driveSensitivity*gety);
-          Robot.lightSystem.rainbowGlitter();
-        }
-        else if (gety > .1) {
-          Robot.cargoSystem.intake(driveSensitivity*gety);
-          Robot.lightSystem.rainbowGlitter();
-        }
+          if (RobotMap.compressor.enabled()==true) {
+           // RobotMap.compressor.stop();
+            Robot.cargoSystem.eject
+            (driveSensitivity*gety);
+            Robot.lightSystem.rainbowGlitter();
+          }
+          else {
+            RobotMap.compressor.start();
+            Robot.cargoSystem.eject
+            (driveSensitivity*gety);
+            Robot.lightSystem.rainbowGlitter();
+          }
+        }  
         else {
-          Robot.cargoSystem.stop();
-          Robot.lightSystem.gray();
+            Robot.cargoSystem.stop();
+            
+  DriverStation.Alliance color;
+  color = DriverStation.getInstance().getAlliance();
+  if (color == DriverStation.Alliance.valueOf("Blue")) {
+    Robot.lightSystem.blue();
 
+  }
+  else if (color == DriverStation.Alliance.valueOf("Red")){
+    Robot.lightSystem.red();
+  } 
+  else {
+    Robot.lightSystem.scannerGray();
+  }
         }
-      }
+    }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override

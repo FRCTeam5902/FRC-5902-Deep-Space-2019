@@ -15,6 +15,7 @@ public class arcadeDriveSandbox extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        SmartDashboard.putString("Drive Mode","Hatch Front");
     }
     // Called repeatedly when this Command is scheduled to run
     @Override
@@ -27,20 +28,20 @@ public class arcadeDriveSandbox extends Command {
         double turnSensitivity = .5;
         double gety = Robot.oi.getLogitechJoy().getY();
         double getz = Robot.oi.getLogitechJoy().getZ();
-        
+
         double z = getz*turnSensitivity;
         double y = gety*driveSensitivity;
+
         Robot.speed = (driveSpeed);
         SmartDashboard.putNumber("Robot.speed", Robot.speed);
         // added minimum getz and gety so that small adjustments don't power the motors
-
-        Robot.driveTrain.arcadeDrive(-y, -z, Robot.speed);
-        //Robot.driveTrain.curvatureDrive(y, z, false);
+        if (getz < .2 && getz > -.2) {
+            Robot.driveTrain.arcadeDrive(y, 0, Robot.speed);
+        }
+        else {
+            Robot.driveTrain.arcadeDrive(y, z, Robot.speed);
+        }
     }
-
-    
-    
-
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {

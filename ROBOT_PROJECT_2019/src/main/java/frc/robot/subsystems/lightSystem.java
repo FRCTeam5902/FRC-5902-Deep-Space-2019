@@ -21,83 +21,104 @@ public class lightSystem extends Subsystem {
   //public final SpeedController color = RobotMap.lights;
 
   public void party () {
-    RobotMap.lights.set(-.77);
+    RobotMap.lightsR.set(-.77);
+    RobotMap.lightsL.set(-.77);
   }
 
   public void revenge () {
-    RobotMap.lights.set(-.05);
+    RobotMap.lightsR.set(-.05);
+    RobotMap.lightsL.set(-.05);
   }
   
   public void white () {
-    RobotMap.lights.set(.93);
+    RobotMap.lightsR.set(.93);
+    RobotMap.lightsL.set(.93);
   }
   
   public void blueShots () {
-    RobotMap.lights.set(-.83);
+    RobotMap.lightsR.set(-.83);
+    RobotMap.lightsL.set(-.83);
   }
   
   public void blue () {
-    RobotMap.lights.set(.85);
+    RobotMap.lightsR.set(.85);
+    RobotMap.lightsL.set(.85);
   }
   
   public void red () {
-    RobotMap.lights.set(.61);
+    RobotMap.lightsR.set(.61);
+    RobotMap.lightsL.set(.61);
   }
   
   public void beatBlue () {
-    RobotMap.lights.set(-.23);
+    RobotMap.lightsR.set(-.23);
+    RobotMap.lightsL.set(-.23);
   }
   
   public void oceanBlue () {
-    RobotMap.lights.set(-.41);
+    RobotMap.lightsR.set(-.41);
+    RobotMap.lightsL.set(-.41);
   }
   
   public void redShots () {
-    RobotMap.lights.set(-.85);
+    RobotMap.lightsR.set(-.85);
+    RobotMap.lightsL.set(-.85);
   }
   
   public void scannerRed () {
-    RobotMap.lights.set(-.35);
+    RobotMap.lightsR.set(-.35);
+    RobotMap.lightsL.set(-.35);
   }
   
   public void beatRed () {
-    RobotMap.lights.set(-.25);
+    RobotMap.lightsR.set(-.25);
+    RobotMap.lightsL.set(-.25);
   }
   
   public void beatWhite () {
-    RobotMap.lights.set(-.21);
+    RobotMap.lightsR.set(-.21);
+    RobotMap.lightsL.set(-.21);
   }
   
   public void scannerGray () {
-    RobotMap.lights.set(-.33);
+    RobotMap.lightsR.set(-.33);
+    RobotMap.lightsL.set(-.33);
   }
-  
   public void gray () {
-    RobotMap.lights.set(.95);
+    RobotMap.lightsR.set(.95);
+    RobotMap.lightsL.set(.95);
   } 
   
   public void strobeYellow() {
-    RobotMap.lights.set(-.07);
+    RobotMap.lightsR.set(-.07);
+    RobotMap.lightsL.set(-.07);
     
   }
   
   public void lavaError() {
-    RobotMap.lights.set(.49);
+    RobotMap.lightsR.set(.49);
+    RobotMap.lightsL.set(.49);
     
   }
 
   public void rainbowGlitter() {
-    RobotMap.lights.set(-.89);
-    
+    RobotMap.lightsR.set(-.89);
+    RobotMap.lightsL.set(-.89);
   }
 
   public void confetti() {
-    RobotMap.lights.set(-.87);
-    
+    RobotMap.lightsR.set(-.87);
+    RobotMap.lightsL.set(-.87); 
   }
   
   public void off () {
-    RobotMap.lights.set(0);
+    RobotMap.lightsR.set(0);
+    RobotMap.lightsL.set(0);
+  }
+
+  public void smartdash (double color) {
+    RobotMap.lightsR.set(color);
+    RobotMap.lightsL.set(color);
   }
   
 /*   public String getLightColor() {

@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
     hatchSystem = new hatchSystem();
     cargoSystem = new cargoSystem();
     lightSystem = new lightSystem();
-    gyro = new ADXRS450_Gyro(); 
+    gyro = new ADXRS450_Gyro();
     gyro.reset();
     gyro.calibrate();
     RobotMap.init();
@@ -51,9 +51,10 @@ public class Robot extends TimedRobot {
     //Operator Interface
     oi = new OI();
     // Autonomous Chooser Code
-    //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    //m_chooser.setDefaultOption("Color", new lightSystem.smartdash());
     // chooser.addOption("My Auto", new MyAutoCommand());
     //SmartDashboard.putData("Auto mode", m_chooser);
+    //SmartDashboard.putData("color",)
 }
   @Override
   public void robotPeriodic() {
@@ -64,6 +65,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Get Y", Robot.oi.getLogitechJoy().getY());
     SmartDashboard.putNumber("Get Z", Robot.oi.getLogitechJoy().getZ());
     SmartDashboard.putNumber("Get X", Robot.oi.getLogitechJoy().getX());
+    //SmartDashboard.putNumber("test",.4);
+    //SmartDashboard.putNumber("test",.2);
   }
 
   @Override
@@ -73,6 +76,7 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+
     //SmartDashboard.putString("Light Color", Robot.lightSystem.getLightColor());
 
   }
@@ -101,21 +105,21 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    /* al = ds.getAlliance();
-    System.out.println(al == Alliance.Red);
-    lightSystem.strobeYellow();
-    if (al == Alliance.Red) {
-      System.out.println(1);
-      lightSystem.beatRed();
+  //new allianceColor();
+
+  DriverStation.Alliance color;
+    color = DriverStation.getInstance().getAlliance();
+    if (color == DriverStation.Alliance.valueOf("Blue")) {
+      Robot.lightSystem.blue();
+
+    }
+    else if (color == DriverStation.Alliance.valueOf("Red")){
+      Robot.lightSystem.red();
     } 
-    if (al == Alliance.Blue) {
-      System.out.println(2);
-      lightSystem.beatBlue();
-    } 
-    if (al == Alliance.Invalid){
-      System.out.println(3);
-      lightSystem.scannerGray();
-  } */
+    else {
+      Robot.lightSystem.scannerGray();
+    }
+   
   RobotMap.hatchTriangle.setAngle(100); // 100 is down
   RobotMap.hatchArm.setAngle(0); // 0 is down
   }

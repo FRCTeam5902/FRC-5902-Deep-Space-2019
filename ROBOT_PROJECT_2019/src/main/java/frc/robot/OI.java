@@ -112,7 +112,7 @@ public class OI {
     // Shuffleboad Data
     SmartDashboard.putBoolean("Front piston status,", RobotMap.frontSolenoid.get());
     SmartDashboard.putBoolean("Back piston status,", RobotMap.backSolenoid.get());
-    //SmartDashboard.put("Drive Strait", new tankDrive(.5,.5));
+    //SmartDashboard.put("Drive Straight", new tankDrive(.5,.5));
 
     }
 

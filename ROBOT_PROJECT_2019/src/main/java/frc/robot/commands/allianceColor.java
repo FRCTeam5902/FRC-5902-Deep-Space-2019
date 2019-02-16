@@ -1,20 +1,15 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
+import frc.robot.subsystems.lightSystem;
 
-
-public class hatchArmServo extends Command {
-  double down = 0;
-  double up = 45;
-
-  public double setAngle;
-
-  public hatchArmServo(double setAngle) {
-    requires(Robot.hatchSystem);
-    this.setAngle = setAngle;
+public class allianceColor extends Command {
+  public allianceColor() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+  requires(Robot.lightSystem);
   }
 
   // Called just before this Command runs the first time
@@ -25,10 +20,18 @@ public class hatchArmServo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (setAngle >40){
-      RobotMap.hatchTriangle.setAngle(100);
+    DriverStation.Alliance color;
+    color = DriverStation.getInstance().getAlliance();
+    if (color == DriverStation.Alliance.valueOf("Blue")) {
+      Robot.lightSystem.blue();
+
     }
-    RobotMap.hatchArm.setAngle(setAngle);
+    else if (color == DriverStation.Alliance.valueOf("Red")){
+      Robot.lightSystem.red();
+    } 
+    else {
+      Robot.lightSystem.scannerGray();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -46,6 +49,5 @@ public class hatchArmServo extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    //set servo to up value
   }
 }
