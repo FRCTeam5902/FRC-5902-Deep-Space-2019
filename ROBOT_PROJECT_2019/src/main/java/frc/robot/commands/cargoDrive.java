@@ -39,6 +39,7 @@ public class cargoDrive extends Command {
     } else {
       Robot.cargoSystem.stop();
       RobotMap.compressor.start();
+      Robot.lightSystem.getAllianceColor();
     }
   }
 

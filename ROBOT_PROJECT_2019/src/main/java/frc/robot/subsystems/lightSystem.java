@@ -16,10 +16,8 @@ public class lightSystem extends Subsystem {
     color = DriverStation.getInstance().getAlliance();
     if (color == DriverStation.Alliance.valueOf("Blue")) {
       blue();
-
     } else if (color == DriverStation.Alliance.valueOf("Red")) {
       red();
-
     } else {
       scannerGray();
     }
@@ -28,10 +26,10 @@ public class lightSystem extends Subsystem {
     DriverStation.Alliance color;
     color = DriverStation.getInstance().getAlliance();
     if (color == DriverStation.Alliance.valueOf("Blue")) {
-      beatBlue();
+      BPMOcean();
 
     } else if (color == DriverStation.Alliance.valueOf("Red")) {
-      beatRed();
+      BPMLava();
 
     } else {
       scannerGray();
@@ -40,6 +38,16 @@ public class lightSystem extends Subsystem {
   public void party() {
     RobotMap.lightsR.set(-.77);
     RobotMap.lightsL.set(-.77);
+  }
+
+  public void BPMOcean() {
+    RobotMap.lightsR.set(-.65);
+    RobotMap.lightsL.set(-.65);
+  }
+
+  public void BPMLava() {
+    RobotMap.lightsR.set(-.63);
+    RobotMap.lightsL.set(-.63);
   }
 
   public void revenge() {

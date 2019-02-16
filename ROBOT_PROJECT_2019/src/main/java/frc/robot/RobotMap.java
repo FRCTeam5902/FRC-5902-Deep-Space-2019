@@ -48,10 +48,10 @@ public class RobotMap {
     driveTrainRobotDrive.setExpiration(0.1);
     driveTrainRobotDrive.setMaxOutput(1.0);
     driveTrainRobotDrive.setDeadband(.02);
-    driveTrainRightDriveLead.configOpenloopRamp(2);
-    driveTrainLeftDriveLead.configOpenloopRamp(2);
-    driveTrainRightDriveFollow.configOpenloopRamp(2);
-    driveTrainRightDriveFollow.configOpenloopRamp(2);
+    driveTrainRightDriveLead.configOpenloopRamp(1);
+    driveTrainLeftDriveLead.configOpenloopRamp(1);
+    driveTrainRightDriveFollow.configOpenloopRamp(1);
+    driveTrainRightDriveFollow.configOpenloopRamp(1);
 
     // Create hatchSystem
     hatchArm = new Servo(1);

@@ -9,11 +9,14 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.driveStraight;
+import frc.robot.commands.drivent;
 import frc.robot.subsystems.cargoSystem;
 import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.hatchSystem;
 import frc.robot.subsystems.lightSystem;
 import frc.robot.subsystems.pneumaticSystem;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 public class Robot extends TimedRobot {
   public static OI oi;
@@ -26,15 +29,14 @@ public class Robot extends TimedRobot {
   public ADXRS450_Gyro gyro;
   public static Alliance al;
   public static DriverStation ds;
-   
-
-  Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  SendableChooser chooser;
+  Command autonomousCommand;
   public final Servo hatchArm = RobotMap.hatchArm;
   public final Servo hatchTriangle = RobotMap.hatchTriangle;
 
   @Override
   public void robotInit() {
+
     pneumaticSystem = new pneumaticSystem();
     driveTrain = new driveTrain();
     hatchSystem = new hatchSystem();
@@ -49,9 +51,10 @@ public class Robot extends TimedRobot {
     oi = new OI();
 
     // Autonomous Chooser Code
-    // m_chooser.setDefaultOption("Color", new lightSystem.smartdash());
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    // SmartDashboard.putData("Auto mode", m_chooser);
+    chooser = new SendableChooser();
+    chooser.setDefaultOption("Drive Straight", new driveStraight());
+    chooser.addOption("Driven't", new drivent());
+    SmartDashboard.putData("Auto mode", chooser);
     // SmartDashboard.putData("color",)
   }
 
@@ -65,9 +68,6 @@ public class Robot extends TimedRobot {
     //SmartDashboard.putNumber("Get Y", Robot.oi.getLogitechJoy().getY());
     //SmartDashboard.putNumber("Get Z", Robot.oi.getLogitechJoy().getZ());
     //SmartDashboard.putNumber("Get X", Robot.oi.getLogitechJoy().getX());
-
-    // SmartDashboard.putNumber("test",.4);
-    // SmartDashboard.putNumber("test",.2);
   }
 
   @Override
@@ -77,24 +77,26 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
-
-    // SmartDashboard.putString("Light Color", Robot.lightSystem.getLightColor());
-
   }
 
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
-    
+    autonomousCommand = (Command) chooser.getSelected();
+    Robot.lightSystem.getAllianceColor();
+    RobotMap.hatchTriangle.setAngle(100); // 100 is down
+    RobotMap.hatchArm.setAngle(0); // 0 is 
+    RobotMap.compressor.stop();
+    //
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
+    if (autonomousCommand != null) {
+      autonomousCommand.start();
     }
   }
 
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+    Robot.lightSystem.getAllianceColor();
   }
 
   @Override
@@ -103,13 +105,10 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
+    if (autonomousCommand != null) {
+      autonomousCommand.cancel();
     }
-    // new allianceColor()
-    Robot.lightSystem.getAllianceColor();
-    RobotMap.hatchTriangle.setAngle(100); // 100 is down
-    RobotMap.hatchArm.setAngle(0); // 0 is down
+    RobotMap.compressor.start();
   }
 
   @Override

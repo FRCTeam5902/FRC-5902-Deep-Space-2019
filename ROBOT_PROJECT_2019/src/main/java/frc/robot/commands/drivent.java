@@ -1,12 +1,9 @@
 package frc.robot.commands;
-
-import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
-import frc.robot.commands.driveStraight;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class driveStraight extends Command {
-  public driveStraight() {
+public class drivent extends Command {
+  public drivent() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.driveTrain);
   }
@@ -19,28 +16,23 @@ public class driveStraight extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    // puts power to each motor separately
-    Robot.driveTrain.driveStraight(1);
-    setTimeout(2);
-
+    Robot.driveTrain.driveStraight(0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isTimedOut();
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.driveTrain.driveStraight(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }
