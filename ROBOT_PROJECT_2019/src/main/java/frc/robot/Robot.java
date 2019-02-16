@@ -26,6 +26,7 @@ public class Robot extends TimedRobot {
   public ADXRS450_Gyro gyro;
   public static Alliance al;
   public static DriverStation ds;
+   
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -46,6 +47,7 @@ public class Robot extends TimedRobot {
     System.out.println("Robot Init");
     // Operator Interface
     oi = new OI();
+
     // Autonomous Chooser Code
     // m_chooser.setDefaultOption("Color", new lightSystem.smartdash());
     // chooser.addOption("My Auto", new MyAutoCommand());
@@ -57,11 +59,12 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     // SmartDashboard.putBoolean("Gyro Connected", gyro.isConnected());
     // SmartDashboard.putNumber("Robot Gyro Value", gyro.getAngle());
-    SmartDashboard.putBoolean("Front Pistons Out?", RobotMap.frontSolenoid.get());
-    SmartDashboard.putBoolean("Back Pistons Out?", RobotMap.backSolenoid.get());
-    SmartDashboard.putNumber("Get Y", Robot.oi.getLogitechJoy().getY());
-    SmartDashboard.putNumber("Get Z", Robot.oi.getLogitechJoy().getZ());
-    SmartDashboard.putNumber("Get X", Robot.oi.getLogitechJoy().getX());
+    SmartDashboard.putBoolean("F Pistons", RobotMap.frontSolenoid.get());
+    SmartDashboard.putBoolean("B Pistons", RobotMap.backSolenoid.get());
+    SmartDashboard.putBoolean("PSI", RobotMap.compressor.getPressureSwitchValue());
+    //SmartDashboard.putNumber("Get Y", Robot.oi.getLogitechJoy().getY());
+    //SmartDashboard.putNumber("Get Z", Robot.oi.getLogitechJoy().getZ());
+    //SmartDashboard.putNumber("Get X", Robot.oi.getLogitechJoy().getX());
 
     // SmartDashboard.putNumber("test",.4);
     // SmartDashboard.putNumber("test",.2);
@@ -82,7 +85,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
-
+    
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
@@ -103,19 +106,8 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    // new allianceColor();
-
-    DriverStation.Alliance color;
-    color = DriverStation.getInstance().getAlliance();
-    if (color == DriverStation.Alliance.valueOf("Blue")) {
-      Robot.lightSystem.blue();
-
-    } else if (color == DriverStation.Alliance.valueOf("Red")) {
-      Robot.lightSystem.red();
-    } else {
-      Robot.lightSystem.scannerGray();
-    }
-
+    // new allianceColor()
+    Robot.lightSystem.getAllianceColor();
     RobotMap.hatchTriangle.setAngle(100); // 100 is down
     RobotMap.hatchArm.setAngle(0); // 0 is down
   }

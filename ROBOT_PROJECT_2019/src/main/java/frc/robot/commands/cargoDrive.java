@@ -29,27 +29,16 @@ public class cargoDrive extends Command {
     if (gety * driveSensitivity > .2 || gety * driveSensitivity < -.2) {
       // added minimum gety so that small adjustments don't power the motors
       if (RobotMap.compressor.enabled() == true) {
-        // RobotMap.compressor.stop();
+        RobotMap.compressor.stop();
         Robot.cargoSystem.eject(driveSensitivity * gety);
-        Robot.lightSystem.rainbowGlitter();
+        Robot.lightSystem.getAllianceColorMovement();
       } else {
-        RobotMap.compressor.start();
         Robot.cargoSystem.eject(driveSensitivity * gety);
-        Robot.lightSystem.rainbowGlitter();
+        Robot.lightSystem.getAllianceColorMovement();
       }
     } else {
       Robot.cargoSystem.stop();
-
-      DriverStation.Alliance color;
-      color = DriverStation.getInstance().getAlliance();
-      if (color == DriverStation.Alliance.valueOf("Blue")) {
-        Robot.lightSystem.blue();
-
-      } else if (color == DriverStation.Alliance.valueOf("Red")) {
-        Robot.lightSystem.red();
-      } else {
-        Robot.lightSystem.scannerGray();
-      }
+      RobotMap.compressor.start();
     }
   }
 

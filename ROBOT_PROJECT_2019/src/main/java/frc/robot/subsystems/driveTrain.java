@@ -21,8 +21,8 @@ public class driveTrain extends Subsystem {
     @Override
     public void initDefaultCommand() {
 
-        RobotMap.driveTrainleftDriveFollow.follow(RobotMap.driveTrainleftDriveLead);
-        RobotMap.driveTrainrightDriveFollow.follow(RobotMap.driveTrainrightDriveLead);
+        RobotMap.driveTrainLeftDriveFollow.follow(RobotMap.driveTrainLeftDriveLead);
+        RobotMap.driveTrainRightDriveFollow.follow(RobotMap.driveTrainRightDriveLead);
         setDefaultCommand(new arcadeDrive());
         // RobotMap.driveTrainrightDriveLead.configOpenloopRamp(5);
         // RobotMap.driveTrainleftDriveLead.configOpenloopRamp(5);
@@ -31,37 +31,37 @@ public class driveTrain extends Subsystem {
 
     public void arcadeDrive(double move, double rotate, double speed) {
 
-        RobotMap.driveTrainrobotDrive.arcadeDrive(move * speed, rotate * speed);
+        RobotMap.driveTrainRobotDrive.arcadeDrive(move * speed, rotate * speed);
 
     }
 
     public void curvatureDrive(double forward, double rotate, boolean quickTurn) {
 
-        RobotMap.driveTrainrobotDrive.curvatureDrive(forward, rotate, quickTurn);
+        RobotMap.driveTrainRobotDrive.curvatureDrive(forward, rotate, quickTurn);
 
     }
 
     public void arcadeDriveBackwards(double move, double rotate, double speed) {
 
-        RobotMap.driveTrainrobotDrive.arcadeDrive(-move * speed, rotate * speed);
+        RobotMap.driveTrainRobotDrive.arcadeDrive(-move * speed, rotate * speed);
 
     }
 
     public void autoDrive(double speedL, double speedR) {
 
-        RobotMap.driveTrainrobotDrive.tankDrive(speedL, speedR);
+        RobotMap.driveTrainRobotDrive.tankDrive(speedL, speedR);
 
     }
 
     public void driveStraight(double speed) {
 
-        RobotMap.driveTrainrobotDrive.tankDrive(speed, speed);
+        RobotMap.driveTrainRobotDrive.tankDrive(speed, speed);
 
     }
 
     public void driveStraightAdjust(double speedL, double speedR) {
 
-        RobotMap.driveTrainrobotDrive.tankDrive(speedL, speedR);
+        RobotMap.driveTrainRobotDrive.tankDrive(speedL, speedR);
 
     }
 

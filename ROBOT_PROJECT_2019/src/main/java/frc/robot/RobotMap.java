@@ -10,25 +10,17 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
 public class RobotMap {
   public static AnalogAccelerometer sensorBaseAAccelerometer;
-  public static WPI_TalonSRX driveTrainleftDriveLead;
-  public static WPI_TalonSRX driveTrainrightDriveLead;
-  public static WPI_TalonSRX driveTrainleftDriveFollow;
-  public static WPI_TalonSRX driveTrainrightDriveFollow;
+  public static WPI_TalonSRX driveTrainLeftDriveLead;
+  public static WPI_TalonSRX driveTrainRightDriveLead;
+  public static WPI_TalonSRX driveTrainLeftDriveFollow;
+  public static WPI_TalonSRX driveTrainRightDriveFollow;
   public static WPI_TalonSRX cargoIntakeLead;
   public static WPI_TalonSRX cargoIntakeFollow;
   public static Servo hatchArm;
   public static Servo hatchTriangle;
-  public static DifferentialDrive driveTrainrobotDrive;
-
-  // Lights
+  public static DifferentialDrive driveTrainRobotDrive;
   public static SpeedController lightsR;
   public static SpeedController lightsL;
 
@@ -43,19 +35,23 @@ public class RobotMap {
     sensorBaseAAccelerometer.setZero(2.5);
 
     // Create Left Motors
-    driveTrainleftDriveLead = new WPI_TalonSRX(3);
-    driveTrainleftDriveFollow = new WPI_TalonSRX(4);
+    driveTrainLeftDriveLead = new WPI_TalonSRX(3);
+    driveTrainLeftDriveFollow = new WPI_TalonSRX(4);
 
     // Create Right Motors
-    driveTrainrightDriveLead = new WPI_TalonSRX(1);
-    driveTrainrightDriveFollow = new WPI_TalonSRX(2);
+    driveTrainRightDriveLead = new WPI_TalonSRX(1);
+    driveTrainRightDriveFollow = new WPI_TalonSRX(2);
 
     // Create driveTrain
-    driveTrainrobotDrive = new DifferentialDrive(driveTrainleftDriveLead, driveTrainrightDriveLead);
-    driveTrainrobotDrive.setSafetyEnabled(true);
-    driveTrainrobotDrive.setExpiration(0.1);
-    driveTrainrobotDrive.setMaxOutput(1.0);
-    driveTrainrobotDrive.setDeadband(.02);
+    driveTrainRobotDrive = new DifferentialDrive(driveTrainLeftDriveLead, driveTrainRightDriveLead);
+    driveTrainRobotDrive.setSafetyEnabled(true);
+    driveTrainRobotDrive.setExpiration(0.1);
+    driveTrainRobotDrive.setMaxOutput(1.0);
+    driveTrainRobotDrive.setDeadband(.02);
+    driveTrainRightDriveLead.configOpenloopRamp(2);
+    driveTrainLeftDriveLead.configOpenloopRamp(2);
+    driveTrainRightDriveFollow.configOpenloopRamp(2);
+    driveTrainRightDriveFollow.configOpenloopRamp(2);
 
     // Create hatchSystem
     hatchArm = new Servo(1);

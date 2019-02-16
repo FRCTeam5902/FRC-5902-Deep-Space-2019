@@ -1,14 +1,7 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+import edu.wpi.first.wpilibj.DriverStation;
 import frc.robot.RobotMap;
 
 /**
@@ -18,7 +11,32 @@ public class lightSystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   // public final SpeedController color = RobotMap.lights;
+  public void getAllianceColor() {
+    DriverStation.Alliance color;
+    color = DriverStation.getInstance().getAlliance();
+    if (color == DriverStation.Alliance.valueOf("Blue")) {
+      blue();
 
+    } else if (color == DriverStation.Alliance.valueOf("Red")) {
+      red();
+
+    } else {
+      scannerGray();
+    }
+  }
+  public void getAllianceColorMovement() {
+    DriverStation.Alliance color;
+    color = DriverStation.getInstance().getAlliance();
+    if (color == DriverStation.Alliance.valueOf("Blue")) {
+      beatBlue();
+
+    } else if (color == DriverStation.Alliance.valueOf("Red")) {
+      beatRed();
+
+    } else {
+      scannerGray();
+    }
+  }
   public void party() {
     RobotMap.lightsR.set(-.77);
     RobotMap.lightsL.set(-.77);
