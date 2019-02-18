@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.autonomousHABOff;
 import frc.robot.commands.driveStraight;
 import frc.robot.commands.drivent;
 import frc.robot.subsystems.cargoSystem;
@@ -52,8 +53,8 @@ public class Robot extends TimedRobot {
 
     // Autonomous Chooser Code
     chooser = new SendableChooser();
-    chooser.setDefaultOption("Drive Straight", new driveStraight());
-    chooser.addOption("Driven't", new drivent());
+    chooser.setDefaultOption("Driven't", new drivent());
+    chooser.addOption("Drive Straight", new driveStraight());
     SmartDashboard.putData("Auto mode", chooser);
     // SmartDashboard.putData("color",)
   }

@@ -26,7 +26,7 @@ public class arcadeDrive extends Command {
         double driveSensitivity = .75;
 
         // turning sensitivity, z value of joystick
-        double turnSensitivity = .5;
+        double turnSensitivity = .6;
         double gety = Robot.oi.getLogitechJoy().getY();
         double getz = Robot.oi.getLogitechJoy().getZ();
 

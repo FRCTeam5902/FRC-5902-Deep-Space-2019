@@ -20,8 +20,9 @@ public class driveStraight extends Command {
   @Override
   protected void execute() {
     // puts power to each motor separately
-    Robot.driveTrain.driveStraight(1);
-    setTimeout(2);
+    Robot.driveTrain.arcadeDrive(1,.4,1);
+    //Robot.driveTrain.autoDrive(1,1);
+    setTimeout(.5);
 
   }
 
@@ -35,6 +36,7 @@ public class driveStraight extends Command {
   @Override
   protected void end() {
     Robot.driveTrain.driveStraight(0);
+    new arcadeDrive(); // Allow drivers to take control of the robot during sandstorm period.
   }
 
   // Called when another command which requires one or more of the same
