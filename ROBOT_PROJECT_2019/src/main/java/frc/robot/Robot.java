@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.autonomousHABOff;
 import frc.robot.commands.driveStraight;
 import frc.robot.commands.drivent;
 import frc.robot.subsystems.cargoSystem;
@@ -18,6 +17,9 @@ import frc.robot.subsystems.hatchSystem;
 import frc.robot.subsystems.lightSystem;
 import frc.robot.subsystems.pneumaticSystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Ultrasonic;
 
 public class Robot extends TimedRobot {
   public static OI oi;
@@ -37,26 +39,25 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-
     pneumaticSystem = new pneumaticSystem();
     driveTrain = new driveTrain();
     hatchSystem = new hatchSystem();
     cargoSystem = new cargoSystem();
     lightSystem = new lightSystem();
     gyro = new ADXRS450_Gyro();
+    oi = new OI();
     gyro.reset();
     gyro.calibrate();
-    RobotMap.init();
-    System.out.println("Robot Init");
     // Operator Interface
-    oi = new OI();
-
+    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     // Autonomous Chooser Code
     chooser = new SendableChooser();
     chooser.setDefaultOption("Driven't", new drivent());
     chooser.addOption("Drive Straight", new driveStraight());
     SmartDashboard.putData("Auto mode", chooser);
-    // SmartDashboard.putData("color",)
+    System.out.println("Robot Init");
+    //RobotMap.ultrasonic.setAutomaticMode(true);
+    RobotMap.init();
   }
 
   @Override
@@ -66,6 +67,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("F Pistons", RobotMap.frontSolenoid.get());
     SmartDashboard.putBoolean("B Pistons", RobotMap.backSolenoid.get());
     SmartDashboard.putBoolean("PSI", RobotMap.compressor.getPressureSwitchValue());
+    //SmartDashboard.putNumber("Distance", RobotMap.ultra.getRangeInches());
+
     //SmartDashboard.putNumber("Get Y", Robot.oi.getLogitechJoy().getY());
     //SmartDashboard.putNumber("Get Z", Robot.oi.getLogitechJoy().getZ());
     //SmartDashboard.putNumber("Get X", Robot.oi.getLogitechJoy().getX());

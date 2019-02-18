@@ -8,7 +8,10 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 public class RobotMap {
   public static AnalogAccelerometer sensorBaseAAccelerometer;
@@ -23,11 +26,12 @@ public class RobotMap {
   public static DifferentialDrive driveTrainRobotDrive;
   public static SpeedController lightsR;
   public static SpeedController lightsL;
-
+  public static Ultrasonic ultrasonic;
   // Pneumatics
   public static Compressor compressor;
   public static Solenoid frontSolenoid;
   public static Solenoid backSolenoid;
+  public static Ultrasonic ultra;
 
   public static void init() {
     sensorBaseAAccelerometer = new AnalogAccelerometer(0);
@@ -72,5 +76,6 @@ public class RobotMap {
     lightsR = new Spark(0);
     lightsL = new Spark(3);
 
+    //ultra = new Ultrasonic(0, 0);
   }
 }
