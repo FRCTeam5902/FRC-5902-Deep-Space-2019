@@ -88,7 +88,7 @@ public class Robot extends TimedRobot {
     autonomousCommand = (Command) chooser.getSelected();
     Robot.lightSystem.getAllianceColor();
     RobotMap.hatchTriangle.setAngle(100); // 100 is down
-    RobotMap.hatchArm.setAngle(0); // 0 is 
+    RobotMap.hatchArm.setAngle(-40); // 0 is 
     RobotMap.compressor.stop();
     //
     // schedule the autonomous command (example)
@@ -105,14 +105,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
     if (autonomousCommand != null) {
       autonomousCommand.cancel();
     }
     RobotMap.compressor.start();
+    //RobotMap.hatchTriangle.setAngle(100); // 100 is down
+    //RobotMap.hatchArm.setAngle(0); // 0 is down
   }
 
   @Override

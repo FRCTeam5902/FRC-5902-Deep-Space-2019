@@ -3,6 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.commands.hatchArmServo;
 
 // Values
 // 0 is UP
@@ -32,8 +33,9 @@ public class hatchTriangleServo extends Command {
   protected void execute() {
     // set triangle servo to down position
     // Robot.hatchSystem.turn(up,"triangle");
-    RobotMap.hatchTriangle.setAngle(setAngle);
-
+    if (!hatchArmServo.getArm()) {
+      RobotMap.hatchTriangle.setAngle(setAngle);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

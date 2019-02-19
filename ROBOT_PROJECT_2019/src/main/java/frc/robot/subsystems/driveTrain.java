@@ -53,10 +53,11 @@ public class driveTrain extends Subsystem {
     }
 
     public void autoDrive(double speedL, double speedR) {
-        RobotMap.driveTrainLeftDriveLead.set(speedL);
-        RobotMap.driveTrainLeftDriveFollow.set(speedL);
-        RobotMap.driveTrainRightDriveLead.set(-speedR);
-        RobotMap.driveTrainRightDriveFollow.set(-speedR);
+        //RobotMap.driveTrainLeftDriveLead.set(speedL);
+        //RobotMap.driveTrainLeftDriveFollow.set(speedL);
+        //RobotMap.driveTrainRightDriveLead.set(-speedR);
+        //RobotMap.driveTrainRightDriveFollow.set(-speedR);
+        RobotMap.driveTrainRobotDrive.tankDrive(speedL, speedR);
     }
 
     public void driveStraight(double speed) {

@@ -19,10 +19,8 @@ public class driveStraight extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    // puts power to each motor separately
-    Robot.driveTrain.arcadeDrive(1,.4,1);
-    //Robot.driveTrain.autoDrive(1,1);
-    setTimeout(.5);
+    RobotMap.driveTrainRobotDrive.tankDrive(.8, .8);
+    setTimeout(2);
 
   }
 
