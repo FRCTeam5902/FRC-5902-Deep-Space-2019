@@ -16,10 +16,12 @@ import frc.robot.subsystems.driveTrain;
 import frc.robot.subsystems.hatchSystem;
 import frc.robot.subsystems.lightSystem;
 import frc.robot.subsystems.pneumaticSystem;
+import frc.robot.subsystems.distanceSensor;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 public class Robot extends TimedRobot {
   public static OI oi;
@@ -29,6 +31,7 @@ public class Robot extends TimedRobot {
   public static cargoSystem cargoSystem;
   public static pneumaticSystem pneumaticSystem;
   public static lightSystem lightSystem;
+  public static distanceSensor distanceSensor;
   public ADXRS450_Gyro gyro;
   public static Alliance al;
   public static DriverStation ds;
@@ -36,14 +39,19 @@ public class Robot extends TimedRobot {
   Command autonomousCommand;
   public final Servo hatchArm = RobotMap.hatchArm;
   public final Servo hatchTriangle = RobotMap.hatchTriangle;
-
+  //Ultrasonic ultra = new Ultrasonic(0,0);
+  
   @Override
   public void robotInit() {
+
+//ultra.setAutomaticMode(true);
+
     pneumaticSystem = new pneumaticSystem();
     driveTrain = new driveTrain();
     hatchSystem = new hatchSystem();
     cargoSystem = new cargoSystem();
     lightSystem = new lightSystem();
+    distanceSensor = new distanceSensor();
     gyro = new ADXRS450_Gyro();
     oi = new OI();
     gyro.reset();
@@ -56,7 +64,6 @@ public class Robot extends TimedRobot {
     chooser.addOption("Drive Straight", new driveStraight());
     SmartDashboard.putData("Auto mode", chooser);
     System.out.println("Robot Init");
-    //RobotMap.ultrasonic.setAutomaticMode(true);
     RobotMap.init();
   }
 
@@ -67,6 +74,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("F Pistons", RobotMap.frontSolenoid.get());
     SmartDashboard.putBoolean("B Pistons", RobotMap.backSolenoid.get());
     SmartDashboard.putBoolean("PSI", RobotMap.compressor.getPressureSwitchValue());
+    distanceSensor.updateDashboard();
+    //SmartDashboard.putNumber("Inches", ultrasonic());
     //SmartDashboard.putNumber("Distance", RobotMap.ultra.getRangeInches());
 
     //SmartDashboard.putNumber("Get Y", Robot.oi.getLogitechJoy().getY());
@@ -109,8 +118,8 @@ public class Robot extends TimedRobot {
       autonomousCommand.cancel();
     }
     RobotMap.compressor.start();
-    //RobotMap.hatchTriangle.setAngle(100); // 100 is down
-    //RobotMap.hatchArm.setAngle(0); // 0 is down
+    RobotMap.hatchTriangle.setAngle(100); // 100 is down
+    RobotMap.hatchArm.setAngle(0); // 0 is down
   }
 
   @Override
@@ -121,4 +130,9 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
+  //public double ultrasonic() {
+  //  double range = ultra.getRangeInches();
+  //  return range;
+  //}
 }

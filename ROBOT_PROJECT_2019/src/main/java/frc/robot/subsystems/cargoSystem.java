@@ -28,6 +28,5 @@ public class cargoSystem extends Subsystem {
 
   public void stop() {
     RobotMap.cargoIntakeLead.set(0);
-    RobotMap.cargoIntakeFollow.set(0);
   }
 }

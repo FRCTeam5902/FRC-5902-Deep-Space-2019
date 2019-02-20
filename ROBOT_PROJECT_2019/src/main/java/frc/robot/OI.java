@@ -17,6 +17,7 @@ public class OI {
     // right joystick buttons
     public Joystick logitechRight;
     private JoystickButton joystickButtonR1;
+    private JoystickButton joystickButtonR3;
     // arcade buttons
     public Joystick AC;
     public JoystickButton joystickButtonAC1;
@@ -50,7 +51,9 @@ public class OI {
         joystickButtonL1 = new JoystickButton(logitechLeft, 1);
 
         joystickButtonR1 = new JoystickButton(logitechRight, 1);
-        joystickButtonR1.whileHeld(new cargoIntake(-.9));
+        joystickButtonR3 = new JoystickButton(logitechRight, 3);
+        joystickButtonR1.whileHeld(new cargoIntake(-.95));
+        joystickButtonR3.whileHeld(new cargoIntake(.9));
 
         // Top Row of Buttons on Arcade Controller
         joystickButtonAC1.toggleWhenPressed(new frontPistonToggle());

@@ -36,9 +36,9 @@ public class RobotMap {
   public static Ultrasonic ultra;
 
   public static void init() {
-    sensorBaseAAccelerometer = new AnalogAccelerometer(0);
-    sensorBaseAAccelerometer.setSensitivity(0.0);
-    sensorBaseAAccelerometer.setZero(2.5);
+    //sensorBaseAAccelerometer = new AnalogAccelerometer(0);
+    //sensorBaseAAccelerometer.setSensitivity(0.0);
+    //sensorBaseAAccelerometer.setZero(2.5);
 
     // Create Left Motors
     driveTrainLeftDriveLead = new WPI_TalonSRX(3);
@@ -67,7 +67,6 @@ public class RobotMap {
     // Create cargoIntake
     cargoIntakeLead = new WPI_TalonSRX(5);
     cargoIntakeFollow = new WPI_TalonSRX(6);
-
     // Create pneumaticSystem
     compressor = new Compressor(0);
     frontSolenoid = new Solenoid(1);
