@@ -7,6 +7,7 @@ import frc.robot.commands.arcadeDriveBackwards;
 import frc.robot.commands.backPistonToggle;
 import frc.robot.commands.cargoIntake;
 import frc.robot.commands.frontPistonToggle;
+import frc.robot.commands.half;
 import frc.robot.commands.hatchArmServo;
 import frc.robot.commands.hatchTriangleServo;
 
@@ -14,6 +15,7 @@ public class OI {
     // left joystick buttons
     public Joystick logitechLeft;
     private JoystickButton joystickButtonL1;
+    private JoystickButton joystickButtonL2;
     // right joystick buttons
     public Joystick logitechRight;
     private JoystickButton joystickButtonR1;
@@ -49,12 +51,12 @@ public class OI {
 
         // left joystick buttons
         joystickButtonL1 = new JoystickButton(logitechLeft, 1);
+        joystickButtonL2 = new JoystickButton(logitechLeft, 2);
 
         joystickButtonR1 = new JoystickButton(logitechRight, 1);
         joystickButtonR3 = new JoystickButton(logitechRight, 3);
         joystickButtonR1.whileHeld(new cargoIntake(-.95));
         joystickButtonR3.whileHeld(new cargoIntake(.9));
-
         // Top Row of Buttons on Arcade Controller
         joystickButtonAC1.toggleWhenPressed(new frontPistonToggle());
         joystickButtonAC2.toggleWhenPressed(new backPistonToggle());

@@ -52,6 +52,10 @@ public class driveTrain extends Subsystem {
         RobotMap.driveTrainRobotDrive.arcadeDrive(-move * speed, rotate * speed);
     }
 
+    public double changeSpeed(double multiplier) {
+        return multiplier;
+    }
+
     public void autoDrive(double speedL, double speedR) {
         //RobotMap.driveTrainLeftDriveLead.set(speedL);
         //RobotMap.driveTrainLeftDriveFollow.set(speedL);

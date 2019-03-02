@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
     gyro.reset();
     gyro.calibrate();
     // Operator Interface
-    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+   // UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     // Autonomous Chooser Code
     chooser = new SendableChooser();
     chooser.setDefaultOption("Driven't", new drivent());
