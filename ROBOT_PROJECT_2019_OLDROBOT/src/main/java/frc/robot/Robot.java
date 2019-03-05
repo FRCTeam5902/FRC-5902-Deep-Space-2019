@@ -11,15 +11,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.driveStraight;
 import frc.robot.commands.drivent;
-import frc.robot.subsystems.cargoSystem;
 import frc.robot.subsystems.driveTrain;
-import frc.robot.subsystems.hatchSystem;
-import frc.robot.subsystems.lightSystem;
-import frc.robot.subsystems.pneumaticSystem;
-import frc.robot.subsystems.distanceSensor;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.AnalogInput;
 
@@ -74,10 +68,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     autonomousCommand = (Command) chooser.getSelected();
-    Robot.lightSystem.getAllianceColor();
-    RobotMap.hatchTriangle.setAngle(100); // 100 is down
-    RobotMap.hatchArm.setAngle(-40); // 0 is 
-    RobotMap.compressor.stop();
     //
     // schedule the autonomous command (example)
     if (autonomousCommand != null) {
@@ -88,7 +78,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
-    Robot.lightSystem.getAllianceColor();
   }
 
   @Override
@@ -96,9 +85,6 @@ public class Robot extends TimedRobot {
     if (autonomousCommand != null) {
       autonomousCommand.cancel();
     }
-    RobotMap.compressor.start();
-    RobotMap.hatchTriangle.setAngle(100); // 100 is down
-    RobotMap.hatchArm.setAngle(0); // 0 is down
   }
 
   @Override

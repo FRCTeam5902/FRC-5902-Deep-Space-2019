@@ -1,6 +1,7 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.AnalogAccelerometer;
 import edu.wpi.first.wpilibj.Compressor;
@@ -19,8 +20,9 @@ public class RobotMap {
   public static AnalogAccelerometer sensorBaseAAccelerometer;
   public static WPI_TalonSRX driveTrainLeftDriveLead;
   public static WPI_TalonSRX driveTrainRightDriveLead;
-  public static WPI_TalonSRX driveTrainLeftDriveFollow;
-  public static WPI_TalonSRX driveTrainRightDriveFollow;
+  public static WPI_VictorSPX driveTrainLeftDriveFollow;
+  public static WPI_VictorSPX driveTrainRightDriveFollow;
+  public static DifferentialDrive driveTrainRobotDrive;
 
   public static void init() {
     //sensorBaseAAccelerometer = new AnalogAccelerometer(0);
@@ -29,11 +31,11 @@ public class RobotMap {
 
     // Create Left Motors
     driveTrainLeftDriveLead = new WPI_TalonSRX(3);
-    driveTrainLeftDriveFollow = new WPI_TalonSRX(4);
+    driveTrainLeftDriveFollow = new WPI_VictorSPX(4);
 
     // Create Right Motors
     driveTrainRightDriveLead = new WPI_TalonSRX(1);
-    driveTrainRightDriveFollow = new WPI_TalonSRX(2);
+    driveTrainRightDriveFollow = new WPI_VictorSPX(2);
 
     // Create driveTrain
     driveTrainRobotDrive = new DifferentialDrive(driveTrainLeftDriveLead, driveTrainRightDriveLead);
