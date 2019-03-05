@@ -21,7 +21,6 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static double speed;
   public static driveTrain driveTrain;
-  public ADXRS450_Gyro gyro;
   public static Alliance al;
   public static DriverStation ds;
   SendableChooser chooser;
@@ -34,10 +33,7 @@ public class Robot extends TimedRobot {
 //ultra.setAutomaticMode(true);
 
     driveTrain = new driveTrain();
-    gyro = new ADXRS450_Gyro();
     oi = new OI();
-    gyro.reset();
-    gyro.calibrate();
     // Operator Interface
    // UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     // Autonomous Chooser Code

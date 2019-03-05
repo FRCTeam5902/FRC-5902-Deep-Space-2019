@@ -21,7 +21,7 @@ public class RobotMap {
   public static WPI_TalonSRX driveTrainLeftDriveLead;
   public static WPI_TalonSRX driveTrainRightDriveLead;
   public static WPI_VictorSPX driveTrainLeftDriveFollow;
-  public static WPI_VictorSPX driveTrainRightDriveFollow;
+  public static WPI_TalonSRX driveTrainRightDriveFollow;
   public static DifferentialDrive driveTrainRobotDrive;
 
   public static void init() {
@@ -35,7 +35,7 @@ public class RobotMap {
 
     // Create Right Motors
     driveTrainRightDriveLead = new WPI_TalonSRX(1);
-    driveTrainRightDriveFollow = new WPI_VictorSPX(2);
+    driveTrainRightDriveFollow = new WPI_TalonSRX(2);
 
     // Create driveTrain
     driveTrainRobotDrive = new DifferentialDrive(driveTrainLeftDriveLead, driveTrainRightDriveLead);

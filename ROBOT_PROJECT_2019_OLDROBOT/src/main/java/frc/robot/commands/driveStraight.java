@@ -19,7 +19,7 @@ public class driveStraight extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    RobotMap.driveTrainRobotDrive.tankDrive(.8, .8);
+    RobotMap.driveTrainRobotDrive.tankDrive(0, 0);
     setTimeout(2);
 
   }
