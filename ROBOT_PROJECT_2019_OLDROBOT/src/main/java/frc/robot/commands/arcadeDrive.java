@@ -23,6 +23,14 @@ public class arcadeDrive extends Command {
     protected void execute() {
         double driveSpeed = 1;
         double multiplier = 1;
+        double throttle = 1;
+        throttle = Robot.oi.getLogitechJoy().getThrottle();	
+        if (throttle >= 0) {
+            multiplier = 1;
+        }
+        else {
+            multiplier = .5;
+        }
         // forward and backward sensitivity, y value of joystick
         double driveSensitivity = .85;
         // turning sensitivity, z value of joystick
