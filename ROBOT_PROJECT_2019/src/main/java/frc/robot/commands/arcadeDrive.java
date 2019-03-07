@@ -30,7 +30,7 @@ public class arcadeDrive extends Command {
         // turning sensitivity, z value of joystick
         double turnSensitivity = .55;
         throttle = Robot.oi.getLogitechJoy().getThrottle();	
-        if (throttle >= 0) {
+        if (throttle <= 0) {
             multiplier = 1;
         }
         else {
