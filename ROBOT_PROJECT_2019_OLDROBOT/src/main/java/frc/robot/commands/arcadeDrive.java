@@ -25,7 +25,7 @@ public class arcadeDrive extends Command {
         double multiplier = 1;
         double throttle = 1;
         throttle = Robot.oi.getLogitechJoy().getThrottle();	
-        if (throttle >= 0) {
+        if (throttle <= 0) {
             multiplier = 1;
         }
         else {
