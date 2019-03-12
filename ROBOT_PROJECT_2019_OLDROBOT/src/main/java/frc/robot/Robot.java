@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
     driveTrain = new driveTrain();
     oi = new OI();
     // Operator Interface
-   UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+  //  UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     // Autonomous Chooser Code
     chooser = new SendableChooser();
     chooser.setDefaultOption("Driven't", new drivent());
@@ -92,6 +92,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+  
   }
 
   @Override

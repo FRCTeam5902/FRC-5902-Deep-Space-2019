@@ -16,7 +16,7 @@ public class arcadeDrive extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        SmartDashboard.putString("Drive Mode", "Hatch Front");
+        SmartDashboard.putString("Drive_Mode", "Hatch Front");
     }
 
     // Called repeatedly when this Command is scheduled to run

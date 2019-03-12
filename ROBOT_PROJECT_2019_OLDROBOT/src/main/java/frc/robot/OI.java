@@ -14,6 +14,7 @@ public class OI {
     public Joystick logitechRight;
     private JoystickButton joystickButtonR1;
     private JoystickButton joystickButtonR3;
+    private JoystickButton xboxA;
      // right joystick buttons
      public XboxController xbox;
 
@@ -29,7 +30,10 @@ public class OI {
 
         joystickButtonR1 = new JoystickButton(logitechRight, 1);
         joystickButtonR3 = new JoystickButton(logitechRight, 3);
+        xboxA = new JoystickButton(xbox, 1); 
         
+       // xboxA.toggleWhenPressed(new arcadeDriveBackwards());
+
         joystickButtonL1.toggleWhenPressed(new arcadeDriveBackwards());
     }
 
