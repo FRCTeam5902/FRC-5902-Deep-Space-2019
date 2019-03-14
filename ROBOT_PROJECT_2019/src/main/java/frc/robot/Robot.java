@@ -22,10 +22,13 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Timer;
+
 
 public class Robot extends TimedRobot {
   public static OI oi;
   public static double speed;
+  public static Timer timer;
   public static driveTrain driveTrain;
   public static hatchSystem hatchSystem;
   public static cargoSystem cargoSystem;
@@ -75,6 +78,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("B Pistons", RobotMap.backSolenoid.get());
     SmartDashboard.putBoolean("PSI", RobotMap.compressor.getPressureSwitchValue());
     distanceSensor.updateDashboard();
+    SmartDashboard.putNumber("Time", Math.round(timer.getMatchTime()));
     //SmartDashboard.putNumber("Inches", ultrasonic());
     //SmartDashboard.putNumber("Distance", RobotMap.ultra.getRangeInches());
 
