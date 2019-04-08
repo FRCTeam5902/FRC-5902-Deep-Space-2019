@@ -6,7 +6,7 @@ import frc.robot.RobotMap;
 
 public class hatchArmServo extends Command {
   public double setAngle;
-  public static Boolean isArmUp;
+  public static boolean isArmUp;
 
   public hatchArmServo(double setAngle) {
     requires(Robot.hatchSystem);

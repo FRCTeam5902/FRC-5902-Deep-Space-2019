@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.driveStraight;
@@ -45,6 +46,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
 
 //ultra.setAutomaticMode(true);
+LiveWindow.disableAllTelemetry();
 
     pneumaticSystem = new pneumaticSystem();
     driveTrain = new driveTrain();
@@ -74,7 +76,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("F Pistons", RobotMap.frontSolenoid.get());
     SmartDashboard.putBoolean("B Pistons", RobotMap.backSolenoid.get());
     SmartDashboard.putBoolean("PSI", RobotMap.compressor.getPressureSwitchValue());
-    distanceSensor.updateDashboard();
+   // distanceSensor.updateDashboard();
     //SmartDashboard.putNumber("Inches", ultrasonic());
     //SmartDashboard.putNumber("Distance", RobotMap.ultra.getRangeInches());
 

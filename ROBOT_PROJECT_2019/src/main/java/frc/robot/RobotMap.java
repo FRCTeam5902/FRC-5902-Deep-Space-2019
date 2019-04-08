@@ -31,8 +31,8 @@ public class RobotMap {
   public static Ultrasonic ultrasonic;
   // Pneumatics
   public static Compressor compressor;
-  public static Solenoid frontSolenoid;
-  public static Solenoid backSolenoid;
+  public static SolenoidWrapper frontSolenoid;
+  public static SolenoidWrapper backSolenoid;
   public static Ultrasonic ultra;
 
   public static void init() {
@@ -69,8 +69,8 @@ public class RobotMap {
     cargoIntakeFollow = new WPI_TalonSRX(6);
     // Create pneumaticSystem
     compressor = new Compressor(0);
-    frontSolenoid = new Solenoid(1);
-    backSolenoid = new Solenoid(0);
+    frontSolenoid = new SolenoidWrapper(1);
+    backSolenoid = new SolenoidWrapper(0);
     frontSolenoid.set(false);
     backSolenoid.set(false);
 
