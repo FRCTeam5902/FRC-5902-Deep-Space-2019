@@ -12,10 +12,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.driveStraight;
 import frc.robot.commands.drivent;
 import frc.robot.subsystems.driveTrain;
+import edu.wpi.first.cameraserver.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Robot extends TimedRobot {
   public static OI oi;
@@ -23,6 +25,7 @@ public class Robot extends TimedRobot {
   public static driveTrain driveTrain;
   public static Alliance al;
   public static DriverStation ds;
+  public static Timer timer;
   SendableChooser chooser;
   Command autonomousCommand;
   //Ultrasonic ultra = new Ultrasonic(0,0);
@@ -35,7 +38,7 @@ public class Robot extends TimedRobot {
     driveTrain = new driveTrain();
     oi = new OI();
     // Operator Interface
-   // UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+  //  UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     // Autonomous Chooser Code
     chooser = new SendableChooser();
     chooser.setDefaultOption("Driven't", new drivent());
@@ -50,6 +53,7 @@ public class Robot extends TimedRobot {
     //SmartDashboard.putNumber("Get Y", Robot.oi.getLogitechJoy().getY());
     //SmartDashboard.putNumber("Get Z", Robot.oi.getLogitechJoy().getZ());
     //SmartDashboard.putNumber("Get X", Robot.oi.getLogitechJoy().getX());
+    SmartDashboard.putNumber("Time", Math.round(timer.getMatchTime()));
   }
 
   @Override
@@ -59,6 +63,7 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putString("5902_test", "Disabled Enabled");
   }
 
   @Override
@@ -81,11 +86,13 @@ public class Robot extends TimedRobot {
     if (autonomousCommand != null) {
       autonomousCommand.cancel();
     }
+        SmartDashboard.putString("5902_test", "Teleop Enabled");
   }
 
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+  
   }
 
   @Override

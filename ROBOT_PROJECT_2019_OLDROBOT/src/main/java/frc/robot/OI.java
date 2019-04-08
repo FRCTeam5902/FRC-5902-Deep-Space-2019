@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.arcadeDriveBackwards;
 
@@ -13,11 +14,15 @@ public class OI {
     public Joystick logitechRight;
     private JoystickButton joystickButtonR1;
     private JoystickButton joystickButtonR3;
+    private JoystickButton xboxA;
+     // right joystick buttons
+     public XboxController xbox;
 
     public OI() {
         // Make those Joysticks!
         logitechLeft = new Joystick(0);
         logitechRight = new Joystick(2);
+        xbox= new XboxController(0);
 
         // left joystick buttons
         joystickButtonL1 = new JoystickButton(logitechLeft, 1);
@@ -25,7 +30,10 @@ public class OI {
 
         joystickButtonR1 = new JoystickButton(logitechRight, 1);
         joystickButtonR3 = new JoystickButton(logitechRight, 3);
+        xboxA = new JoystickButton(xbox, 1); 
         
+       // xboxA.toggleWhenPressed(new arcadeDriveBackwards());
+
         joystickButtonL1.toggleWhenPressed(new arcadeDriveBackwards());
     }
 
@@ -36,4 +44,8 @@ public class OI {
     public Joystick getLogitechJoy2() {
         return logitechRight;
     }
+    public XboxController getXbox() {
+        return xbox;
+    }
+    
 }

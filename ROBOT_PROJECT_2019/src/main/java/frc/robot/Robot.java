@@ -23,10 +23,13 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Timer;
+
 
 public class Robot extends TimedRobot {
   public static OI oi;
   public static double speed;
+  public static Timer timer;
   public static driveTrain driveTrain;
   public static hatchSystem hatchSystem;
   public static cargoSystem cargoSystem;
